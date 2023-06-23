@@ -1,0 +1,18 @@
+html {
+    touch-action: manipulation;
+  }
+  
+  body {
+    touch-action: auto;
+    user-select: none;
+    -ms-content-zooming: none;
+    -ms-touch-action: manipulation;
+    zoom: reset;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }

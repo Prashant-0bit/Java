@@ -1,0 +1,129 @@
+.right-component {
+  position: relative;
+}
+
+.icon-menu-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  right: 0;
+  background-color: black;
+  height: 64px;
+  margin: 0;
+  top: -1px;
+}
+
+.icon-menu {
+  position: relative;
+  align-items: center;
+  z-index: -1;
+}
+
+.icon-button {
+  background-color: transparent;
+  color: white;
+  background-color: black;
+  margin-top: 0.3rem;
+  padding: 0;
+  width: 2rem;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.coordinate-button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  padding: 0 6px;
+  margin: 14.25px 0;
+  transition: background-color 0.3s ease;
+}
+
+.coordinate-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  /* Change background color on hover */
+}
+
+.coordinate-icon {
+  color: white;
+  padding: 0.5rem;
+  margin: 0;
+  font-size: 20px;
+}
+
+.coordinate-icon.clicked {
+  font-size: 20px;
+  color: white;
+  padding: 0.5rem;
+  margin: 0;
+  width: 36px;
+  height: 36px;
+}
+
+.coordinate-name {
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.icon-menu {
+  position: absolute;
+  top: 20%;
+  right: 110%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  z-index: 10;
+  width: 9rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header-coordinate {
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-family: sans-serif;
+  padding: 0.1rem 0.1rem 0.1rem 0.5rem;
+  margin: 0;
+  width: 100%;
+  border-top-right-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;
+}
+
+.robot-arm-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 21px;
+  background-color: black;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.sidebar {
+  position: absolute;
+  top: 64px;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  padding-top: 10px; /* Add some padding to the top */
+  width: 48px;
+}
+
+.coordinates {
+  font-size: 16px;
+  margin: 20px 0;
+}

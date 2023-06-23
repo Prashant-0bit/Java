@@ -1,0 +1,31 @@
+.back {
+    background-color: #000000;
+}
+
+.text2 {
+    color: #11E1BB;
+    font-size: 16px;
+    display: flex;
+    width: 8rem;
+    margin: 0 87rem 0 0;                    /* top | right | bottom | left */
+    padding: 0.3rem 0 0.3rem .4rem;         /* top | right | bottom | left */
+    font-family: sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    background-color: #000000;
+
+}
+
+.text2:hover {
+    background-color: darkslategrey;
+}
+
+.text2 .menuplay {
+    display: flex;
+    color: #11E1BB;
+    font-size: 12px;
+    padding: 0.35rem 0 0 .4rem;         /* top | right | bottom | left */
+    margin: 0 0 0 0;
+
+}

@@ -1,0 +1,13 @@
+.sidebar{
+    height: 100%;
+    width: 2rem;
+    color: black;
+    display: flex;
+}
+.coordinates{
+    position: absolute;
+    align-items: center;
+    right: 0;
+    transform: translateX(-35%);
+
+}
