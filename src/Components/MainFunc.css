@@ -1,3 +1,10 @@
+.main-func-container{
+  display: flex;
+  max-width: 1960px;
+  width: calc(100% - 48px);
+  flex-direction: column;
+}
+
 .backgn {
   background-color: white;
   width: 100%;
@@ -106,4 +113,40 @@
 .keypad-button.leftArrowKey,
 .keypad-button.rightArrowKey {
   grid-column: span 2; /* The arrow keys span across 2 columns each */
+}
+
+
+.project-icon{
+  background-color: rgb(255, 255, 255);
+  border-width: 1px;
+  border-radius: 3px;
+  align-content: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.delete-icon{
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  margin: 0 3px;
+}
+
+.rename-icon{
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  margin: 0 3px;
+}
+
+.check-icon{
+  background-color: transparent;
+  font-size: 18px;
+}
+
+.add-icon{
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  width: 10% ;
 }
