@@ -7,6 +7,7 @@ import Setting from './Components/Setting';
 import Footer from './Components/Footer';
 import Language from './Components/SubComponents/Language';
 import Menu from './Components/Menu';
+import RobotMotion from './Components/RobotMotion';
 import './Global.css';
 import { Route, Routes } from "react-router-dom"
 
@@ -17,11 +18,12 @@ function App() {
         <HeaderBar/>
         <RightComp/>
         <Routes>
-          <Route path='/' element={<MainFunc />} />
+          <Route path='/' element={<MainFunc/>} />
           <Route path='/users' element={<User />} />
           <Route path='/settings' element={<Setting />} />
           <Route path='/languages' element={<Language />} />
           <Route path='/menu' element={<Menu />} />
+          <Route path='/RobotMotion' element={<RobotMotion/>}/>
         </Routes>
 
         <Footer/>

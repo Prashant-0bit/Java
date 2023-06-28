@@ -11,13 +11,16 @@ export default function MainFunc() {
   const [newProjectName, setNewProjectName] = useState('');
   const [showNewProjectInput, setShowNewProjectInput] = useState(false);
   const [isKeypadOpen, setIsKeypadOpen] = useState(false); // State to track keyboard open/close
+  const [isRenameMode, setIsRenameMode] = useState(false); // State to track rename mode
 
   const handleToggleNewProjectInput = () => {
     if (projects.length >= 5) {
       alert('You have reached the maximum limit of projects.');
     } else {
       setShowNewProjectInput((prev) => !prev);
-      setIsKeypadOpen(!isKeypadOpen); // Open the keyboard when the add icon is clicked
+      setIsKeypadOpen(!isKeypadOpen); // Open/close the keyboard when the add icon is clicked
+      setIsRenameMode(false); // Reset the rename mode
+      setNewProjectName(''); // Reset the input field
     }
   };
 
@@ -42,7 +45,14 @@ export default function MainFunc() {
     setIsKeypadOpen(false); // Close the keyboard when the check icon is clicked
   };
 
-  const handleRenameProject = (oldProjectName, newProjectName) => {
+  const handleRenameProject = (index) => {
+    setIsRenameMode(true);
+    setNewProjectName(projects[index]);
+    setShowNewProjectInput(true); // Show the input field when the rename button is clicked
+    setIsKeypadOpen(true); // Open the keyboard when the rename button is clicked
+  };
+
+  const handleRenameKeypadEnter = () => {
     if (!newProjectName || !/^[a-zA-Z]/.test(newProjectName)) {
       alert('Please enter a valid project name starting with a character.');
       return;
@@ -53,10 +63,14 @@ export default function MainFunc() {
       return;
     }
 
-    const updatedProjects = projects.map((project) =>
-      project === oldProjectName ? newProjectName : project
-    );
+    const updatedProjects = [...projects];
+    updatedProjects[projects.length - 1] = newProjectName; // Rename the last added project
     setProjects(updatedProjects);
+
+    setIsRenameMode(false);
+    setNewProjectName('');
+    setShowNewProjectInput(false);
+    setIsKeypadOpen(false); // Close the keyboard when the rename is complete
   };
 
   const handleDeleteProject = (projectName) => {
@@ -81,15 +95,10 @@ export default function MainFunc() {
             <div key={index} className="project">
               <div className="project-info">
                 <div className="project-name">
-                  <button className='main-func' >{project }</button>
+                  <button className='main-func'>{project}</button>
                 </div>
                 <div className="project-actions">
-                  <button
-                    className="rename-button"
-                    onClick={() =>
-                      handleRenameProject(project, prompt('Enter new project name:'))
-                    }
-                  >
+                  <button className="rename-button" onClick={() => handleRenameProject(index)}>
                     <HiPencil className='rename-icon' />
                   </button>
                   <button className="delete-button" onClick={() => handleDeleteProject(project)}>
@@ -103,6 +112,7 @@ export default function MainFunc() {
         <div className="add-project-button-container">
           {!showNewProjectInput ? (
             <button className="add-button" onClick={handleToggleNewProjectInput}>
+              <span className='add-button-name'> Add Project </span>
               <CgFolderAdd className="add-icon" />
             </button>
           ) : (
@@ -115,7 +125,7 @@ export default function MainFunc() {
                 value={newProjectName}
                 onChange={handleNewProjectNameChange}
                 className="new-project-input"
-                placeholder="Enter Project Name"
+                placeholder={isRenameMode ? 'Enter New Project Name' : 'Enter Project Name'}
               />
               {isKeypadOpen && (
                 <Keypad
@@ -124,17 +134,19 @@ export default function MainFunc() {
                   handleKeypadInput={handleKeypadInput}
                   setIsKeypadOpen={setIsKeypadOpen}
                   isCapsLockPressed={false}
-                  toggleCapsLock={() => { }}
-                  handleKeypadEnter={() => { }}
+                  toggleCapsLock={() => {}}
+                  handleKeypadEnter={isRenameMode ? handleRenameKeypadEnter : handleAddProject}
                 />
               )}
               <div className="new-project-input-actions">
                 <button className="cancel-button" onClick={handleToggleNewProjectInput}>
                   <MdClose className="cancel-icon" />
                 </button>
-                <button className="save-button" onClick={handleAddProject}>
-                  <FcCheckmark className="save-icon" />
-                </button>
+                {!isRenameMode && (
+                  <button className="save-button" onClick={handleAddProject}>
+                    <FcCheckmark className="save-icon" />
+                  </button>
+                )}
               </div>
             </div>
           )}
