@@ -1,32 +1,87 @@
-import React, { useState } from 'react';
-import Keyboard from 'react-simple-keyboard';
-import 'react-simple-keyboard/build/css/index.css';
-import 'react-simple-keyboard/build/css/theme-dark.css';
-import 'simple-keyboard/build/css/index.css';
-import 'simple-keyboard/build/css/layouts/german.css';
+import React from 'react';
+import './keypad.css';
+import {
+  MdOutlineKeyboardTab,
+  MdOutlineKeyboardBackspace,
+  MdOutlineKeyboardCapslock,
+  MdOutlineKeyboardReturn,
+  MdOutlineSpaceBar
+} from 'react-icons/md';
 
+export default function Keypad({
+  enteredText,
+  setEnteredText,
+  handleKeypadInput,
+  handleKeypadEnter,
+  isCapsLockPressed,
+  toggleCapsLock,
+}) {
+  const keypadRows = [
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'ß', '´'],
+    ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'ü', '+'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', '#'],
+    ['<', 'y', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-'],
+  ];
 
-const SimpleKeyboardWrapper = () => {
-    const [input, setInput] = useState('');
-    
-    const onChange = (input) => {
-      setInput(input);
-    };
-    return (
-        <div>
-          <input
-            value={input}
-            readOnly
-          />
-          <Keyboard
-            layout="german-qwertz" // Set the layout to German QWERTZ
-            theme="hg-theme-dark" // Set the dark theme
-            onChange={onChange}
-            inputName="input"
-          />
+  const handleKeypadBackspace = () => {
+    const updatedText = enteredText.slice(0, -1);
+    setEnteredText(updatedText);
+  };
+
+  const handleKeypadTab = () => {
+    const updatedText = enteredText + '    ';
+    setEnteredText(updatedText);
+  };
+
+  const handleKeypadSpace = () => {
+    const updatedText = enteredText + ' ';
+    setEnteredText(updatedText);
+  };
+
+  return (
+    <div className="keyboard-container">
+      <div className="keypad">
+        <div className="keypad-buttons">
+          {keypadRows.map((row, index) => (
+            <div key={index} className="keypad-row">
+              {row.map((value) => (
+                <button
+                  key={value}
+                  className={`keypad-button ${value === ' ' ? 'space' : ''}`}
+                  onClick={() => handleKeypadInput(value)}
+                >
+                  {isCapsLockPressed ? value.toUpperCase() : value}
+                </button>
+              ))}
+              {index === 0 && (
+                <button onClick={handleKeypadBackspace} className="keypad-button">
+                  <MdOutlineKeyboardBackspace/>
+                </button>
+              )}
+              {index === 1 && (
+                <button className="keypad-button" onClick={handleKeypadTab}>
+                  <MdOutlineKeyboardTab />
+                </button>
+              )}
+              {index === 2 && (
+                <button className="keypad-button" onClick={handleKeypadEnter}>
+                  <MdOutlineKeyboardReturn/>
+                </button>
+              )}
+              {index === 3 && (
+                <button className="keypad-button" onClick={toggleCapsLock}>
+                  <MdOutlineKeyboardCapslock/>
+                </button>
+              )}
+            </div>
+          ))}
+          <div className="keypad-row">
+            <button className="keypad-button" onClick={handleKeypadSpace}>
+              <MdOutlineSpaceBar />
+            </button>
+          </div>
         </div>
-      );
-    };
-    
-    export default SimpleKeyboardWrapper;
-    
+      </div>
+    </div>
+  );
+}

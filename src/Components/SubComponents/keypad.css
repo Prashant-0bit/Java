@@ -1,0 +1,81 @@
+.keyboard-container {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Divide the container into 12 equal-width columns */
+    grid-gap: 5px; /* Add a small gap between the buttons */
+    position: absolute;
+    z-index: 9999;
+    width: calc(100% - 48px); /* Adjust the right-side component width */
+    max-width: 1960px; /* Adjust the maximum width as needed */
+    bottom: 56px;
+  }
+  .password-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    position: relative;
+  }  
+  .text-input {
+    margin: 5px;
+    padding: 3px;
+    width: calc(100% - 48px); /* Adjust the right-side component width */
+    max-width: 1960px;
+  }
+  .cursor {
+    position: absolute;
+    width: 2px;
+    height: 1.3em;
+    background-color: black;
+    animation: cursor-blink 0.8s infinite;
+  }
+  
+  @keyframes cursor-blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .visibility-icon {
+    cursor: pointer;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  .keypad-row {
+    grid-column: span 12; /* Each keypad row spans across all 12 columns */
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .keypad-button {
+    color: white;
+    background-color: black;
+    border-width: 1px;
+    border-color: gray;
+    font-size: 15px;
+    padding: 10px 15px;
+    font-family: sans-serif;
+    width: 100%; /* Set the width of each button to 100% */
+  }
+  
+  .keypad-button.enterKey {
+    padding-right: 25px;
+  }
+  
+  .keypad-button.tabKey {
+    padding-right: 20px;
+  }
+  .keypad-button.spaceKey {
+    grid-column: span 9; /* The space key spans across 9 columns */
+  }
+  
+  .keypad-button.leftArrowKey,
+  .keypad-button.rightArrowKey {
+    grid-column: span 2; /* The arrow keys span across 2 columns each */
+  }
