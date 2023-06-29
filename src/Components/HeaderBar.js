@@ -57,24 +57,6 @@ export default function HeaderBar() {
         </div>
       </nav>
 
-      <div className="header-content">
-        {/* Message */}
-        <div className="message">
-          <div className='message-icon'>
-          <i className="fa-solid fa-circle-info status" style={{ color: '#2196F3' }}></i>
-          <i className="fa-solid fa-triangle-exclamation status" style={{ color: '#FFC107' }}></i>
-          <i className="fa-solid fa-circle-xmark status" style={{ color: '#F44336' }}></i>
-          </div>
-        </div>
-      </div>
-
-      <div
-        style={{
-          background: 'black',
-          height: '15px',
-        }}
-      />
-
       {/* Slider Container */}
       {sliderVisible && (
         <div className="slider-container">

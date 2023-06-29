@@ -1,0 +1,25 @@
+.robot-container {
+    display: flex;
+    max-width: 1960px;
+    width: calc(100% - 48px);
+    flex-direction: column;
+}
+
+.actual-position,
+.home-position{
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    display: flex;
+    flex-grow: 1;
+
+}
+
+.base-system,
+.tool-system{
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    display: flex;
+    flex-grow: 1;
+}

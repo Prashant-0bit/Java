@@ -63,15 +63,9 @@
     cursor: pointer;
 }
 
-.status {
-    background-color: black;
-    font-size: 12px;
-    width: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    padding: 0.3rem;
-}
-
+/*****************************************************************************************************
+************************************--Slider-Content-CSS--********************************************
+*****************************************************************************************************/
 .slider-container {
     position: absolute;
     top: 30px;
@@ -157,17 +151,44 @@
     justify-content: center;
     align-items: center;
   }
-  
+
+/*****************************************************************************************************
+***********************************--Message-Content-CSS--********************************************
+*****************************************************************************************************/
+
 .message {
     background-color: white;
     width: 100%;
     height: 64px;
+    display: flex;
+    flex-grow: 1;
 }
-
+.message-icon{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 2rem;
+  flex-direction: column;
+  background-color: black;
+  padding: 2px 0;
+}
+.status{
+  font-size: 15px;
+ 
+}
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: -8%;
+    flex-direction: column;
+}
+
+.Horizontal-divider{
+  height: 15px;
+  color: black;
+  width: 100%;
+  background-color: black;
 }
 
 .mode-dropdown {

@@ -20,12 +20,3 @@
 .text2:hover {
     background-color: darkslategrey;
 }
-
-.text2 .menuplay {
-    display: flex;
-    color: #11E1BB;
-    font-size: 12px;
-    padding: 0.35rem 0 0 .4rem;         /* top | right | bottom | left */
-    margin: 0 0 0 0;
-
-}

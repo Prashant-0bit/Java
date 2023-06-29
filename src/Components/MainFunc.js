@@ -5,6 +5,7 @@ import { HiPencil } from 'react-icons/hi';
 import { MdDelete, MdClose } from 'react-icons/md';
 import { FcCheckmark } from 'react-icons/fc';
 import Keypad from './SubComponents/Keyboard';
+import {useNavigate} from 'react-router-dom';
 
 export default function MainFunc() {
   const [projects, setProjects] = useState(['Default Project']);
@@ -12,6 +13,8 @@ export default function MainFunc() {
   const [showNewProjectInput, setShowNewProjectInput] = useState(false);
   const [isKeypadOpen, setIsKeypadOpen] = useState(false); // State to track keyboard open/close
   const [isRenameMode, setIsRenameMode] = useState(false); // State to track rename mode
+
+  const navigate = useNavigate();
 
   const handleToggleNewProjectInput = () => {
     if (projects.length >= 5) {
@@ -21,6 +24,10 @@ export default function MainFunc() {
       setIsKeypadOpen(!isKeypadOpen); // Open/close the keyboard when the add icon is clicked
       setIsRenameMode(false); // Reset the rename mode
       setNewProjectName(''); // Reset the input field
+       // Check if the default project button is clicked
+    if (newProjectName === 'Default Project') {
+      navigate('/robotmotion');
+    }
     }
   };
 
