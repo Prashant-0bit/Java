@@ -1,6 +1,6 @@
 .main-func-container{
   display: flex;
-  max-width: 1960px;
+  max-width: 3840px;
   width: calc(100% - 49px);
   flex-direction: column;
 }
@@ -24,6 +24,7 @@
   cursor: pointer;
   border: none;
   background-color: white;
+  text-decoration: none;
 }
 
 .main-func.selected {
@@ -80,6 +81,7 @@
 .project-info {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .project-name {

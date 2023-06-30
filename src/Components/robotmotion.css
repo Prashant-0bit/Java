@@ -1,25 +1,54 @@
-.robot-container {
+.robotmotion-container{
     display: flex;
     max-width: 1960px;
     width: calc(100% - 48px);
     flex-direction: column;
 }
-
-.actual-position,
-.home-position{
-    border-radius: 5px;
-    border-color: black;
-    border-width: 1px;
+.robot-container {
     display: flex;
-    flex-grow: 1;
+    display: grid;
+    width: calc(100% - 48px);
+    flex-direction: column;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    position: absolute;
+    bottom: 0;
+    align-items: flex-end;
+    margin-bottom: 60px;
 
 }
+.power-button{
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    display: flex;
+    margin: 5px;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    max-width: 50px;
+}
+.power-button.on{
+    background-color: green;
+}
+.power-button.off{
+    background-color: rgb(218, 17, 17);
+}
+.power-icon{
+    font-size: 18px;
+    color: white;
+}
 
+.actual-position,
+.home-position,
 .base-system,
-.tool-system{
+.tool-system {
     border-radius: 5px;
     border-color: black;
     border-width: 1px;
     display: flex;
     flex-grow: 1;
+    margin: 5px 10px;
+    justify-content: center;
+    align-items: center;
 }

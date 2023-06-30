@@ -13,7 +13,6 @@ export default function MainFunc() {
   const [showNewProjectInput, setShowNewProjectInput] = useState(false);
   const [isKeypadOpen, setIsKeypadOpen] = useState(false); // State to track keyboard open/close
   const [isRenameMode, setIsRenameMode] = useState(false); // State to track rename mode
-
   const navigate = useNavigate();
 
   const handleToggleNewProjectInput = () => {
@@ -24,10 +23,6 @@ export default function MainFunc() {
       setIsKeypadOpen(!isKeypadOpen); // Open/close the keyboard when the add icon is clicked
       setIsRenameMode(false); // Reset the rename mode
       setNewProjectName(''); // Reset the input field
-       // Check if the default project button is clicked
-    if (newProjectName === 'Default Project') {
-      navigate('/robotmotion');
-    }
     }
   };
 
@@ -102,7 +97,7 @@ export default function MainFunc() {
             <div key={index} className="project">
               <div className="project-info">
                 <div className="project-name">
-                  <button className='main-func'>{project}</button>
+                  <button className='main-func' onClick={() => navigate('robotmotion')}>{project}</button>
                 </div>
                 <div className="project-actions">
                   <button className="rename-button" onClick={() => handleRenameProject(index)}>
