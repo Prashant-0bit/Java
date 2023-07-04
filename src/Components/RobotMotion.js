@@ -1,51 +1,54 @@
 import React, { useState } from "react";
 import "./robotmotion.css";
-import {FaPowerOff} from 'react-icons/fa';
+import { FaPowerOff } from 'react-icons/fa';
+import { useNavigate, Outlet} from "react-router-dom";
 
-export default function RobotMotion() {
-  const [showContent, setShowContent] = useState(false);
+function RobotMotion() {
   const [isPowerOn, setIsPowerOn] = useState(false);
+  const navigate = useNavigate();
 
   const handlePowerButtonClick = () => {
     setIsPowerOn((prevIsPowerOn) => !prevIsPowerOn);
-    setShowContent(false);
   }
 
-  const handleActualPositionClick = () => {
-    setShowContent(true);
-  };
-
   return (
-    <div className="robotmotion-container">
-      <button type='button' 
-      className={`power-button ${isPowerOn ? "on" : "off"}`}
-      onClick={handlePowerButtonClick}>
-      <FaPowerOff className="power-icon"/>
-      </button>
-      <div className="robot-container">
-        <button
-          type="button"
-          className="btn btn-light actual-position"
-          onClick={handleActualPositionClick}
-        >
-          Actual Position
+    <>
+      <div className="robotmotion-container">
+        <button type='button'
+          className={`power-button ${isPowerOn ? "on" : "off"}`}
+          onClick={handlePowerButtonClick}>
+          <FaPowerOff className="power-icon" />
         </button>
-        <button type="button" className="btn btn-light home-position">
-          Home Position
-        </button>
-        <button type="button" className="btn btn-light base-system">
-          Base Coordinate System
-        </button>
-        <button type="button" className="btn btn-light tool-system">
-          Tool Coordinate System
-        </button>
-      </div>
-      {showContent && (
-        <div className="content-container">
-          <p>X</p>
-          <p>Y</p>
+        <div className="robot-container">
+          <button
+            type="button"
+            className="btn btn-light actual-position"
+            onClick={() => navigate('actual-position')}
+          >
+            Actual Position
+          </button>
+          <button
+            type="button"
+            className="btn btn-light home-position"
+            onClick={() => navigate('home-position')}>
+            Home Position
+          </button>
+          <button
+            type="button"
+            className="btn btn-light base-system"
+            onClick={() => navigate('base-coordinate')}>
+            Base Coordinate System
+          </button>
+          <button 
+          type="button" 
+          className="btn btn-light tool-system"
+          onClick={() => navigate('tool-coordinate')}>
+            Tool Coordinate System
+          </button>
         </div>
-      )}
-    </div>
+      </div>
+      <Outlet />
+    </>
   );
 }
+export default RobotMotion

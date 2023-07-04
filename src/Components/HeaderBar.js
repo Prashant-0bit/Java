@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DiscreteSliderMarks from './Slider';
 import TimePicker from './TimePicker';
 import Logo_Mairotec_weiss from './Logo_Mairotec_weiss.png';
 
 export default function HeaderBar() {
   const [sliderVisible, setSliderVisible] = useState(false);
+  const navigate = useNavigate();
 
   const handleSliderToggle = () => {
     setSliderVisible((prevVisible) => !prevVisible);
@@ -17,10 +18,10 @@ export default function HeaderBar() {
       <nav className="navbar navbar-expand-md bg-body-tertiary mt-0" data-bs-theme="dark">
         <div className="container-fluid">
           {/* HMI-ICON */}
-          <Link className="navbar-brand text" to="/">
+          <button className="navbar-brand text" onClick = {() => navigate("/")}>
           <img src={Logo_Mairotec_weiss} alt='Logo' className='LogoIcon'/>
             MAIRobot
-          </Link>
+          </button>
           <ul className="navbar-nav">
             {/* Mode Selection */}
             <li className="nav-item">

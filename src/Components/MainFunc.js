@@ -97,7 +97,7 @@ export default function MainFunc() {
             <div key={index} className="project">
               <div className="project-info">
                 <div className="project-name">
-                  <button className='main-func' onClick={() => navigate('robotmotion')}>{project}</button>
+                  <button className='main-func' onClick={() => navigate('robot-motion')}>{project}</button>
                 </div>
                 <div className="project-actions">
                   <button className="rename-button" onClick={() => handleRenameProject(index)}>

@@ -43,7 +43,10 @@
   margin: 0 5px;
 }
 
-
+.text{
+  background-color: transparent;
+  border: none;
+}
 .text:hover {
     color: #11E1BB !important;
     text-shadow: 0 0 20px #11E1BB;
