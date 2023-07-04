@@ -1,7 +1,7 @@
 .robotmotion-container{
     display: flex;
     max-width: 1960px;
-    width: calc(100% - 48px);
+    width: 5rem;
     flex-direction: column;
 }
 .robot-container {
@@ -52,3 +52,51 @@
     justify-content: center;
     align-items: center;
 }
+
+/********************************************************************************************************
+******************************************--Actual-Postion--*********************************************
+********************************************************************************************************/
+.actual-position-coordinate{
+    max-width: 3840px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 10px;
+}
+
+.actual-position-button{
+    font-size: 16px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    margin: 0 5px;
+
+}
+.coordinate-labels{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.coordinate-label{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.actual-position-data {
+    width: 100px; /* Adjust the width to your preference */
+    height: 24px; /* Adjust the height to your preference */
+    background-color: #f2f2f2; /* Set the background color */
+    margin-left: 10px; /* Adjust the margin to create space between the label and the data */
+    margin-top: 3px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+  }
+  

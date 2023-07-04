@@ -30,6 +30,7 @@ function App() {
           <Route path='/languages' element={<Language />} />
           <Route path='/menu' element={<Menu />} />
           <Route path='robot-motion' element={<RobotMotion/>}>
+            <Route index element={<ActualPosition/>} />
             <Route path='actual-position' element={<ActualPosition />} />
             <Route path='home-position' element={<HomePosition />} />
             <Route path='base-coordinate' element={<BaseCoodinate />} />
