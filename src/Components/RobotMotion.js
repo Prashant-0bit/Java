@@ -36,14 +36,14 @@ function RobotMotion() {
           <button
             type="button"
             className="btn btn-light base-system"
-            onClick={() => navigate('base-coordinate')}>
-            Base Coordinate System
+            onClick={() => navigate('base-selection')}>
+            Base Selection
           </button>
           <button 
           type="button" 
           className="btn btn-light tool-system"
-          onClick={() => navigate('tool-coordinate')}>
-            Tool Coordinate System
+          onClick={() => navigate('tool-selection')}>
+            Tool Selection
           </button>
         </div>
       </div>

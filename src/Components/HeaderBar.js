@@ -39,19 +39,15 @@ export default function HeaderBar() {
             </li>
             {/* USER */}
             <li className="nav-item">
-              <CustomLink className="nav-link" to="/users">
-                <button type="button" className="btn btn logo">
+              <button type="button" className="nav-link btn btn logo" onClick = {() => navigate("users")}>
                   <i className="fa-solid fa-user header-icon"></i>
-                </button>
-              </CustomLink>
+              </button>
             </li>
             {/* SETTING */}
             <li className="nav-item">
-              <CustomLink className="nav-link" to="/settings">
-                <button type="button" className="btn btn logo">
+              <button type="button" className="nav-link btn btn logo" onClick={() => navigate("settings")}>
                   <i className="fa-solid fa-gear header-icon"></i>
-                </button>
-              </CustomLink>
+              </button>
             </li>
             <TimePicker />
           </ul>

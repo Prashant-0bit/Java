@@ -1,6 +1,6 @@
 import React from 'react'
 
-function BaseCoodinate() {
+function BaseSelection() {
   return (
     <div>
       Base Coordinate
@@ -8,4 +8,4 @@ function BaseCoodinate() {
   )
 }
 
-export default BaseCoodinate
+export default BaseSelection

@@ -11,10 +11,9 @@
     flex-direction: column;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    position: absolute;
-    bottom: 0;
     align-items: flex-end;
-    margin-bottom: 60px;
+    position: absolute;
+    bottom: 56px;
 
 }
 .power-button{
@@ -88,15 +87,66 @@
     justify-content: center;
     align-items: center;
 }
+.position-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
 .actual-position-data {
     width: 100px; /* Adjust the width to your preference */
     height: 24px; /* Adjust the height to your preference */
     background-color: #f2f2f2; /* Set the background color */
-    margin-left: 10px; /* Adjust the margin to create space between the label and the data */
-    margin-top: 3px;
+    margin: 5px;
     border-width: 1px;
     border-color: black;
     border-style: solid;
+    border-radius: 5px;
   }
   
+  .jog-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: black;
+  }
+
+/********************************************************************************************************
+******************************************--Actual-Postion--*********************************************
+********************************************************************************************************/
+.show{
+    background-color: white;
+}
+
+.tool-selection{
+    display: flex;
+    align-items: center;
+}
+.tool-button{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: none;
+    background-color: white;
+    flex-grow: 1;
+    text-align: left;
+    padding: 4px 8px;
+}
+.dropdown-menu-scroll {
+    max-height: 180px; /* Adjust the desired maximum height */
+    overflow-y: auto;
+  }
+  .tooloption{
+    display: flex;
+    align-items: center;
+  }
+.pencil-icon{
+    color: black;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.divider {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin: 6px 0;
+  }
