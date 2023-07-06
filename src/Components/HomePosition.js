@@ -17,18 +17,18 @@ function HomePosition() {
       </div>
       <div className='coordinate-labels'>
         <div className='coordinate-label'>
-          <label htmlFor='x'>X</label>
-          <input id='x' className="actual-position-data"></input>
-          <label htmlFor='y'>Y</label>
-          <input id='y' className="actual-position-data"></input>
-          <label htmlFor='z'>Z</label>
-          <input id='z' className="actual-position-data"></input>
-          <label htmlFor='a'>A</label>
-          <input id='a' className="actual-position-data"></input>
-          <label htmlFor='b'>B</label>
-          <input id='b' className="actual-position-data"></input>
-          <label htmlFor='c'>C</label>
-          <input id='c' className="actual-position-data"></input>
+          <span>X</span>
+          <span className="actual-position-data"></span>
+          <span>Y</span>
+          <span className="actual-position-data"></span>
+          <span>Z</span>
+          <span className="actual-position-data"></span>
+          <span>A</span>
+          <span className="actual-position-data"></span>
+          <span>B</span>
+          <span className="actual-position-data"></span>
+          <span >C</span>
+          <span className="actual-position-data"></span>
         </div>
       </div>
     </>

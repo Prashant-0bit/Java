@@ -1,15 +1,13 @@
 .robotmotion-container{
     display: flex;
-    max-width: 1960px;
+    max-width: 3840px;
     width: 5rem;
-    flex-direction: column;
+    flex-direction: row;
 }
 .robot-container {
     display: flex;
-    display: grid;
     width: calc(100% - 48px);
-    flex-direction: column;
-    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
     grid-template-rows: auto auto;
     align-items: flex-end;
     position: absolute;
@@ -72,6 +70,7 @@
     margin: 0 5px;
 
 }
+
 .coordinate-labels{
     display: flex;
     flex-direction: column;
@@ -113,8 +112,17 @@
   }
 
 /********************************************************************************************************
-******************************************--Actual-Postion--*********************************************
+******************************************--Tools-Postion--**********************************************
 ********************************************************************************************************/
+.Tool-container{
+    max-width: 3840px;
+    width: calc(100% - 48px);
+    height: 60vh;
+    position: relative;
+}
+.Dropdown{
+    padding-left: 5px;   
+}
 .show{
     background-color: white;
 }
@@ -132,13 +140,31 @@
     padding: 4px 8px;
 }
 .dropdown-menu-scroll {
-    max-height: 180px; /* Adjust the desired maximum height */
+    max-height: 180px;
     overflow-y: auto;
   }
+
   .tooloption{
-    display: flex;
-    align-items: center;
+    position: relative;
   }
+
+  .keypad-container {
+    position: absolute;
+    bottom: 00%;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Align the keys to the right side */
+    flex-wrap: wrap;
+    transform: translateY(100%);
+  }
+  
+  .keypad-container button {
+    flex: 0 0 calc(100% / 2 - 5px); /* Distribute buttons evenly across the row with a 5px gap */
+  width: 100%; /* Set each button to occupy full width */
+  max-width: calc(100% / 1 - 5px); /* Add max-width to prevent buttons from stretching */
+  }
+  
 .pencil-icon{
     color: black;
     margin-left: 8px;
