@@ -2,7 +2,7 @@ import React from 'react';
 
 function HomePosition() {
   return (
-    <>
+    <div className='position-container'>
       <div className='actual-position-coordinate'>
         <button
           type='button'
@@ -31,7 +31,7 @@ function HomePosition() {
           <span className="actual-position-data"></span>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

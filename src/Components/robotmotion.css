@@ -53,8 +53,14 @@
 /********************************************************************************************************
 ******************************************--Actual-Postion--*********************************************
 ********************************************************************************************************/
-.actual-position-coordinate{
+.position-container{
+    display: flex;
+    flex-direction: column;
     max-width: 3840px;
+    width: calc(100% - 48px);
+}
+
+.actual-position-coordinate{
     justify-content: center;
     align-items: center;
     display: flex;
@@ -68,14 +74,11 @@
     border-color: black;
     border-style: solid;
     margin: 0 5px;
-
 }
 
 .coordinate-labels{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .coordinate-label{
     font-size: 20px;
@@ -114,65 +117,91 @@
 /********************************************************************************************************
 ******************************************--Tools-Postion--**********************************************
 ********************************************************************************************************/
-.Tool-container{
+.Tool-container {
     max-width: 3840px;
     width: calc(100% - 48px);
     height: 60vh;
     position: relative;
-}
-.Dropdown{
-    padding-left: 5px;   
-}
-.show{
+  }
+  
+  .Dropdown {
+    padding-left: 5px;
+  }
+  
+  .show {
     background-color: white;
-}
-
-.tool-selection{
+  }
+  
+  .tool-selection {
     display: flex;
     align-items: center;
-}
-.tool-button{
+  }
+  
+  .tool-button {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: none;
     background-color: white;
     flex-grow: 1;
     text-align: left;
     padding: 4px 8px;
-}
-.dropdown-menu-scroll {
+  }
+  
+  .dropdown-menu-scroll {
     max-height: 180px;
     overflow-y: auto;
   }
-
-  .tooloption{
-    position: relative;
-  }
-
-  .keypad-container {
-    position: absolute;
-    bottom: 00%;
-    right: 0;
-    width: 100%;
+  
+  .selected-tool-info {
+    margin-top: 10px;
     display: flex;
-    justify-content: flex-end; /* Align the keys to the right side */
-    flex-wrap: wrap;
-    transform: translateY(100%);
+    flex-direction: column;
+    padding: 0 5px;
   }
   
-  .keypad-container button {
-    flex: 0 0 calc(100% / 2 - 5px); /* Distribute buttons evenly across the row with a 5px gap */
-  width: 100%; /* Set each button to occupy full width */
-  max-width: calc(100% / 1 - 5px); /* Add max-width to prevent buttons from stretching */
+  .tool-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  
-.pencil-icon{
-    color: black;
-    margin-left: 8px;
-    cursor: pointer;
-}
-.divider {
+
+  .tool-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .selected-tool-name{
+    display: flex;
     flex-grow: 1;
-    height: 1px;
-    background-color: #ccc;
-    margin: 6px 0;
+  }
+
+  .tool-name {
+    font-weight: bold;
+    margin-bottom: 5px
+  }
+.load-data{
+    align-items: center;
+    
+}
+  .load-data input[type="text"]{
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 5rem;
+  }
+  
+  .tool-input-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+  
+  .tool-input-data input[type="text"] {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 5rem;
   }

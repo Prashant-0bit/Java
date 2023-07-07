@@ -20,7 +20,7 @@ function ActualPosition() {
     }, [selectedCoordinate]);
 
     return (
-        <>
+        <div className='position-container'>
             <div className='actual-position-coordinate'>
                 {coordinates.map((coordinate) => (
                     <button
@@ -59,7 +59,7 @@ function ActualPosition() {
                 ))}
             </div>
 
-        </>
+        </div>
     );
 }
 
