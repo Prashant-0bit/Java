@@ -6,7 +6,7 @@
     position: absolute;
     z-index: 9999;
     width: calc(100% - 48px); /* Adjust the right-side component width */
-    max-width: 3840px; /* Adjust the maximum width as needed */
+    max-width: 1960px; /* Adjust the maximum width as needed */
     bottom: 56px;
   }
   .password-input-container {

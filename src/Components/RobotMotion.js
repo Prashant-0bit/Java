@@ -2,14 +2,22 @@ import React, { useState } from "react";
 import "./robotmotion.css";
 import { FaPowerOff } from 'react-icons/fa';
 import { useNavigate, Outlet} from "react-router-dom";
+import axios from 'axios';
 
 function RobotMotion() {
   const [isPowerOn, setIsPowerOn] = useState(false);
   const navigate = useNavigate();
 
-  const handlePowerButtonClick = () => {
+  const handlePowerButtonClick = async () => {
+    try{
+      const res = await axios.post('/api/power',{isPowerOn: !isPowerOn});
+      setIsPowerOn(res.data.isPowerOn);
+    }catch(error){
+      console.error(error);
+    }
+    }
     setIsPowerOn((prevIsPowerOn) => !prevIsPowerOn);
-  }
+
 
   return (
     <>
