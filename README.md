@@ -75,7 +75,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 #### git add README.md
 #### git commit -m "first commit"
 #### git branch -M main
-#### git remote add origin git@github.com:Prashant-0bit/rfe.git
+#### git remote add origin git@github.com:Prashant-0bit/Java.git
 #### git push -u origin main
 
 
