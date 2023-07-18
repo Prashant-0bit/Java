@@ -1,12 +1,12 @@
-import React from 'react';
-import './keypad.css';
+import React from "react";
+import "./keypad.css";
 import {
   MdOutlineKeyboardTab,
   MdOutlineKeyboardBackspace,
   MdOutlineKeyboardCapslock,
   MdOutlineKeyboardReturn,
-  MdOutlineSpaceBar
-} from 'react-icons/md';
+  MdOutlineSpaceBar,
+} from "react-icons/md";
 
 export default function Keypad({
   enteredText,
@@ -17,10 +17,10 @@ export default function Keypad({
   toggleCapsLock,
 }) {
   const keypadRows = [
-    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'ß', '´'],
-    ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'ü', '+'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä', '#'],
-    ['<', 'y', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '-'],
+    ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ß", "´"],
+    ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "ü", "+"],
+    ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ö", "ä", "#"],
+    ["<", "y", "x", "c", "v", "b", "n", "m", ",", ".", "-"],
   ];
 
   const handleKeypadBackspace = () => {
@@ -29,12 +29,12 @@ export default function Keypad({
   };
 
   const handleKeypadTab = () => {
-    const updatedText = enteredText + '    ';
+    const updatedText = enteredText + "    ";
     setEnteredText(updatedText);
   };
 
   const handleKeypadSpace = () => {
-    const updatedText = enteredText + ' ';
+    const updatedText = enteredText + " ";
     setEnteredText(updatedText);
   };
 
@@ -47,15 +47,18 @@ export default function Keypad({
               {row.map((value) => (
                 <button
                   key={value}
-                  className={`keypad-button ${value === ' ' ? 'space' : ''}`}
+                  className={`keypad-button ${value === " " ? "space" : ""}`}
                   onClick={() => handleKeypadInput(value)}
                 >
                   {isCapsLockPressed ? value.toUpperCase() : value}
                 </button>
               ))}
               {index === 0 && (
-                <button onClick={handleKeypadBackspace} className="keypad-button">
-                  <MdOutlineKeyboardBackspace/>
+                <button
+                  onClick={handleKeypadBackspace}
+                  className="keypad-button"
+                >
+                  <MdOutlineKeyboardBackspace />
                 </button>
               )}
               {index === 1 && (
@@ -65,12 +68,12 @@ export default function Keypad({
               )}
               {index === 2 && (
                 <button className="keypad-button" onClick={handleKeypadEnter}>
-                  <MdOutlineKeyboardReturn/>
+                  <MdOutlineKeyboardReturn />
                 </button>
               )}
               {index === 3 && (
                 <button className="keypad-button" onClick={toggleCapsLock}>
-                  <MdOutlineKeyboardCapslock/>
+                  <MdOutlineKeyboardCapslock />
                 </button>
               )}
             </div>

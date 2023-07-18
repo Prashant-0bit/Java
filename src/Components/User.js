@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './MainFunc.css';
 import Keypad from './SubComponents/Keyboard';
-import {VscEyeClosed,VscEye} from 'react-icons/vsc';
+import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 
 export default function User() {
   const [isKeypadOpen, setIsKeypadOpen] = useState(false);
@@ -11,6 +11,13 @@ export default function User() {
   const [isCapsLockPressed, setIsCapsLockPressed] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [selectedButton, setSelectedButton] = useState(null);
+  const passwordInputRef = useRef(null);
+
+  useEffect(() => {
+    if (isKeypadOpen) {
+      passwordInputRef.current.focus();
+    }
+  });
 
   const handleButtonClick = (button) => {
     if (button === lastButtonPressed) {
@@ -66,39 +73,40 @@ export default function User() {
   return (
     <div className="backgn">
       <div className="main-func-container">
-      <div className="user-buttons">
-        {keypadButtons.map((button) => (
-          <button
-            key={button}
-            className={`main-func ${selectedButton === button ? 'selected' : ''}`}
-            onClick={() => handleButtonClick(button)}
-          >
-            {button}
-          </button>
-        ))}
-      
-      <div className="user-input">
-        {isKeypadOpen && (
-          <div className="password-input-container">
-            <input
-            id='password'
-            name='password'
-            autoComplete='off'
-              type={isPasswordVisible ? 'text' : 'password'}
-              value={enteredPassword}
-              onChange={(e) => setEnteredPassword(e.target.value)}
-              placeholder="Enter password"
-              className="user-password-input"
-            />
-            <button className="password-visibility-toggle" onClick={handleTogglePasswordVisibility}>
-              {isPasswordVisible ? <VscEyeClosed/> : <VscEye/>}
+        <div className="user-buttons">
+          {keypadButtons.map((button) => (
+            <button
+              key={button}
+              className={`main-func ${selectedButton === button ? 'selected' : ''}`}
+              onClick={() => handleButtonClick(button)}
+            >
+              {button}
             </button>
-          </div>
-        )}
+          ))}
+        </div>
+
+        <div className="user-input">
+          {isKeypadOpen && (
+            <div className="password-input-container">
+              <input
+                ref={passwordInputRef}
+                id="password"
+                name="password"
+                autoComplete="off"
+                type={isPasswordVisible ? 'text' : 'password'}
+                value={enteredPassword}
+                onChange={(e) => setEnteredPassword(e.target.value)}
+                placeholder="Enter password"
+                className="user-password-input"
+              />
+              <button className="password-visibility-toggle" onClick={handleTogglePasswordVisibility}>
+                {isPasswordVisible ? <VscEyeClosed /> : <VscEye />}
+              </button>
+            </div>
+          )}
+        </div>
+        {isKeypadOpen && <Keypad {...keypadProps} />}
       </div>
-      {isKeypadOpen && <Keypad {...keypadProps} />}
-    </div>
-    </div>
     </div>
   );
 }

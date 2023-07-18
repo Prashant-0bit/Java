@@ -4,8 +4,13 @@ import Slider from '@mui/material/Slider';
 import './Header.css';
 
 export default function DiscreteSliderMarks() {
-  const [value, setValue] = useState(50);
+  const [value, setValue] = useState(() => {
+    const storedValue = localStorage.getItem('sliderValue');
+    return storedValue ? Number(storedValue) : 50;
+  });
+
   const [isOpen, setIsOpen] = useState(false);
+  const [isSliderDragging, setIsSliderDragging] = useState(false);
   const sliderRef = useRef(null);
 
   const handleMinusClick = () => {
@@ -22,12 +27,13 @@ export default function DiscreteSliderMarks() {
 
   const handleSliderMouseDown = () => {
     setIsOpen(true);
+    setIsSliderDragging(true);
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
   };
 
   const handleMouseMove = (event) => {
-    if (sliderRef.current) {
+    if (isSliderDragging && sliderRef.current) {
       const { left, width } = sliderRef.current.getBoundingClientRect();
       const offsetX = event.clientX - left;
       const percent = (offsetX / width) * 100;
@@ -36,7 +42,7 @@ export default function DiscreteSliderMarks() {
   };
 
   const handleMouseUp = () => {
-    setIsOpen(false);
+    setIsSliderDragging(false);
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
   };
@@ -56,6 +62,10 @@ export default function DiscreteSliderMarks() {
       document.removeEventListener('click', handleClickOutside);
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    localStorage.setItem('sliderValue', value);
+  }, [value]);
 
   return (
     <div className={`slider-container ${isOpen ? 'open' : ''}`} ref={sliderRef}>

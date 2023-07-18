@@ -120,8 +120,15 @@
 .Tool-container {
     max-width: 3840px;
     width: calc(100% - 48px);
-    height: 60vh;
+    height: 69vh;
     position: relative;
+    color: black;
+    font-size: 16px;
+    justify-content: flex-start;
+    font-family: sans-serif;
+    cursor: pointer;
+    border: none;
+    background-color: white;
   }
   
   .Dropdown {

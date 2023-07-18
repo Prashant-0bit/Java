@@ -53,8 +53,10 @@ function ToolSelection() {
 
   const handleInputChange = (e, field) => {
     if (selectedToolInfo) {
+      const value = e.target.value;
+      const validValue = value.replace(/[^0-9.]/g, '').slice(0, 6);
       const updatedToolInfo = { ...selectedToolInfo };
-      updatedToolInfo[field] = e.target.value;
+      updatedToolInfo[field] = validValue;
       setSelectedToolInfo(updatedToolInfo);
     }
   };

@@ -1,36 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './MainFunc.css';
 import { CgFolderAdd } from 'react-icons/cg';
 import { HiPencil } from 'react-icons/hi';
-import { MdDelete, MdClose } from 'react-icons/md';
+import { MdDelete, MdClose } from 'react-icons/md'; // Import MdDelete and MdClose from react-icons/md
 import { FcCheckmark } from 'react-icons/fc';
 import Keypad from './SubComponents/Keyboard';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import { DeleteConfirmationPopup, RenameConfirmationPopup } from './popout';
 
 export default function MainFunc() {
   const [projects, setProjects] = useState(['Default Project']);
   const [newProjectName, setNewProjectName] = useState('');
   const [showNewProjectInput, setShowNewProjectInput] = useState(false);
-  const [isKeypadOpen, setIsKeypadOpen] = useState(false); // State to track keyboard open/close
-  const [isRenameMode, setIsRenameMode] = useState(false); // State to track rename mode
+  const [isKeypadOpen, setIsKeypadOpen] = useState(false);
+  const [isRenameMode, setIsRenameMode] = useState(false);
+  const [isRenameConfirmationModalOpen, setIsRenameConfirmationModalOpen] = useState(false);
+  const [projectToDelete, setProjectToDelete] = useState(null);
+  const [projectToRename, setProjectToRename] = useState(null);
   const navigate = useNavigate();
+  const inputRef = useRef(null);
 
-  const handleToggleNewProjectInput = () => {
-    if (projects.length >= 5) {
-      alert('You have reached the maximum limit of projects.');
-    } else {
-      setShowNewProjectInput((prev) => !prev);
-      setIsKeypadOpen(!isKeypadOpen); // Open/close the keyboard when the add icon is clicked
-      setIsRenameMode(false); // Reset the rename mode
-      setNewProjectName(''); // Reset the input field
+  const isDeleteConfirmationModalOpen = !!projectToDelete;
+
+  useEffect(() => {
+    if (showNewProjectInput && inputRef.current) {
+      inputRef.current.focus();
     }
-  };
+  }, [showNewProjectInput]);
 
-  const handleNewProjectNameChange = (e) => {
-    setNewProjectName(e.target.value);
-  };
+  const handleAddProject = useCallback(() => {
+    if (isDeleteConfirmationModalOpen || isRenameConfirmationModalOpen) {
+      return;
+    }
 
-  const handleAddProject = () => {
     if (!newProjectName || !/^[a-zA-Z]/.test(newProjectName)) {
       alert('Please enter a valid project name starting with a character.');
       return;
@@ -44,49 +47,112 @@ export default function MainFunc() {
     setProjects((prevProjects) => [...prevProjects, newProjectName]);
     setNewProjectName('');
     setShowNewProjectInput(false);
-    setIsKeypadOpen(false); // Close the keyboard when the check icon is clicked
+    setIsKeypadOpen(false);
+  }, [isDeleteConfirmationModalOpen, isRenameConfirmationModalOpen, newProjectName, projects]);
+
+  useEffect(() => {
+    const handleEnterKeyPress = (event) => {
+      if (event.key === 'Enter') {
+        if (isRenameMode) {
+          setIsRenameConfirmationModalOpen(true);
+        } else {
+          handleAddProject();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleEnterKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleEnterKeyPress);
+    };
+  }, [isRenameMode, handleAddProject]);
+
+  const handleToggleNewProjectInput = () => {
+    if (isDeleteConfirmationModalOpen || projects.length >= 5) {
+      return;
+    }
+
+    setShowNewProjectInput((prev) => !prev);
+    setIsKeypadOpen(!isKeypadOpen);
+    setIsRenameMode(false);
+    setNewProjectName('');
+    setIsRenameConfirmationModalOpen(false);
+    setProjectToRename(null);
+  };
+
+  const handleNewProjectNameChange = (e) => {
+    if (e.target.value.length <= 25) {
+      setNewProjectName(e.target.value);
+    }
   };
 
   const handleRenameProject = (index) => {
+    if (isDeleteConfirmationModalOpen || isRenameConfirmationModalOpen) {
+      return;
+    }
+
     setIsRenameMode(true);
     setNewProjectName(projects[index]);
-    setShowNewProjectInput(true); // Show the input field when the rename button is clicked
-    setIsKeypadOpen(true); // Open the keyboard when the rename button is clicked
+    setProjectToRename(projects[index]);
+    setShowNewProjectInput(true);
+    setIsKeypadOpen(true);
   };
 
-  const handleRenameKeypadEnter = () => {
-    if (!newProjectName || !/^[a-zA-Z]/.test(newProjectName)) {
-      alert('Please enter a valid project name starting with a character.');
+  const handleRenameConfirmation = useCallback(() => {
+    if (!newProjectName || newProjectName === projectToRename) {
+      setProjectToRename(null);
+      setIsRenameConfirmationModalOpen(false);
       return;
     }
 
-    if (projects.includes(newProjectName)) {
-      alert('Project name already exists. Please enter a different name.');
-      return;
-    }
-
-    const updatedProjects = [...projects];
-    updatedProjects[projects.length - 1] = newProjectName; // Rename the last added project
-    setProjects(updatedProjects);
+    setProjects((prevProjects) =>
+      prevProjects.map((project) => (project === projectToRename ? newProjectName : project))
+    );
 
     setIsRenameMode(false);
     setNewProjectName('');
     setShowNewProjectInput(false);
-    setIsKeypadOpen(false); // Close the keyboard when the rename is complete
-  };
+    setIsKeypadOpen(false);
+    setIsRenameConfirmationModalOpen(false);
+  }, [newProjectName, projectToRename]);
 
   const handleDeleteProject = (projectName) => {
+    if (isRenameConfirmationModalOpen) {
+      return;
+    }
+
     if (projectName === 'Default Project') {
       alert("Cannot delete the default project.");
       return;
     }
 
-    const updatedProjects = projects.filter((project) => project !== projectName);
+    setProjectToDelete(projectName);
+  };
+
+  const handleCancelDelete = () => {
+    setProjectToDelete(null);
+  };
+
+  const handleConfirmDelete = () => {
+    const updatedProjects = projects.filter((project) => project !== projectToDelete);
     setProjects(updatedProjects);
+    setProjectToDelete(null);
   };
 
   const handleKeypadInput = (value) => {
-    setNewProjectName((prevName) => prevName + value);
+    if (value === 'Enter') {
+      if (isRenameMode) {
+        setIsRenameConfirmationModalOpen(true);
+      } else {
+        handleAddProject();
+      }
+    } else {
+      // Append the value to newProjectName, but ensure it doesn't exceed 25 characters
+      if (newProjectName.length + value.length <= 25) {
+        setNewProjectName((prevName) => prevName + value);
+      }
+    }
   };
 
   return (
@@ -96,16 +162,32 @@ export default function MainFunc() {
           {projects.map((project, index) => (
             <div key={index} className="project">
               <div className="project-info">
-                <div className="project-name">
-                  <button className='main-func' onClick={() => navigate('robot-motion')}>{project}</button>
-                </div>
+                  <button
+                    className="main-func"
+                    onClick={() => navigate('robot-motion')}
+                    disabled={isDeleteConfirmationModalOpen || isRenameConfirmationModalOpen}
+                  >
+                    {project}
+                  </button>
                 <div className="project-actions">
-                  <button className="rename-button" onClick={() => handleRenameProject(index)}>
-                    <HiPencil className='rename-icon' />
-                  </button>
-                  <button className="delete-button" onClick={() => handleDeleteProject(project)}>
-                    <MdDelete className='delete-icon' />
-                  </button>
+                  {project !== 'Default Project' && (
+                    <>
+                      <button
+                        className="rename-button"
+                        onClick={() => handleRenameProject(index)}
+                        disabled={isDeleteConfirmationModalOpen || isRenameConfirmationModalOpen}
+                      >
+                        <HiPencil className="rename-icon" />
+                      </button>
+                      <button
+                        className="delete-button"
+                        onClick={() => handleDeleteProject(project)}
+                        disabled={isDeleteConfirmationModalOpen || isRenameConfirmationModalOpen}
+                      >
+                        <MdDelete className="delete-icon" />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -113,13 +195,18 @@ export default function MainFunc() {
         </div>
         <div className="add-project-button-container">
           {!showNewProjectInput ? (
-            <button className="add-button" onClick={handleToggleNewProjectInput}>
-              <span className='add-button-name'> Add Project </span>
+            <button
+              className="add-button"
+              onClick={handleToggleNewProjectInput}
+              disabled={isDeleteConfirmationModalOpen || isRenameConfirmationModalOpen}
+            >
+              <span className="add-button-name"> Add Project </span>
               <CgFolderAdd className="add-icon" />
             </button>
           ) : (
             <div className="new-project-input-container">
               <input
+                ref={inputRef}
                 id="text"
                 name="name"
                 type="text"
@@ -127,7 +214,9 @@ export default function MainFunc() {
                 value={newProjectName}
                 onChange={handleNewProjectNameChange}
                 className="new-project-input"
-                placeholder={isRenameMode ? 'Enter New Project Name' : 'Enter Project Name'}
+                placeholder={isRenameMode ? 'Enter New Project Name' : 'Enter Project Name (Max. 25 Characters)'}
+                maxLength={25}
+                disabled={isDeleteConfirmationModalOpen || isRenameConfirmationModalOpen}
               />
               {isKeypadOpen && (
                 <Keypad
@@ -137,7 +226,7 @@ export default function MainFunc() {
                   setIsKeypadOpen={setIsKeypadOpen}
                   isCapsLockPressed={false}
                   toggleCapsLock={() => {}}
-                  handleKeypadEnter={isRenameMode ? handleRenameKeypadEnter : handleAddProject}
+                  handleKeypadEnter={handleRenameConfirmation}
                 />
               )}
               <div className="new-project-input-actions">
@@ -153,6 +242,21 @@ export default function MainFunc() {
             </div>
           )}
         </div>
+        {projectToDelete && (
+          <DeleteConfirmationPopup
+            projectToDelete={projectToDelete}
+            onCancel={handleCancelDelete}
+            onConfirm={handleConfirmDelete}
+          />
+        )}
+        {isRenameConfirmationModalOpen && projectToRename && (
+          <RenameConfirmationPopup
+            oldName={projectToRename}
+            newName={newProjectName}
+            onCancel={() => setIsRenameConfirmationModalOpen(false)}
+            onConfirm={handleRenameConfirmation}
+          />
+        )}
       </div>
     </div>
   );
