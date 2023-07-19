@@ -4,10 +4,9 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Divide the container into 12 equal-width columns */
     grid-gap: 5px; /* Add a small gap between the buttons */
     position: absolute;
-    z-index: 9999;
-    width: calc(100% - 48px); /* Adjust the right-side component width */
-    max-width: 1960px; /* Adjust the maximum width as needed */
-    bottom: 56px;
+   width: 100%;/* Adjust the right-side component width */
+    max-width: 3840px; /* Adjust the maximum width as needed */
+    bottom: 0;
   }
   .password-input-container {
     display: flex;

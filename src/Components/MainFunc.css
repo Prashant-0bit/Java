@@ -1,17 +1,18 @@
 .main-func-container{
   display: flex;
   max-width: 3840px;
-  width: calc(100% - 49px);
+  width: calc(100% - 48px);
   flex-direction: column;
 }
-
-.backgn {
-  background-color: white;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  max-height: 100vh;
+.user-buttons{
   max-width: 3840px;
+  width: 100%;
+    height: calc(100vh - 183px);
+    position: relative;
+    font-size: 16px;
+    font-family: sans-serif;
+    cursor: pointer;
+  
 }
 
 .main-func {
@@ -37,12 +38,6 @@
   background-color: black;
   padding: 0.3rem 0.5rem 0.3rem 0.8rem;
   color: white;
-}
-.user-button{
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  max-width: 3840px;
 }
 
 .user-input {
@@ -77,11 +72,18 @@
 /****************************************************************************************************
 **********************************************MainFunc CSS*******************************************
 ****************************************************************************************************/
-
+.project-list{
+  max-width: 3840px;
+  width: 100%;
+    height: calc(100vh - 183px);
+    position: relative;
+    font-size: 16px;
+}
 .project-info {
   display: flex;
   align-items: center;
   width: 100%;
+  
 }
 
 .project-name:hover{

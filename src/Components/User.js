@@ -71,7 +71,6 @@ export default function User() {
   ];
 
   return (
-    <div className="backgn">
       <div className="main-func-container">
         <div className="user-buttons">
           {keypadButtons.map((button) => (
@@ -83,8 +82,7 @@ export default function User() {
               {button}
             </button>
           ))}
-        </div>
-
+        
         <div className="user-input">
           {isKeypadOpen && (
             <div className="password-input-container">
@@ -107,6 +105,6 @@ export default function User() {
         </div>
         {isKeypadOpen && <Keypad {...keypadProps} />}
       </div>
-    </div>
+      </div>
   );
 }

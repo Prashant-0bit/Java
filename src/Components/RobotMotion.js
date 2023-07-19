@@ -30,34 +30,36 @@ function RobotMotion() {
           <FaPowerOff className="power-icon" />
         </button>
         <div className="robot-container">
-          <button
-            type="button"
-            className="btn btn-light actual-position"
-            onClick={() => navigate("actual-position")}
-          >
-            Actual Position
-          </button>
-          <button
-            type="button"
-            className="btn btn-light home-position"
-            onClick={() => navigate("home-position")}
-          >
-            Home Position
-          </button>
-          <button
-            type="button"
-            className="btn btn-light base-system"
-            onClick={() => navigate("base-selection")}
-          >
-            Base Selection
-          </button>
-          <button
-            type="button"
-            className="btn btn-light tool-system"
-            onClick={() => navigate("tool-selection")}
-          >
-            Tool Selection
-          </button>
+          <div className="button-container">
+            <button
+              type="button"
+              className="btn btn-light actual-position"
+              onClick={() => navigate("actual-position")}
+            >
+              Actual Position
+            </button>
+            <button
+              type="button"
+              className="btn btn-light home-position"
+              onClick={() => navigate("home-position")}
+            >
+              Home Position
+            </button>
+            <button
+              type="button"
+              className="btn btn-light base-system"
+              onClick={() => navigate("base-selection")}
+            >
+              Base Selection
+            </button>
+            <button
+              type="button"
+              className="btn btn-light tool-system"
+              onClick={() => navigate("tool-selection")}
+            >
+              Tool Selection
+            </button>
+          </div>
         </div>
       </div>
       <Outlet />

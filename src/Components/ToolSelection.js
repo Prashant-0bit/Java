@@ -4,7 +4,8 @@ import { HiPencil } from 'react-icons/hi';
 
 function ToolSelection() {
   const [showMenu, setShowMenu] = useState(false);
-  const [showKeyboard, setShowKeyboard] = useState(false);
+  const [showKeypad, setShowKeypad] = useState(false);
+  const [enteredText, setEnteredText] = useState('');
   const [toolNames, setToolNames] = useState([...Array(16)].map((_, index) => ({
     name: `Undefined [${index}]`,
     x: '',
@@ -38,23 +39,38 @@ function ToolSelection() {
     }
   };
 
-  const handleToggleKeyboard = (index) => {
-    setSelectedToolIndex(index);
-    setShowKeyboard(!showKeyboard);
+  const handleToggleKeypad = () => {
+    setShowKeypad(!showKeypad);
+  };
+
+  const handleKeypadInput = (value) => {
+    // Handle only numeric inputs
+    if (!isNaN(value)) {
+      setEnteredText(enteredText + value);
+    }
+  };
+
+  const handleKeypadEnter = () => {
+    // Handle the enter action if needed
+    // For example, you can submit the entered text here
+  };
+
+  const handleClearEnteredText = () => {
+    setEnteredText('');
   };
 
   const handleSelectTool = (index) => {
     const toolInfo = toolNames[index];
     setSelectedToolIndex(index);
     setSelectedToolInfo(toolInfo);
-    setShowKeyboard(true);
+    setShowKeypad(true);
     setShowMenu(false); // Close the menu after selecting a tool
   };
 
   const handleInputChange = (e, field) => {
     if (selectedToolInfo) {
       const value = e.target.value;
-      const validValue = value.replace(/[^0-9.]/g, '').slice(0, 6);
+      const validValue = value.replace(/[^0-9.]/g, '').slice(0, 7);
       const updatedToolInfo = { ...selectedToolInfo };
       updatedToolInfo[field] = validValue;
       setSelectedToolInfo(updatedToolInfo);
@@ -87,7 +103,7 @@ function ToolSelection() {
                   <div className="tool-options">
                     <HiPencil
                       className="pencil-icon"
-                      onClick={() => handleToggleKeyboard(index)}
+                      onClick={() => handleRename(index, 'New Name')}
                     />
                   </div>
                 </li>
@@ -105,68 +121,90 @@ function ToolSelection() {
               Tool Name: {selectedToolIndex !== null ? toolNames[selectedToolIndex].name : ''}
             </div>
             <div className='load-data'>
-              Load: <input id='load' type="text" value={selectedToolInfo ? selectedToolInfo.load : ''} onChange={(e) => handleInputChange(e, 'load')} placeholder='kg' />
+              Load: <input
+                id='load'
+                type="text"
+                value={selectedToolInfo ? selectedToolInfo.load : enteredText}
+                onChange={(e) => handleInputChange(e, 'load')}
+                placeholder='kg'
+                onFocus={handleToggleKeypad}
+                onBlur={handleToggleKeypad}
+              />
             </div>
-
           </div>
           <div className='tool-input-data'>
-            <div >
-              <span className='tool-data-name'>
-                X:
-              </span>
-              <input id='x' type="text" value={selectedToolInfo ? selectedToolInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
+            <div className='tool-column'>
+              <div>
+                <span className='tool-data-name'>
+                  X:
+                </span>
+                <input id='x' type="text" value={selectedToolInfo ? selectedToolInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
+              </div>
+              <div>
+                <span className='tool-data-name'>
+                  Y:
+                </span>
+                <input id='y' type="text" value={selectedToolInfo ? selectedToolInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
+              </div>
+              <div>
+                <span className='tool-data-name'>
+                  Z:
+                </span>
+                <input id='z' type="text" value={selectedToolInfo ? selectedToolInfo.z : ''} onChange={(e) => handleInputChange(e, 'z')} placeholder='mm' />
+              </div>
             </div>
-            <div>
-              <span className='tool-data-name'>
-                Y:
-              </span>
-              <input id='y' type="text" value={selectedToolInfo ? selectedToolInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
+            <div className='tool-column'>
+              <div>
+                <span className='tool-data-name'>
+                  A:
+                </span>
+                <input id='a' type="text" value={selectedToolInfo ? selectedToolInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
+              </div>
+              <div>
+                <span className='tool-data-name'>
+                  B:
+                </span>
+                <input id='b' type="text" value={selectedToolInfo ? selectedToolInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
+              </div>
+              <div>
+                <span className='tool-data-name'>
+                  C:
+                </span>
+                <input id='c' type="text" value={selectedToolInfo ? selectedToolInfo.c : ''} onChange={(e) => handleInputChange(e, 'c')} placeholder='°' />
+              </div>
             </div>
-            <div>
-              <span className='tool-data-name'>
-                Z:
-              </span>
-              <input id='z' type="text" value={selectedToolInfo ? selectedToolInfo.z : ''} onChange={(e) => handleInputChange(e, 'z')} placeholder='mm' />
-            </div>
-            <div>
-              <span className='tool-data-name'>
-                A:
-              </span>
-              <input id='a' type="text" value={selectedToolInfo ? selectedToolInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
-            </div>
-            <div>
-              <span className='tool-data-name'>
-                B:
-              </span>
-              <input id='b' type="text" value={selectedToolInfo ? selectedToolInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
-            </div>
-            <div>
-              <span className='tool-data-name'>
-                C:
-              </span>
-              <input id='c' type="text" value={selectedToolInfo ? selectedToolInfo.c : ''} onChange={(e) => handleInputChange(e, 'c')} placeholder='°' />
-            </div>
-            <div>
-              <span className='tool-data-name'>
-                JX:
-              </span>
-              <input id='jx' type="text" value={selectedToolInfo ? selectedToolInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
-            </div>
-            <div>
-              <span className='tool-data-name'>
-                JY:
-              </span>
-              <input id='jy' type="text" value={selectedToolInfo ? selectedToolInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
-            </div>
-            <div>
-              <span className='tool-data-name'>
-                JZ:
-              </span>
-              <input id='jz' type="text" value={selectedToolInfo ? selectedToolInfo.jz : ''} onChange={(e) => handleInputChange(e, 'jz')} placeholder='kgm²' />
+            <div className='tool-column'>
+              <div>
+                <span className='tool-data-name'>
+                  JX:
+                </span>
+                <input id='jx' type="text" value={selectedToolInfo ? selectedToolInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
+              </div>
+              <div>
+                <span className='tool-data-name'>
+                  JY:
+                </span>
+                <input id='jy' type="text" value={selectedToolInfo ? selectedToolInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
+              </div>
+              <div>
+                <span className='tool-data-name'>
+                  JZ:
+                </span>
+                <input id='jz' type="text" value={selectedToolInfo ? selectedToolInfo.jz : ''} onChange={(e) => handleInputChange(e, 'jz')} placeholder='kgm²' />
+              </div>
             </div>
           </div>
         </div>
       </div>
+      {showKeypad && (
+                <Keypad
+                  enteredText={enteredText}
+                  setEnteredText={setEnteredText}
+                  handleKeypadInput={handleKeypadInput}
+                  handleKeypadEnter={handleKeypadEnter}
+                  handleClearEnteredText={handleClearEnteredText}
+                />
+              )}
     </div>
   );
 }

@@ -3,16 +3,23 @@
     max-width: 3840px;
     width: 5rem;
     flex-direction: row;
+    width: calc(100% - 48px);
+    
 }
 .robot-container {
     display: flex;
-    width: calc(100% - 48px);
     flex-direction: row;
     grid-template-rows: auto auto;
     align-items: flex-end;
-    position: absolute;
-    bottom: 56px;
+    width: 100%;
+}
 
+.button-container{
+    display: flex;
+    flex-direction: row;
+    grid-template-rows: auto auto;
+    width: 100%;
+    
 }
 .power-button{
     border-radius: 5px;
@@ -20,7 +27,7 @@
     border-width: 1px;
     display: flex;
     margin: 5px;
-    padding: 15px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     max-width: 50px;
@@ -45,7 +52,7 @@
     border-width: 1px;
     display: flex;
     flex-grow: 1;
-    margin: 5px 10px;
+    margin: 5px 5px;
     justify-content: center;
     align-items: center;
 }
@@ -58,6 +65,7 @@
     flex-direction: column;
     max-width: 3840px;
     width: calc(100% - 48px);
+    margin-top: 5px;
 }
 
 .actual-position-coordinate{
@@ -120,23 +128,21 @@
 .Tool-container {
     max-width: 3840px;
     width: calc(100% - 48px);
-    height: 69vh;
+    height: 67.5vh;
     position: relative;
-    color: black;
     font-size: 16px;
-    justify-content: flex-start;
     font-family: sans-serif;
     cursor: pointer;
-    border: none;
-    background-color: white;
   }
   
   .Dropdown {
     padding-left: 5px;
+    margin-top: 5px;
   }
   
   .show {
     background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
   }
   
   .tool-selection {
@@ -145,7 +151,6 @@
   }
   
   .tool-button {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: none;
     background-color: white;
     flex-grow: 1;
@@ -185,7 +190,7 @@
 
   .tool-name {
     font-weight: bold;
-    margin-bottom: 5px
+    margin-bottom: 5px;
   }
 .load-data{
     align-items: center;

@@ -6,7 +6,6 @@ import { MdDelete, MdClose } from 'react-icons/md'; // Import MdDelete and MdClo
 import { FcCheckmark } from 'react-icons/fc';
 import Keypad from './SubComponents/Keyboard';
 import { useNavigate } from 'react-router-dom';
-
 import { DeleteConfirmationPopup, RenameConfirmationPopup } from './popout';
 
 export default function MainFunc() {
@@ -156,7 +155,6 @@ export default function MainFunc() {
   };
 
   return (
-    <div className="backgn">
       <div className="main-func-container">
         <div className="project-list">
           {projects.map((project, index) => (
@@ -192,7 +190,7 @@ export default function MainFunc() {
               </div>
             </div>
           ))}
-        </div>
+        
         <div className="add-project-button-container">
           {!showNewProjectInput ? (
             <button
@@ -258,6 +256,6 @@ export default function MainFunc() {
           />
         )}
       </div>
-    </div>
+      </div>
   );
 }
