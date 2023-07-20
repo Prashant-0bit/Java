@@ -17,17 +17,17 @@ function HomePosition() {
       </div>
       <div className='coordinate-labels'>
         <div className='coordinate-label'>
-          <span>X</span>
+          <span className='home-pos-coor'>X</span>
           <span className="actual-position-data"></span>
-          <span>Y</span>
+          <span className='home-pos-coor'>Y</span>
           <span className="actual-position-data"></span>
-          <span>Z</span>
+          <span className='home-pos-coor'>Z</span>
           <span className="actual-position-data"></span>
-          <span>A</span>
+          <span className='home-pos-coor'>A</span>
           <span className="actual-position-data"></span>
-          <span>B</span>
+          <span className='home-pos-coor'>B</span>
           <span className="actual-position-data"></span>
-          <span >C</span>
+          <span className='home-pos-coor'>C</span>
           <span className="actual-position-data"></span>
         </div>
       </div>

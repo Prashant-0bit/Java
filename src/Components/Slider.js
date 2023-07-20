@@ -13,11 +13,25 @@ export default function DiscreteSliderMarks() {
   const [isSliderDragging, setIsSliderDragging] = useState(false);
   const sliderRef = useRef(null);
 
-  const handleMinusClick = () => {
+  const customMarks = [
+    { value: 0 },
+    { value: 1 },
+    { value: 3 },
+    { value: 5 },
+    { value: 10 },
+    { value: 30 },
+    { value: 50 },
+    { value: 75 },
+    { value: 100 },
+  ];
+
+  const handleMinusClick = (event) => {
+    event.stopPropagation();
     setValue((prevValue) => Math.max(0, prevValue - 1));
   };
 
-  const handlePlusClick = () => {
+  const handlePlusClick = (event) => {
+    event.stopPropagation();
     setValue((prevValue) => Math.min(100, prevValue + 1));
   };
 
@@ -49,7 +63,12 @@ export default function DiscreteSliderMarks() {
 
   const handleClickOutside = (event) => {
     if (sliderRef.current && !sliderRef.current.contains(event.target)) {
-      setIsOpen(false);
+      if (
+        !event.target.classList.contains('slider-controls') &&
+        !event.target.classList.contains('slider-content')
+      ) {
+        setIsOpen(false);
+      }
     }
   };
 
@@ -77,6 +96,8 @@ export default function DiscreteSliderMarks() {
             onChange={handleChange}
             className='custom-slider'
             onMouseDown={handleSliderMouseDown}
+            step={null} // Set step to null to allow custom values
+            marks={customMarks}
           />
         </Box>
         <div className='slider-controls'>

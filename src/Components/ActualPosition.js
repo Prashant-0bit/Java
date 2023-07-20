@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './robotmotion.css';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
 
 function ActualPosition() {
     const [selectedCoordinate, setSelectedCoordinate] = useState('Axis');
-    const coordinates = ['Axis', 'World', 'Base', 'Tool'];
-    const [coordinateLabels, setCoordinateLabels] = useState([]);
+
+    const coordinates = {
+        Axis: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
+        World: ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Base: ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Tool: ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        // Add more coordinates and their labels as needed
+    };
 
     const handleCoordinateSelection = (coordinate) => {
         setSelectedCoordinate(coordinate);
     };
 
-    useEffect(() => {
-        if (selectedCoordinate === 'Axis') {
-            setCoordinateLabels(['A1', 'A2', 'A3', 'A4', 'A5', 'A6']);
-        } else {
-            setCoordinateLabels(['X', 'Y', 'Z', 'A', 'B', 'C']);
-        }
-    }, [selectedCoordinate]);
-
     return (
         <div className='position-container'>
             <div className='actual-position-coordinate'>
-                {coordinates.map((coordinate) => (
+                {Object.keys(coordinates).map((coordinate) => (
                     <button
                         key={coordinate}
                         type='button'
@@ -43,16 +41,19 @@ function ActualPosition() {
             </div>
 
             <div className="coordinate-labels">
-                {coordinateLabels.map((label) => (
+            <button type='button' className='btn btn-light actual-position-button'>
+                    Active Jog
+                </button>
+                {coordinates[selectedCoordinate].map((label) => (
                     <div key={label} className="coordinate-label">
-                        <span >{label}</span>
+                        <span className='home-pos-coor'>{label}</span>
                         <div className='position-data' >
                             <button type='button' className='btn btn-light jog-button'>
-                            <FiMinusCircle />
+                                <FiMinusCircle />
                             </button>
                             <span className='actual-position-data'></span>
                             <button type='button' className='btn btn-light jog-button'>
-                            <FiPlusCircle />
+                                <FiPlusCircle />
                             </button>
                         </div>
                     </div>

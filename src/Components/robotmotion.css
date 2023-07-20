@@ -27,7 +27,7 @@
     border-width: 1px;
     display: flex;
     margin: 5px;
-    padding: 10px;
+    padding: 9px;
     justify-content: center;
     align-items: center;
     max-width: 50px;
@@ -55,6 +55,7 @@
     margin: 5px 5px;
     justify-content: center;
     align-items: center;
+    padding: 7px 6px;
 }
 
 /********************************************************************************************************
@@ -66,13 +67,15 @@
     max-width: 3840px;
     width: calc(100% - 48px);
     margin-top: 5px;
+    justify-content: center;
+    align-items: center;
 }
 
 .actual-position-coordinate{
     justify-content: center;
     align-items: center;
     display: flex;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
     margin-bottom: 10px;
 }
 
@@ -90,12 +93,13 @@
 }
 .coordinate-label{
     font-size: 20px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sans-serif;
     font-weight: bold;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    display: grid;
     align-items: center;
+    grid-template-columns: 20% 90%;
 }
 .position-data{
     display: flex;
@@ -104,35 +108,43 @@
     width: 100%;
 }
 
+.home-pos-coor{
+  display: flex;
+  justify-content: center;
+}
+
 .actual-position-data {
     width: 100px; /* Adjust the width to your preference */
-    height: 24px; /* Adjust the height to your preference */
+    height: 35px; /* Adjust the height to your preference */
     background-color: #f2f2f2; /* Set the background color */
-    margin: 5px;
+    margin: 10px;
     border-width: 1px;
     border-color: black;
     border-style: solid;
     border-radius: 5px;
+    font-weight: normal;
+    font-size: 20px;
   }
   
   .jog-button{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-color: black;
+    border-color: rgb(0, 0, 0);
   }
 
 /********************************************************************************************************
 ******************************************--Tools-Postion--**********************************************
 ********************************************************************************************************/
+
 .Tool-container {
-    max-width: 3840px;
-    width: calc(100% - 48px);
-    height: 67.5vh;
-    position: relative;
     font-size: 16px;
     font-family: sans-serif;
     cursor: pointer;
+    max-width: 3840px;
+    width: calc(100% - 48px);
+    height: calc(100vh - 238px);
+    position: relative;
   }
   
   .Dropdown {
@@ -143,11 +155,30 @@
   .show {
     background-color: white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+    margin-left: 5px;
+  }
+  .tool-option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pencil-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border-radius: 3px;
+    margin: 0 5px;
+    cursor: pointer;
+
   }
   
   .tool-selection {
     display: flex;
+    justify-content: center;
     align-items: center;
+    margin-bottom: 5px;
   }
   
   .tool-button {
@@ -156,6 +187,7 @@
     flex-grow: 1;
     text-align: left;
     padding: 4px 8px;
+
   }
   
   .dropdown-menu-scroll {
@@ -173,7 +205,6 @@
   .tool-data {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
 
   .tool-container{
@@ -190,7 +221,7 @@
 
   .tool-name {
     font-weight: bold;
-    margin-bottom: 5px;
+    
   }
 .load-data{
     align-items: center;

@@ -1,172 +1,183 @@
 @media screen and (max-width: 800px) {
-    .navbar-nav {
-        display: inline-flex;
-        flex-direction: row;
-        align-items: center;
-        
-    }
+  .navbar-nav {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .navbar-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .navbar,
 .container-fluid {
-    padding: 0;
+  padding: 0;
 }
 
 .navbar-nav .nav-item {
-    display: flex;
-    align-items: center;
-    margin: 0; /* Adjust the margin as needed */
-  }
-
-.nav-link:hover{
-    color: white;
+  display: flex;
+  align-items: center;
+  margin: 0; /* Adjust the margin as needed */
 }
-  
-.navbar-nav .nav-item:last-child {
-    margin-right: 0;
-  }
 
-.navbar-brand.text{
+.nav-link:hover {
+  color: white;
+}
+
+.navbar-nav .nav-item:last-child {
+  margin-right: 0;
+}
+
+.navbar-brand.text {
   margin: 0;
   padding: 0;
 }
 
-.LogoIcon{
+.LogoIcon {
   width: 44px;
   height: 44px;
   margin: 0 5px;
 }
 
-.text{
+.text {
   background-color: transparent;
   border: none;
 }
 .text:hover {
-    color: #11E1BB !important;
-    text-shadow: 0 0 20px #11E1BB;
+  color: #11e1bb !important;
+  text-shadow: 0 0 20px #11e1bb;
 }
 
-.header-icon{
+.header-icon {
   color: white;
 }
 
 .logo {
-    color: #ffffff;
-    border: none;
-    padding: 0 .5rem 0 0.5rem;
-    font-size: 20px;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
+  color: #ffffff;
+  border: none;
+  padding: 0 0.5rem 0 0.5rem;
+  font-size: 20px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
 }
 
 /*****************************************************************************************************
 ************************************--Slider-Content-CSS--********************************************
 *****************************************************************************************************/
 .slider-container {
-    position: absolute;
-    top: 30px;
-    right: 0;
-    transform: translateX(-25%);
-    background-color: white;
-    width: 19rem;
-    height: auto;
-    border-radius: 0.3rem;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
-  }
-  
-  .slider-header {
-    background-color: black;
-    color: white;
-    padding: 0.1rem 14.815rem 0.1rem 0.5rem;
-    width: 100%;
-    border-top-right-radius: 0.2rem;
-    border-top-left-radius: 0.2rem;
-  }
-  
-  .slider-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-  }
-  
-  .custom-slider .MuiSlider-track {
-    background-color: black;
-    height: 14px;
-    border-radius: 0;
-    border-color: white;
-  }
-  
-  .custom-slider .MuiSlider-rail {
-    height: 14px;
-    border-radius: 0;
-    border-color: black;
-    background-color: black;
-  }
-  
-  .custom-slider .MuiSlider-thumb {
-    background-color: whitesmoke;
-    width: 40px;
-    height: 30px;
-    border-radius: 5px;
-    border-color: white;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
-  }
-  
-  .slider-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  
-  .slider-control1,
-  .slider-control2 {
-    padding: 0.5rem 0.6rem;
-    font-size: 20px;
-    background-color: black;
-    border-radius: .1rem;
-    color: white;
-    border-width: 1px;
-    border-color: #363434;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .slider-value {
-    padding: 0.5rem 0.5rem;
-    font-size: 20px;
-    background-color: black;
-    border-color: #363434;
-    color: white;
-    border-radius: .1rem;
-    margin: 0 1rem;
-    width: 4rem; /* Add a fixed width */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  position: absolute;
+  top: 30px;
+  right: 0;
+  transform: translateX(-20%);
+  background-color: white;
+  width: 19rem;
+  height: auto;
+  border-radius: 0.3rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.slider-header {
+  background-color: black;
+  color: white;
+  padding: 0.1rem 14.815rem 0.1rem 0.5rem;
+  width: 100%;
+  border-top-right-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
+}
+
+.slider-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.custom-slider .MuiSlider-track {
+  background-color: black;
+  height: 14px;
+  border-radius: 0;
+  border-color: white;
+}
+
+.custom-slider .MuiSlider-rail {
+  height: 14px;
+  border-radius: 0;
+  border-color: black;
+  background-color: black;
+}
+
+.custom-slider .MuiSlider-thumb {
+  background-color: whitesmoke;
+  width: 40px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.custom-slider .MuiSlider-mark {
+  display: none;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.slider-control1,
+.slider-control2 {
+  padding: 0.5rem 0.6rem;
+  font-size: 20px;
+  background-color: black;
+  border-radius: 0.1rem;
+  color: white;
+  border-width: 1px;
+  border-color: #363434;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-value {
+  padding: 0.5rem 0.5rem;
+  font-size: 20px;
+  background-color: black;
+  border-color: #363434;
+  color: white;
+  border-radius: 0.1rem;
+  margin: 0 1rem;
+  width: 4rem; /* Add a fixed width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*****************************************************************************************************
 ***********************************--Message-Content-CSS--********************************************
 *****************************************************************************************************/
-
-.message {
-    background-color: white;
-    width: 100%;
-    height: 64px;
-    display: flex;
-    flex-grow: 1;
+.header-content {
+  display: flex;
+  justify-content: center;
+  width: -8%;
+  flex-direction: column;
 }
-.message-icon{
+.message {
+  background-color: white;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+}
+.message-icon {
   display: flex;
   justify-items: center;
   align-items: center;
@@ -176,18 +187,36 @@
   background-color: black;
   padding: 2px 0;
 }
-.status{
+.status {
   font-size: 15px;
- 
 }
-.header-content {
-    display: flex;
-    justify-content: center;
-    width: -8%;
-    flex-direction: column;
+.acknowledge-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: auto;
+  padding: 10px 0;
 }
 
-.Horizontal-divider{
+.acknowledge-ok {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  font-size: 13px;
+  border-color: black;
+  padding: 5px 9px;
+}
+
+.acknowledge-confirm {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  font-size: 13px;
+  border-color: black;
+  padding: 5px;
+}
+
+.Horizontal-divider {
   height: 15px;
   color: black;
   width: 100%;
@@ -195,53 +224,52 @@
 }
 
 .mode-dropdown {
-    position: relative;
-    color: white;
-  }
+  position: relative;
+  color: white;
+}
 
-  .mode-dropdown.mode-dropdown.open {
-    color: white;
-  }
+.mode-dropdown.mode-dropdown.open {
+  color: white;
+}
 
-  .mode-button:hover{
-    color: #fff;
-  }
-  
-  .mode-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: none;
-    min-width: 100%;
-    padding: 8px 0;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    z-index: 1;
-  }
-  
-  .mode-dropdown.open .mode-menu {
-    display: block;
-  }
-  
-  .mode-item {
-    display: block;
-    width: 100%;
-    padding: 8px 16px;
-    border: none;
-    background-color: transparent;
-    color: black;
-    font-size: 16px;
-    text-align: left;
-    cursor: pointer;
-  }
-  
-  .mode-item:hover {
-    background-color: black;
-    color: #ffffff;
-  }
-  
-  .mode-item.active {
-    background-color: black;
-    color: #ffffff;
-  }
-  
+.mode-button:hover {
+  color: #fff;
+}
+
+.mode-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  min-width: 100%;
+  padding: 8px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.mode-dropdown.open .mode-menu {
+  display: block;
+}
+
+.mode-item {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mode-item:hover {
+  background-color: black;
+  color: #ffffff;
+}
+
+.mode-item.active {
+  background-color: black;
+  color: #ffffff;
+}

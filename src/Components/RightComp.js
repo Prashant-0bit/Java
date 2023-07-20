@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './RightComp.css';
-import robotArmImage from './RobotCoordinate.png';
+import robotArmImage from './RobotCoordinate.svg';
 
 const RightComp = () => {
   const [selectedIcon, setSelectedIcon] = useState(null);

@@ -3,15 +3,16 @@
   max-width: 3840px;
   width: calc(100% - 48px);
   flex-direction: column;
+  background-color: white;
 }
 .user-buttons{
-  max-width: 3840px;
   width: 100%;
     height: calc(100vh - 183px);
     position: relative;
     font-size: 16px;
     font-family: sans-serif;
     cursor: pointer;
+    
   
 }
 
@@ -24,8 +25,8 @@
   font-family: sans-serif;
   cursor: pointer;
   border: none;
-  background-color: white;
   text-decoration: none;
+  background-color: white;
 }
 
 .main-func.selected {

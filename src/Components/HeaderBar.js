@@ -28,6 +28,101 @@ export default function HeaderBar() {
     };
   }, []);
 
+  function CustomLink({ to, children, handleClick }) {
+    const location = useLocation();
+    const [selectedMode, setSelectedMode] = useState('T1');
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [activeButton, setActiveButton] = useState(null);
+  
+    const isActive = location.pathname === to;
+  
+    const handleMenuToggle = () => {
+      setDropdownOpen((prevOpen) => !prevOpen);
+      setActiveButton(null);
+    };
+  
+    const handleModeSelect = (mode) => {
+      setSelectedMode(mode);
+      setDropdownOpen(false);
+    };
+  
+    const handleLinkClick = () => {
+      if (handleClick) {
+        handleClick();
+      }
+      setDropdownOpen(false);
+      setActiveButton(null);
+    };
+  
+    const handleOutsideClick = (e) => {
+      if (!e.target.closest('.mode-dropdown')) {
+        setDropdownOpen(false);
+      }
+    };
+  
+    useEffect(() => {
+      document.addEventListener('mousedown', handleOutsideClick);
+  
+      return () => {
+        document.removeEventListener('mousedown', handleOutsideClick);
+      };
+    }, [handleClick]);
+  
+    return (
+      <li className={isActive ? 'active' : ''}>
+        {to === '/mode' ? (
+          <div className={`mode-dropdown ${dropdownOpen ? 'open' : ''}`}>
+            <button className="btn btn logo" onClick={handleMenuToggle}>
+              {selectedMode}
+            </button>
+            <div className="mode-menu">
+              <button
+                className={`mode-item${selectedMode === 'T1' ? ' active' : ''}`}
+                onClick={() => handleModeSelect('T1')}
+              >
+                T1
+              </button>
+              <button
+                className={`mode-item${selectedMode === 'T2' ? ' active' : ''}`}
+                onClick={() => handleModeSelect('T2')}
+              >
+                T2
+              </button>
+              <button
+                className={`mode-item${selectedMode === 'Aut' ? ' active' : ''}`}
+                onClick={() => handleModeSelect('Aut')}
+              >
+                Aut
+              </button>
+              <button
+                className={`mode-item${selectedMode === 'Ext' ? ' active' : ''}`}
+                onClick={() => handleModeSelect('Ext')}
+              >
+                Ext
+              </button>
+            </div>
+          </div>
+        ) : (
+          <>
+            {to === '/slider' ? (
+              <button
+                className={`btn btn logo ${dropdownOpen ? 'open' : ''} ${activeButton === 'slider' ? '' : 'active'}`}
+                onClick={handleLinkClick}
+                onBlur={handleOutsideClick}
+              >
+                {children}
+              </button>
+            ) : (
+              <Link to={to} activeclassname={isActive ? 'active' : ''} onClick={() => setActiveButton(null)}>
+                {children}
+              </Link>
+            )}
+          </>
+        )}
+      </li>
+    );
+  }  
+
   return (
     <>
       <nav className="navbar navbar-expand-md bg-body-tertiary mt-0" data-bs-theme="dark">
@@ -75,99 +170,5 @@ export default function HeaderBar() {
       )}
     </>
     
-  );
-}
-function CustomLink({ to, children, handleClick }) {
-  const location = useLocation();
-  const [selectedMode, setSelectedMode] = useState('T1');
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [activeButton, setActiveButton] = useState(null);
-
-  const isActive = location.pathname === to;
-
-  const handleMenuToggle = () => {
-    setDropdownOpen((prevOpen) => !prevOpen);
-    setActiveButton(null);
-  };
-
-  const handleModeSelect = (mode) => {
-    setSelectedMode(mode);
-    setDropdownOpen(false);
-  };
-
-  const handleLinkClick = () => {
-    if (handleClick) {
-      handleClick();
-    }
-    setDropdownOpen(false);
-    setActiveButton(null);
-  };
-
-  const handleOutsideClick = (e) => {
-    if (!e.target.closest('.mode-dropdown')) {
-      setDropdownOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, [handleClick]);
-
-  return (
-    <li className={isActive ? 'active' : ''}>
-      {to === '/mode' ? (
-        <div className={`mode-dropdown ${dropdownOpen ? 'open' : ''}`}>
-          <button className="btn btn logo" onClick={handleMenuToggle}>
-            {selectedMode}
-          </button>
-          <div className="mode-menu">
-            <button
-              className={`mode-item${selectedMode === 'T1' ? ' active' : ''}`}
-              onClick={() => handleModeSelect('T1')}
-            >
-              T1
-            </button>
-            <button
-              className={`mode-item${selectedMode === 'T2' ? ' active' : ''}`}
-              onClick={() => handleModeSelect('T2')}
-            >
-              T2
-            </button>
-            <button
-              className={`mode-item${selectedMode === 'Aut' ? ' active' : ''}`}
-              onClick={() => handleModeSelect('Aut')}
-            >
-              Aut
-            </button>
-            <button
-              className={`mode-item${selectedMode === 'Ext' ? ' active' : ''}`}
-              onClick={() => handleModeSelect('Ext')}
-            >
-              Ext
-            </button>
-          </div>
-        </div>
-      ) : (
-        <>
-          {to === '/slider' ? (
-            <button
-              className={`btn btn logo ${dropdownOpen ? 'open' : ''} ${activeButton === 'slider' ? '' : 'active'}`}
-              onClick={handleLinkClick}
-              onBlur={handleOutsideClick}
-            >
-              {children}
-            </button>
-          ) : (
-            <Link to={to} activeclassname={isActive ? 'active' : ''} onClick={() => setActiveButton(null)}>
-              {children}
-            </Link>
-          )}
-        </>
-      )}
-    </li>
   );
 }

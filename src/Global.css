@@ -1,13 +1,19 @@
 html {
     touch-action: manipulation;
+    touch-action: none;
   }
   
   body {
     touch-action: auto;
-    user-select: none;
+    user-select: auto;
     -ms-content-zooming: none;
     -ms-touch-action: manipulation;
     zoom: reset;
+  }
+  body {
+    zoom: 1;
+    max-zoom: 1;
+    min-zoom: 1;
   }
 
   .content-wrapper {

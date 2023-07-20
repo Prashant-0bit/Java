@@ -78,134 +78,137 @@ function ToolSelection() {
   };
 
   return (
-    <div className='Tool-container'>
-      <div className='Dropdown'>
-        <button
-          className="btn btn-dark dropdown-toggle"
-          onClick={() => setShowMenu(!showMenu)}
-          aria-expanded={showMenu}
-        >
-          Tool Selection
-        </button>
-      </div>
-      {showMenu && (
-        <ul className="dropdown-menu dropdown-menu-dark show" onClick={(e) => e.stopPropagation()}>
-          <div className="dropdown-menu-scroll">
-            {[...Array(16)].map((_, index) => (
-              <React.Fragment key={index}>
-                <li className="tool-selection">
-                  <button
-                    className="tool-button"
-                    onClick={() => handleSelectTool(index)}
-                  >
-                    <div className="tool-name">{toolNames[index].name}</div>
-                  </button>
-                  <div className="tool-options">
-                    <HiPencil
-                      className="pencil-icon"
-                      onClick={() => handleRename(index, 'New Name')}
-                    />
-                  </div>
-                </li>
-                <div className="divider" />
-              </React.Fragment>
-            ))}
-          </div>
-        </ul>
-      )}
-      <div className="selected-tool-info">
-        <h5 className='Tool-info'>Selected Tool Information</h5>
-        <div className="tool-data">
-          <div className='tool-container'>
-            <div className='selected-tool-name'>
-              Tool Name: {selectedToolIndex !== null ? toolNames[selectedToolIndex].name : ''}
+      <div className='Tool-container'>
+        <div className='Dropdown'>
+          <button
+            className="btn btn-dark dropdown-toggle"
+            onClick={() => setShowMenu(!showMenu)}
+            aria-expanded={showMenu}
+          >
+            Tool Selection
+          </button>
+        </div>
+        {showMenu && (
+          <ul className="dropdown-menu dropdown-menu-dark show" onClick={(e) => e.stopPropagation()}>
+            <div className="dropdown-menu-scroll">
+              {[...Array(16)].map((_, index) => (
+                <React.Fragment key={index}>
+                  <li className="tool-selection">
+                    <button
+                      className="tool-button"
+                      onClick={() => handleSelectTool(index)}
+                    >
+                      <div className="tool-name">{toolNames[index].name}</div>
+                    </button>
+                    <div className="tool-options">
+                      <HiPencil
+                        className="pencil-icon"
+                        onClick={() => handleRename(index, 'New Name')}
+                      />
+                    </div>
+                  </li>
+                  <div className="divider" />
+                </React.Fragment>
+              ))}
             </div>
-            <div className='load-data'>
-              Load: <input
-                id='load'
-                type="text"
-                value={selectedToolInfo ? selectedToolInfo.load : enteredText}
-                onChange={(e) => handleInputChange(e, 'load')}
-                placeholder='kg'
-                onFocus={handleToggleKeypad}
-                onBlur={handleToggleKeypad}
-              />
-            </div>
-          </div>
-          <div className='tool-input-data'>
-            <div className='tool-column'>
-              <div>
-                <span className='tool-data-name'>
-                  X:
-                </span>
-                <input id='x' type="text" value={selectedToolInfo ? selectedToolInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
+          </ul>
+        )}
+        <div className="selected-tool-info">
+          <h5 className='Tool-info'>Selected Tool Information</h5>
+          <div className="tool-data">
+            <div className='tool-container'>
+              <div className='selected-tool-name'>
+                Tool Name: {selectedToolIndex !== null ? toolNames[selectedToolIndex].name : ''}
               </div>
-              <div>
-                <span className='tool-data-name'>
-                  Y:
-                </span>
-                <input id='y' type="text" value={selectedToolInfo ? selectedToolInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
-              </div>
-              <div>
-                <span className='tool-data-name'>
-                  Z:
-                </span>
-                <input id='z' type="text" value={selectedToolInfo ? selectedToolInfo.z : ''} onChange={(e) => handleInputChange(e, 'z')} placeholder='mm' />
+              <div className='load-data'>
+                Load: <input
+                  id='load'
+                  type="text"
+                  value={selectedToolInfo ? selectedToolInfo.load : enteredText}
+                  onChange={(e) => handleInputChange(e, 'load')}
+                  placeholder='kg'
+                  onFocus={handleToggleKeypad}
+                  onBlur={handleToggleKeypad}
+                />
               </div>
             </div>
-            <div className='tool-column'>
-              <div>
-                <span className='tool-data-name'>
-                  A:
-                </span>
-                <input id='a' type="text" value={selectedToolInfo ? selectedToolInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
+            <div className='tool-input-data'>
+              <div className='tool-column'>
+                <div>
+                  <span className='tool-data-name'>
+                    X:
+                  </span>
+                  <input id='x' type="text" value={selectedToolInfo ? selectedToolInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
+                </div>
+                <div>
+                  <span className='tool-data-name'>
+                    Y:
+                  </span>
+                  <input id='y' type="text" value={selectedToolInfo ? selectedToolInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
+                </div>
+                <div>
+                  <span className='tool-data-name'>
+                    Z:
+                  </span>
+                  <input id='z' type="text" value={selectedToolInfo ? selectedToolInfo.z : ''} onChange={(e) => handleInputChange(e, 'z')} placeholder='mm' />
+                </div>
               </div>
-              <div>
-                <span className='tool-data-name'>
-                  B:
-                </span>
-                <input id='b' type="text" value={selectedToolInfo ? selectedToolInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
+              <div className='tool-column'>
+                <div>
+                  <span className='tool-data-name'>
+                    A:
+                  </span>
+                  <input id='a' type="text" value={selectedToolInfo ? selectedToolInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
+                </div>
+                <div>
+                  <span className='tool-data-name'>
+                    B:
+                  </span>
+                  <input id='b' type="text" value={selectedToolInfo ? selectedToolInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
+                </div>
+                <div>
+                  <span className='tool-data-name'>
+                    C:
+                  </span>
+                  <input id='c' type="text" value={selectedToolInfo ? selectedToolInfo.c : ''} onChange={(e) => handleInputChange(e, 'c')} placeholder='°' />
+                </div>
               </div>
-              <div>
-                <span className='tool-data-name'>
-                  C:
-                </span>
-                <input id='c' type="text" value={selectedToolInfo ? selectedToolInfo.c : ''} onChange={(e) => handleInputChange(e, 'c')} placeholder='°' />
-              </div>
-            </div>
-            <div className='tool-column'>
-              <div>
-                <span className='tool-data-name'>
-                  JX:
-                </span>
-                <input id='jx' type="text" value={selectedToolInfo ? selectedToolInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
-              </div>
-              <div>
-                <span className='tool-data-name'>
-                  JY:
-                </span>
-                <input id='jy' type="text" value={selectedToolInfo ? selectedToolInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
-              </div>
-              <div>
-                <span className='tool-data-name'>
-                  JZ:
-                </span>
-                <input id='jz' type="text" value={selectedToolInfo ? selectedToolInfo.jz : ''} onChange={(e) => handleInputChange(e, 'jz')} placeholder='kgm²' />
+              <div className='tool-column'>
+                <div>
+                  <span className='tool-data-name'>
+                    JX:
+                  </span>
+                  <input id='jx' type="text" value={selectedToolInfo ? selectedToolInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
+                </div>
+                <div>
+                  <span className='tool-data-name'>
+                    JY:
+                  </span>
+                  <input id='jy' type="text" value={selectedToolInfo ? selectedToolInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
+                </div>
+                <div>
+                  <span className='tool-data-name'>
+                    JZ:
+                  </span>
+                  <input id='jz' type="text" value={selectedToolInfo ? selectedToolInfo.jz : ''} onChange={(e) => handleInputChange(e, 'jz')} placeholder='kgm²' />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      
       {showKeypad && (
-                <Keypad
-                  enteredText={enteredText}
-                  setEnteredText={setEnteredText}
-                  handleKeypadInput={handleKeypadInput}
-                  handleKeypadEnter={handleKeypadEnter}
-                  handleClearEnteredText={handleClearEnteredText}
-                />
-              )}
-    </div>
+        <div className='.keypad-wrapper' >
+          <Keypad
+            enteredText={enteredText}
+            setEnteredText={setEnteredText}
+            handleKeypadInput={handleKeypadInput}
+            handleKeypadEnter={handleKeypadEnter}
+            handleClearEnteredText={handleClearEnteredText}
+          />
+        </div>
+      )}
+      </div>
   );
 }
 

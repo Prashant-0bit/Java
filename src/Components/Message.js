@@ -13,6 +13,15 @@ export default function Message() {
           <i className="fa-solid fa-triangle-exclamation status" style={{ color: '#FFC107' }}></i>
           <i className="fa-solid fa-circle-xmark status" style={{ color: '#F44336' }}></i>
           </div>
+          <div className='acknowledge-button'>
+            <button type='button' className='btn btn-warning acknowledge-ok'>
+              OK
+            </button>
+            <button type='button' className='btn btn-warning acknowledge-confirm'>
+              Confirm All
+            </button>
+          </div>
+          
         </div>
         
       <div className='Horizontal-divider'/>
