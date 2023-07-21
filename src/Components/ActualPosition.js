@@ -6,11 +6,10 @@ function ActualPosition() {
     const [selectedCoordinate, setSelectedCoordinate] = useState('Axis');
 
     const coordinates = {
-        Axis: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
-        World: ['X', 'Y', 'Z', 'A', 'B', 'C'],
-        Base: ['X', 'Y', 'Z', 'A', 'B', 'C'],
-        Tool: ['X', 'Y', 'Z', 'A', 'B', 'C'],
-        // Add more coordinates and their labels as needed
+        Axis:   ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
+        World:  ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Base:   ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Tool:   ['X', 'Y', 'Z', 'A', 'B', 'C'],
     };
 
     const handleCoordinateSelection = (coordinate) => {

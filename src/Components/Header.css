@@ -160,15 +160,61 @@
   align-items: center;
 }
 
+.mode-dropdown {
+  position: relative;
+  color: white;
+}
+
+.mode-dropdown.mode-dropdown.open {
+  color: white;
+}
+
+.mode-button:hover {
+  color: #fff;
+}
+
+.mode-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  min-width: 100%;
+  padding: 8px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.mode-dropdown.open .mode-menu {
+  display: block;
+}
+
+.mode-item {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mode-item:hover {
+  background-color: black;
+  color: #ffffff;
+}
+
+.mode-item.active {
+  background-color: black;
+  color: #ffffff;
+}
+
 /*****************************************************************************************************
 ***********************************--Message-Content-CSS--********************************************
 *****************************************************************************************************/
-.header-content {
-  display: flex;
-  justify-content: center;
-  width: -8%;
-  flex-direction: column;
-}
+
 .message {
   background-color: white;
   width: 100%;
@@ -221,55 +267,4 @@
   color: black;
   width: 100%;
   background-color: black;
-}
-
-.mode-dropdown {
-  position: relative;
-  color: white;
-}
-
-.mode-dropdown.mode-dropdown.open {
-  color: white;
-}
-
-.mode-button:hover {
-  color: #fff;
-}
-
-.mode-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: none;
-  min-width: 100%;
-  padding: 8px 0;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
-.mode-dropdown.open .mode-menu {
-  display: block;
-}
-
-.mode-item {
-  display: block;
-  width: 100%;
-  padding: 8px 16px;
-  border: none;
-  background-color: transparent;
-  color: black;
-  font-size: 16px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.mode-item:hover {
-  background-color: black;
-  color: #ffffff;
-}
-
-.mode-item.active {
-  background-color: black;
-  color: #ffffff;
 }
