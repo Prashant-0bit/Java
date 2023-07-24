@@ -23,35 +23,36 @@ function ActualPosition() {
                     <button
                         key={coordinate}
                         type='button'
-                        className={`btn btn-light actual-position-button ${selectedCoordinate === coordinate ? 'active' : ''}`}
+                        className={` actual-position-button ${selectedCoordinate === coordinate ? 'active' : ''}`}
                         onClick={() => handleCoordinateSelection(coordinate)}
                     >
                         {coordinate}
                     </button>
                 ))}
-                <div>
-                    <button type='button' className='btn btn-light actual-position-button'>
-                        Absolute
-                    </button>
-                    <button type='button' className='btn btn-light actual-position-button'>
-                        Relative
-                    </button>
-                </div>
             </div>
 
             <div className="coordinate-labels">
-            <button type='button' className='btn btn-light actual-position-button'>
+            <div>
+            <button type='button' className=' actual-position-button'>
                     Active Jog
                 </button>
+                    <button type='button' className=' actual-position-button'>
+                        Absolute
+                    </button>
+                    <button type='button' className=' actual-position-button'>
+                        Relative
+                    </button>
+                </div>
+            
                 {coordinates[selectedCoordinate].map((label) => (
                     <div key={label} className="coordinate-label">
                         <span className='home-pos-coor'>{label}</span>
                         <div className='position-data' >
-                            <button type='button' className='btn btn-light jog-button'>
+                            <button type='button' className=' jog-button'>
                                 <FiMinusCircle />
                             </button>
                             <span className='actual-position-data'></span>
-                            <button type='button' className='btn btn-light jog-button'>
+                            <button type='button' className=' jog-button'>
                                 <FiPlusCircle />
                             </button>
                         </div>

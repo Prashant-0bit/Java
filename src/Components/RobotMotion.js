@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./robotmotion.css";
 import { FaPowerOff } from "react-icons/fa";
-import { useNavigate, Outlet } from "react-router-dom";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import axios from "axios";
 
 function RobotMotion() {
   const [isPowerOn, setIsPowerOn] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handlePowerButtonClick = () => {
     axios
@@ -33,28 +34,28 @@ function RobotMotion() {
           <div className="button-container">
             <button
               type="button"
-              className="btn btn-light actual-position"
+              className={`actual-position ${location.pathname === "/actual-position" ? "active" : ""}`}
               onClick={() => navigate("actual-position")}
             >
               Actual Position
             </button>
             <button
               type="button"
-              className="btn btn-light home-position"
+              className={`home-position ${location.pathname === "/home-position" ? "active" : ""}`}
               onClick={() => navigate("home-position")}
             >
               Home Position
             </button>
             <button
               type="button"
-              className="btn btn-light base-system"
+              className={`base-system ${location.pathname === "/base-selection" ? "active" : ""}`}
               onClick={() => navigate("base-selection")}
             >
               Base Selection
             </button>
             <button
               type="button"
-              className="btn btn-light tool-system"
+              className={`tool-system ${location.pathname === "/tool-selection" ? "active" : ""}`}
               onClick={() => navigate("tool-selection")}
             >
               Tool Selection

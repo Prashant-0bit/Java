@@ -20,12 +20,12 @@ export default function Message() {
           ></i>
         </div>
           <div className="acknowledge-button">
-            <button type="button" className="btn btn-warning acknowledge-ok">
+            <button type="button" className=" acknowledge-ok">
               OK
             </button>
             <button
               type="button"
-              className="btn btn-warning acknowledge-confirm"
+              className=" acknowledge-confirm"
             >
               Confirm All
             </button>

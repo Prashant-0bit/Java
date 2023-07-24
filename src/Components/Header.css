@@ -250,7 +250,10 @@
   margin-right: 5px;
   font-size: 13px;
   border-color: black;
+  border-width: 1px;
   padding: 5px 9px;
+  background-color: #1E2023;
+  color: white;
 }
 
 .acknowledge-confirm {
@@ -259,6 +262,9 @@
   margin-right: 5px;
   font-size: 13px;
   border-color: black;
+  background-color: #1E2023;
+  color: white;
+  border-width: 1px;
   padding: 5px;
 }
 

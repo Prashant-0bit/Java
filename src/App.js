@@ -37,8 +37,6 @@ function App() {
             <Route path='tool-selection' element={<ToolSelection />} />
           </Route>
         </Routes>
-
-        <Footer/>
       </>
     </div>
   );
