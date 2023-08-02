@@ -146,7 +146,6 @@ export default function MainFunc() {
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeypadEnter);
-
     return () => {
       document.removeEventListener('keydown', handleKeypadEnter);
     };

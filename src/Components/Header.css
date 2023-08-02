@@ -45,6 +45,7 @@
 .text {
   background-color: transparent;
   border: none;
+  font-size: 15px;
 }
 .text:hover {
   color: #11e1bb !important;

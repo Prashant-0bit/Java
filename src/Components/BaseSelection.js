@@ -65,7 +65,7 @@ function BaseSelection() {
     <div className='Tool-container'>
       <div className='Dropdown'>
         <button
-          className="btn btn-dark dropdown-toggle"
+          className="dropdown-toggle"
           onClick={() => setShowMenu(!showMenu)}
           aria-expanded={showMenu}
         >
@@ -105,44 +105,44 @@ function BaseSelection() {
               Base Name: {selectedBaseIndex !== null ? baseNames[selectedBaseIndex].name : ''}
             </div>
             <div className='load-data'>
-              Load: <input id='load' type="text" value={selectedBaseInfo ? selectedBaseInfo.load : ''} onChange={(e) => handleInputChange(e, 'load')} placeholder='kg' />
+              Workpiece Load: <input id='load' type="text" value={selectedBaseInfo ? selectedBaseInfo.load : ''} onChange={(e) => handleInputChange(e, 'load')} placeholder='kg' />
             </div>
           </div>
           <div className='tool-input-data'>
             <div className='tool-column'>
-              <div>
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   X:
                 </span>
                 <input id='x' type="text" value={selectedBaseInfo ? selectedBaseInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
-              </div>
-              <div>
+              </div >
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   Y:
                 </span>
                 <input id='y' type="text" value={selectedBaseInfo ? selectedBaseInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
               </div>
-              <div>
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   Z:
                 </span>
                 <input id='z' type="text" value={selectedBaseInfo ? selectedBaseInfo.z : ''} onChange={(e) => handleInputChange(e, 'z')} placeholder='mm' />
               </div>
-            </div>
+            </div >
             <div className='tool-column'>
-              <div>
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   A:
                 </span>
                 <input id='a' type="text" value={selectedBaseInfo ? selectedBaseInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
               </div>
-              <div>
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   B:
                 </span>
                 <input id='b' type="text" value={selectedBaseInfo ? selectedBaseInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
               </div>
-              <div>
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   C:
                 </span>
@@ -150,19 +150,19 @@ function BaseSelection() {
               </div>
             </div>
             <div className='tool-column'>
-              <div>
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   JX:
                 </span>
                 <input id='jx' type="text" value={selectedBaseInfo ? selectedBaseInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
               </div>
-              <div>
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   JY:
                 </span>
                 <input id='jy' type="text" value={selectedBaseInfo ? selectedBaseInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
               </div>
-              <div>
+              <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   JZ:
                 </span>

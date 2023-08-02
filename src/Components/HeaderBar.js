@@ -69,7 +69,7 @@ export default function HeaderBar() {
     }, [handleClick]);
   
     return (
-      <li className={isActive ? 'active' : ''}>
+      <div className={isActive ? 'active' : ''}>
         {to === '/mode' ? (
           <div className={`mode-dropdown ${dropdownOpen ? 'open' : ''}`}>
             <button className="btn btn logo" onClick={handleMenuToggle}>
@@ -119,7 +119,7 @@ export default function HeaderBar() {
             )}
           </>
         )}
-      </li>
+      </div>
     );
   }  
 

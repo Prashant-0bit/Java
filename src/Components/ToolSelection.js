@@ -81,7 +81,7 @@ function ToolSelection() {
       <div className='Tool-container'>
         <div className='Dropdown'>
           <button
-            className="btn btn-dark dropdown-toggle"
+            className="dropdown-toggle"
             onClick={() => setShowMenu(!showMenu)}
             aria-expanded={showMenu}
           >
@@ -121,7 +121,7 @@ function ToolSelection() {
                 Tool Name: {selectedToolIndex !== null ? toolNames[selectedToolIndex].name : ''}
               </div>
               <div className='load-data'>
-                Load: <input
+                Tool Load: <input
                   id='load'
                   type="text"
                   value={selectedToolInfo ? selectedToolInfo.load : enteredText}
@@ -134,19 +134,19 @@ function ToolSelection() {
             </div>
             <div className='tool-input-data'>
               <div className='tool-column'>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     X:
                   </span>
                   <input id='x' type="text" value={selectedToolInfo ? selectedToolInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
                 </div>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     Y:
                   </span>
                   <input id='y' type="text" value={selectedToolInfo ? selectedToolInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
                 </div>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     Z:
                   </span>
@@ -154,19 +154,19 @@ function ToolSelection() {
                 </div>
               </div>
               <div className='tool-column'>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     A:
                   </span>
                   <input id='a' type="text" value={selectedToolInfo ? selectedToolInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
                 </div>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     B:
                   </span>
                   <input id='b' type="text" value={selectedToolInfo ? selectedToolInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
                 </div>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     C:
                   </span>
@@ -174,19 +174,19 @@ function ToolSelection() {
                 </div>
               </div>
               <div className='tool-column'>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     JX:
                   </span>
                   <input id='jx' type="text" value={selectedToolInfo ? selectedToolInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
                 </div>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     JY:
                   </span>
                   <input id='jy' type="text" value={selectedToolInfo ? selectedToolInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
                 </div>
-                <div>
+                <div className='tool-data-container'>
                   <span className='tool-data-name'>
                     JZ:
                   </span>

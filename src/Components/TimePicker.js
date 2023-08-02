@@ -13,10 +13,10 @@ export default function TimePicker() {
     return (
         <div>
             <div style={{ display: 'block' }}>
-                <p style={{ margin: '0 0.5rem 0 0.5rem', padding: '0', color: 'white' }}>{dateTime.toLocaleDateString(undefined, dateOptions)}</p>
+                <p style={{ margin: '0 0.5rem 0 0.5rem', padding: '0', color: 'white', fontSize:'12px' }}>{dateTime.toLocaleDateString(undefined, dateOptions)}</p>
             </div>
             <div style={{ display: 'block' }}>
-                <p style={{ margin: '0 0.5rem 0 0.5rem', padding: '0', color: 'white' }}>{dateTime.toLocaleTimeString(undefined, timeOptions)}</p>
+                <p style={{ margin: '0 0.5rem 0 0.5rem', padding: '0', color: 'white',fontSize:'12px' }}>{dateTime.toLocaleTimeString(undefined, timeOptions)}</p>
             </div>
         </div>
     );
