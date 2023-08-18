@@ -29,10 +29,8 @@ function BaseSelection() {
 
   const handleToggleMenu = (index) => {
     if (showMenu && selectedBaseIndex === index) {
-      // Close the menu if it is already open and the clicked index matches the selected tool index
       setShowMenu(false);
     } else {
-      // Open the menu and update the selected tool index
       setselectedBaseIndex(index);
       setShowMenu(true);
     }
@@ -48,7 +46,7 @@ function BaseSelection() {
     setselectedBaseIndex(index);
     setselectedBaseInfo(toolInfo);
     setShowKeyboard(true);
-    setShowMenu(false); // Close the menu after selecting a tool
+    setShowMenu(false); 
   };
 
   const handleInputChange = (e, field) => {
@@ -105,7 +103,13 @@ function BaseSelection() {
               Base Name: {selectedBaseIndex !== null ? baseNames[selectedBaseIndex].name : ''}
             </div>
             <div className='load-data'>
-              Workpiece Load: <input id='load' type="text" value={selectedBaseInfo ? selectedBaseInfo.load : ''} onChange={(e) => handleInputChange(e, 'load')} placeholder='kg' />
+              Workpiece Load: 
+              <input id='load' 
+              type="text" 
+              autoComplete='off' 
+              value={selectedBaseInfo ? selectedBaseInfo.load : ''} 
+              onChange={(e) => handleInputChange(e, 'load')} 
+              placeholder='kg' />
             </div>
           </div>
           <div className='tool-input-data'>
@@ -114,19 +118,19 @@ function BaseSelection() {
                 <span className='tool-data-name'>
                   X:
                 </span>
-                <input id='x' type="text" value={selectedBaseInfo ? selectedBaseInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
+                <input id='x' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
               </div >
               <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   Y:
                 </span>
-                <input id='y' type="text" value={selectedBaseInfo ? selectedBaseInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
+                <input id='y' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
               </div>
               <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   Z:
                 </span>
-                <input id='z' type="text" value={selectedBaseInfo ? selectedBaseInfo.z : ''} onChange={(e) => handleInputChange(e, 'z')} placeholder='mm' />
+                <input id='z' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.z : ''} onChange={(e) => handleInputChange(e, 'z')} placeholder='mm' />
               </div>
             </div >
             <div className='tool-column'>
@@ -134,19 +138,19 @@ function BaseSelection() {
                 <span className='tool-data-name'>
                   A:
                 </span>
-                <input id='a' type="text" value={selectedBaseInfo ? selectedBaseInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
+                <input id='a' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
               </div>
               <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   B:
                 </span>
-                <input id='b' type="text" value={selectedBaseInfo ? selectedBaseInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
+                <input id='b' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
               </div>
               <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   C:
                 </span>
-                <input id='c' type="text" value={selectedBaseInfo ? selectedBaseInfo.c : ''} onChange={(e) => handleInputChange(e, 'c')} placeholder='°' />
+                <input id='c' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.c : ''} onChange={(e) => handleInputChange(e, 'c')} placeholder='°' />
               </div>
             </div>
             <div className='tool-column'>
@@ -154,19 +158,19 @@ function BaseSelection() {
                 <span className='tool-data-name'>
                   JX:
                 </span>
-                <input id='jx' type="text" value={selectedBaseInfo ? selectedBaseInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
+                <input id='jx' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
               </div>
               <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   JY:
                 </span>
-                <input id='jy' type="text" value={selectedBaseInfo ? selectedBaseInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
+                <input id='jy' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
               </div>
               <div className='tool-data-container'>
                 <span className='tool-data-name'>
                   JZ:
                 </span>
-                <input id='jz' type="text" value={selectedBaseInfo ? selectedBaseInfo.jz : ''} onChange={(e) => handleInputChange(e, 'jz')} placeholder='kgm²' />
+                <input id='jz' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.jz : ''} onChange={(e) => handleInputChange(e, 'jz')} placeholder='kgm²' />
               </div>
             </div>
           </div>

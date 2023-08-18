@@ -22,7 +22,7 @@ function RobotMotion() {
 
   const handleButtonSelection = (buttonName) => {
     setActiveButton(buttonName);
-    navigate(buttonName); // Navigate to the corresponding path
+    navigate(buttonName);
   };
 
   return (

@@ -28,8 +28,8 @@ function ActualPosition() {
 
 
     const coordinates = {
-        Axis: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
         World: ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Axis: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
         Base: ['X', 'Y', 'Z', 'A', 'B', 'C'],
         Tool: ['X', 'Y', 'Z', 'A', 'B', 'C'],
     };
@@ -129,7 +129,7 @@ function ActualPosition() {
                             <input
                                 type='text'
                                 className='motion-input'
-                                value={accelerationValue + '%'}
+                                value={accelerationValue}
                                 onClick={() => handleOpenNumericKeypad()} 
                                 onChange={handleAccelerationChange}// Update this line
                             />
@@ -142,7 +142,7 @@ function ActualPosition() {
                             <input
                                 type='text'
                                 className='motion-input'
-                                value={velocityValue + '%'}
+                                value={velocityValue}
                                 onClick={() => handleOpenNumericKeypad()}
                                 onChange={handleVelocityChange} // Update this line
                             />

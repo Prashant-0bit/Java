@@ -6,7 +6,7 @@ import './Header.css';
 export default function DiscreteSliderMarks() {
   const [value, setValue] = useState(() => {
     const storedValue = localStorage.getItem('sliderValue');
-    return storedValue ? Number(storedValue) : 50;
+    return storedValue ? Number(storedValue) : 20;
   });
 
   const [isOpen, setIsOpen] = useState(false);

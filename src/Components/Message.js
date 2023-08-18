@@ -1,7 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Header.css";
 
 export default function Message() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+
+  const handlePopupOpen = (message) => {
+    setIsPopupOpen(true);
+    setPopupMessage(message);
+  };
+
+  const handlePopupClose = () => {
+    setIsPopupOpen(false);
+  };
+  
+
   return (
     <>
       <div className="message">
@@ -19,6 +32,11 @@ export default function Message() {
             style={{ color: "#F44336" }}
           ></i>
         </div>
+        <button className="message-buttons" onClick={() => handlePopupOpen("This is a popup message.")}>
+            <>this is popup<br></br>
+              this is popup<br></br>
+              this is popup<br></br></>
+        </button>
           <div className="acknowledge-button">
             <button type="button" className=" acknowledge-ok">
               OK
@@ -31,6 +49,18 @@ export default function Message() {
             </button>
           </div>
         </div>
+
+        {isPopupOpen && (
+  <>
+  <div className="popup-backdrop" onClick={handlePopupClose}></div>
+    <div className="message-popup">
+      <div className="popup-content">
+        <p className="message-display">{popupMessage}</p>
+        <div className="message-divider" />
+      </div>
+    </div>
+  </>
+)}
 
       <div className="Horizontal-divider" />
     </>

@@ -1,7 +1,6 @@
 import React from 'react';
 import ActualPosition from './Components/ActualPosition';
 import BaseSelection from './Components/BaseSelection';
-import Footer from './Components/Footer';
 import HeaderBar from './Components/HeaderBar';
 import HomePosition from './Components/HomePosition';
 import Language from './Components/SubComponents/Language';
