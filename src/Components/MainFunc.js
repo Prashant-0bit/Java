@@ -221,7 +221,7 @@ export default function MainFunc() {
                 setIsKeypadOpen={setIsKeypadOpen}
                 isCapsLockPressed={false}
                 toggleCapsLock={() => {}}
-                handleKeypadEnter={handleKeypadEnter} // Handle Enter key directly in the handleKeypadEnter function
+                handleKeypadEnter={handleKeypadEnter}
               />
             )}
             <div className="new-project-input-actions">

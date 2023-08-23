@@ -128,6 +128,7 @@ function ActualPosition() {
                         <div className='motion-input-container'>
                             <input
                                 type='text'
+                                id='acceleration'
                                 className='motion-input'
                                 value={accelerationValue}
                                 onClick={() => handleOpenNumericKeypad()} 
@@ -140,6 +141,7 @@ function ActualPosition() {
                         Velocity
                         <div className='motion-input-container'>
                             <input
+                            id='velocity'
                                 type='text'
                                 className='motion-input'
                                 value={velocityValue}

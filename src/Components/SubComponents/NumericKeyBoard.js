@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { MdOutlineKeyboardReturn, MdOutlineKeyboardBackspace } from 'react-icons/md';
+import { HiMinus } from 'react-icons/hi';
 import { FcCheckmark } from 'react-icons/fc';
 
-function NumericKeypad({ onKeyPress, onClose, onVelocityUpdate, onAccelerationUpdate }) {
+function NumericKeypad({ onKeyPress, onClose, activeInput, inputValues, setInputValues }) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartX, setDragStartX] = useState(0);
   const [dragStartY, setDragStartY] = useState(0);
@@ -13,25 +14,41 @@ function NumericKeypad({ onKeyPress, onClose, onVelocityUpdate, onAccelerationUp
     onKeyPress(value);
   };
 
-  const handleNumericKeyPress = (e) => {
-    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', 'Enter', 'Backspace', 'Check'];
-    if (!validKeys.includes(e.key)) {
-      e.preventDefault();
-    }
-  };
-
   const handleButtonClick = (value) => {
     if (value === 'Check') {
       onClose();
     } else if (value === 'Backspace') {
-      handleBackspaceClick(); 
+      handleBackspaceClick();
     } else {
-      onKeyPress(value); 
+      onKeyPress(value);
     }
   };
 
   const handleBackspaceClick = () => {
-    onKeyPress('Backspace');
+    if (activeInput !== null) {
+      const updatedValue = inputValues[activeInput].slice(0, -1);
+      setInputValues((prevInputValues) => ({
+        ...prevInputValues,
+        [activeInput]: updatedValue,
+      }));
+    }
+  };
+
+  const handleNumericKeyPress = (e) => {
+    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', 'Enter', 'Backspace', 'Check', 'Minus'];
+    if (validKeys.includes(e.key)) {
+      if (activeInput !== null && e.key !== 'Backspace') {
+        const inputValue = inputValues[activeInput];
+        if (inputValue.length < 7) {
+          setInputValues((prevInputValues) => ({
+            ...prevInputValues,
+            [activeInput]: inputValue + e.key,
+          }));
+        }
+      }
+    } else {
+      e.preventDefault();
+    }
   };
 
   const handleMouseDown = (e) => {
@@ -44,31 +61,31 @@ function NumericKeypad({ onKeyPress, onClose, onVelocityUpdate, onAccelerationUp
     if (isDragging) {
       const offsetX = e.clientX - dragStartX;
       const offsetY = e.clientY - dragStartY;
-  
+
       const maxLeft = window.innerWidth - 240; // Adjust the value based on your keypad's width
       const maxTop = window.innerHeight - 200; // Adjust the value based on your keypad's height
       const minLeft = 0;
       const minTop = 0;
-  
+
       // Calculate the new positions for keypadLeft and keypadTop
       let newLeft = keypadLeft - offsetX; // Subtract offsetX here
       let newTop = keypadTop - offsetY; // Subtract offsetY here
-  
+
       // Ensure the keypad does not go outside the screen boundaries
       newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
       newTop = Math.max(minTop, Math.min(newTop, maxTop));
-  
+
       // Update the dragStartX and dragStartY to the current mouse position
       setDragStartX(e.clientX);
       setDragStartY(e.clientY);
-  
+
       // Update the keypad position
       setKeypadLeft(newLeft);
       setKeypadTop(newTop);
     }
   };
-  
-  
+
+
   const handleMouseUp = () => {
     setIsDragging(false);
   };
@@ -95,7 +112,7 @@ function NumericKeypad({ onKeyPress, onClose, onVelocityUpdate, onAccelerationUp
       setDragStartY(e.touches[0].clientY);
     }
   };
-  
+
 
   const handleTouchEnd = () => {
     setIsDragging(false);
@@ -131,9 +148,10 @@ function NumericKeypad({ onKeyPress, onClose, onVelocityUpdate, onAccelerationUp
       <div className="numeric-row">
         <button className="Numer-Key" onClick={() => handleButtonClick('.')}>.</button>
         <button className="Numer-Key" onClick={() => handleButtonClick(0)}>0</button>
-        <button className="Numer-Key" onClick={() => handleButtonClick('Enter')}><MdOutlineKeyboardReturn /></button>
+        <button className='Numer-Key' onClick={() => handleButtonClick('-')}><HiMinus /></button>
       </div>
       <div className="numeric-row">
+        <button className="Numer-Key" onClick={() => handleButtonClick('Enter')}><MdOutlineKeyboardReturn /></button>
         <button className="Numer-Key" onClick={handleBackspaceClick}><MdOutlineKeyboardBackspace /></button>
         <button className="Numer-Key" onClick={() => handleButtonClick('Check')}><FcCheckmark /></button>
       </div>

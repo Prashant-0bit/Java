@@ -1,181 +1,301 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import NumericKeypad from './SubComponents/NumericKeyBoard';
 import Keypad from './SubComponents/Keyboard';
+import './robotmotion.css';
 import { HiPencil } from 'react-icons/hi';
 
+
 function BaseSelection() {
-  const [showMenu, setShowMenu] = useState(false);
-  const [showKeyboard, setShowKeyboard] = useState(false);
-  const [baseNames, setbaseNames] = useState([...Array(16)].map((_, index) => ({
-    name: `Undefined [${index}]`,
-    x: '',
-    y: '',
-    z: '',
-    a: '',
-    b: '',
-    c: '',
-    jx: '',
-    jy: '',
-    jz: '',
-    load: '',
-  })));
-  const [selectedBaseIndex, setselectedBaseIndex] = useState(null);
-  const [selectedBaseInfo, setselectedBaseInfo] = useState(null);
+  const initialBaseList = useMemo(() => [
+    { id: 1, name: 'Base 1', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 2, name: 'Base 2', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 3, name: 'Base 3', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 4, name: 'Base 4', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 5, name: 'Base 5', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 6, name: 'Base 6', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 7, name: 'Base 7', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 8, name: 'Base 8', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 9, name: 'Base 9', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 10, name: 'Base 10', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 11, name: 'Base 11', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 12, name: 'Base 12', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 13, name: 'Base 13', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 14, name: 'Base 14', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 15, name: 'Base 15', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 16, name: 'Base 16', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 17, name: 'Base 17', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 18, name: 'Base 18', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 19, name: 'Base 19', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 20, name: 'Base 20', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 21, name: 'Base 21', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 22, name: 'Base 22', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 23, name: 'Base 23', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 24, name: 'Base 24', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 25, name: 'Base 25', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 26, name: 'Base 26', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 27, name: 'Base 27', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 28, name: 'Base 28', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 29, name: 'Base 29', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 30, name: 'Base 30', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 31, name: 'Base 31', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 32, name: 'Base 32', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
 
-  const handleRename = (index, name) => {
-    const updatedbaseNames = [...baseNames];
-    updatedbaseNames[index].name = name;
-    setbaseNames(updatedbaseNames);
-  };
+  ], []);
 
-  const handleToggleMenu = (index) => {
-    if (showMenu && selectedBaseIndex === index) {
-      setShowMenu(false);
-    } else {
-      setselectedBaseIndex(index);
-      setShowMenu(true);
+
+  const [toolList, setToolList] = useState(initialBaseList);
+  const [renamingTool, setRenamingTool] = useState(false);
+  const [activeInput, setActiveInput] = useState(null);
+  const [selectedTool, setSelectedTool] = useState(null);
+  const [inputValues, setInputValues] = useState(null);
+  const [toolName, setToolName] = useState("");
+  const [virtualKeypadText, setVirtualKeypadText] = useState("");
+  const [isVirtualKeypadOpen, setIsVirtualKeypadOpen] = useState(false);
+
+  const handleVirtualKeypadInput = (value) => {
+    if (virtualKeypadText.length < 25) {
+      setVirtualKeypadText(virtualKeypadText + value);
+      setToolName(toolName + value);
+
+      if (selectedTool !== null) {
+        const updatedToolList = [...toolList];
+        updatedToolList[selectedTool - 1].name = toolName + value;
+        setToolList(updatedToolList);
+      }
     }
   };
 
-  const handleToggleKeyboard = (index) => {
-    setselectedBaseIndex(index);
-    setShowKeyboard(!showKeyboard);
-  };
-
-  const handleSelectBase = (index) => {
-    const toolInfo = baseNames[index];
-    setselectedBaseIndex(index);
-    setselectedBaseInfo(toolInfo);
-    setShowKeyboard(true);
-    setShowMenu(false); 
-  };
-
-  const handleInputChange = (e, field) => {
-    if (selectedBaseInfo) {
-      const value = e.target.value;
-      const validValue = value.replace(/[^0-9.]/g, '').slice(0, 7);
-      const updatedToolInfo = { ...selectedBaseInfo };
-      updatedToolInfo[field] = validValue;
-      setselectedBaseInfo(updatedToolInfo);
+  const handleVirtualKeypadEnter = () => {
+    if (isVirtualKeypadOpen) {
+      setIsVirtualKeypadOpen(false);
+      setRenamingTool(false);
+      if (toolName !== "") {
+        const updatedToolList = [...toolList];
+        updatedToolList[selectedTool - 1].name = toolName;
+        setToolList(updatedToolList);
+        setToolName("");
+      }
     }
   };
+
+  
+  const handleInputClick = (fieldName) => {
+    setActiveInput(fieldName);
+    const inputElement = document.getElementById(fieldName);
+    if (inputElement) {
+      inputElement.focus();
+    }
+  };
+
+  const handleNumericKeyPress = (value) => {
+    if (activeInput !== null && inputValues[activeInput].length < 7) {
+      const newValue = inputValues[activeInput] + value;
+
+      if (value === '.') {
+        if (!inputValues[activeInput].includes('.')) {
+          setInputValues((prevInputValues) => ({
+            ...prevInputValues,
+            [activeInput]: newValue,
+          }));
+        }
+      } else if (value === '-') {
+        if (!inputValues[activeInput].includes('-')) {
+          setInputValues((prevInputValues) => ({
+            ...prevInputValues,
+            [activeInput]: newValue,
+          }));
+        }
+      } else {
+        const decimalIndex = newValue.indexOf('.');
+        if (decimalIndex === -1 || newValue.length - decimalIndex <= 3) {
+          setInputValues((prevInputValues) => ({
+            ...prevInputValues,
+            [activeInput]: newValue,
+          }));
+        }
+      }
+    }
+  };
+
+  const handleCloseKeypad = () => {
+    setActiveInput(null);
+  };
+
+  const handleToolClick = (toolId) => {
+    const selectedToolInfo = toolList.find((tool) => tool.id === toolId).info;
+    setSelectedTool(toolId);
+    setInputValues({ ...selectedToolInfo });
+  };
+
+  const handleRenameTool = () => {
+    if (selectedTool !== null) {
+      setIsVirtualKeypadOpen(true); // Open the virtual keypad
+      setRenamingTool(true);
+      setToolName(toolList[selectedTool - 1].name);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedTool !== null) {
+      const selectedToolInfo = toolList.find((tool) => tool.id === selectedTool).info;
+      setInputValues({ ...selectedToolInfo });
+    }
+  }, [selectedTool, toolList]);
 
   return (
-    <div className='Tool-container'>
-      <div className='Dropdown'>
-        <button
-          className="dropdown-toggle"
-          onClick={() => setShowMenu(!showMenu)}
-          aria-expanded={showMenu}
-        >
-          Base Selection
-        </button>
-      </div>
-      {showMenu && (
-        <ul className="dropdown-menu dropdown-menu-dark show" onClick={(e) => e.stopPropagation()}>
-          <div className="dropdown-menu-scroll">
-            {[...Array(16)].map((_, index) => (
-              <React.Fragment key={index}>
-                <li className="tool-selection">
-                  <button
-                    className="tool-button"
-                    onClick={() => handleSelectBase(index)}
-                  >
-                    <div className="tool-name">{baseNames[index].name}</div>
-                  </button>
-                  <div className="tool-options">
-                    <HiPencil
-                      className="pencil-icon"
-                      onClick={() => handleToggleKeyboard(index)}
-                    />
-                  </div>
-                </li>
-                <div className="divider" />
-              </React.Fragment>
-            ))}
+    <div className="Tool-container">
+      <div className='tool-info-text'>Base Information</div>
+      <div className="tool-list">
+        {toolList.map((tool) => (
+          <div
+            key={tool.id}
+            className={`tool-item ${selectedTool === tool.id ? 'selected-tool' : ''}`}
+            onClick={() => handleToolClick(tool.id)}
+          >
+            {tool.name}
           </div>
-        </ul>
+        ))}
+      </div>
+      <div className='tool-info'>
+        {renamingTool ? (
+            <input
+              id='rename'
+              className='rename-input'
+              type="text"
+              value={toolName}
+              onChange={(e) => setToolName(e.target.value)}
+              autoFocus
+            />
+        ) : (
+          <>
+            <div className='tool-name'>
+              Base Name: {selectedTool !== null ? toolList.find((tool) => tool.id === selectedTool).name : ''}
+              <button className='rename-tool' onClick={handleRenameTool}><HiPencil /></button>
+            </div>
+          </>
+        )}
+
+        {selectedTool !== null && (
+          <div className="input-container">
+            <div className="column">
+              <div className={`input-field ${activeInput === 'x' ? 'selected-input' : ''}`}>
+                <span className="input-label">X</span>
+                <input
+                  type="text"
+                  id="x"
+                  value={inputValues.x}
+                  onClick={() => handleInputClick('x')}
+                  readOnly
+                />
+              </div>
+              <div className={`input-field ${activeInput === 'y' ? 'selected-input' : ''}`}>
+                <span className="input-label">Y</span>
+                <input
+                  type="text"
+                  id="y"
+                  value={inputValues.y}
+                  onClick={() => handleInputClick('y')}
+                  readOnly
+                />
+              </div>
+              <div className={`input-field ${activeInput === 'z' ? 'selected-input' : ''}`}>
+                <span className="input-label">Z</span>
+                <input
+                  type="text"
+                  id="z"
+                  value={inputValues.z}
+                  onClick={() => handleInputClick('z')}
+                  readOnly
+                />
+              </div>
+            </div>
+            <div className="column">
+              <div className={`input-field ${activeInput === 'a' ? 'selected-input' : ''}`}>
+                <span className="input-label">A</span>
+                <input
+                  type="text"
+                  id="a"
+                  value={inputValues.a}
+                  onClick={() => handleInputClick('a')}
+                  readOnly
+                />
+              </div>
+              <div className={`input-field ${activeInput === 'b' ? 'selected-input' : ''}`}>
+                <span className="input-label">B</span>
+                <input
+                  type="text"
+                  id="b"
+                  value={inputValues.b}
+                  onClick={() => handleInputClick('b')}
+                  readOnly
+                />
+              </div><div className={`input-field ${activeInput === 'c' ? 'selected-input' : ''}`}>
+                <span className="input-label">C</span>
+                <input
+                  type="text"
+                  id="c"
+                  value={inputValues.c}
+                  onClick={() => handleInputClick('c')}
+                  readOnly
+                />
+              </div>
+            </div>
+            <div className="column">
+              <div className={`input-field ${activeInput === 'jx' ? 'selected-input' : ''}`}>
+                <span className="input-label">JX</span>
+                <input
+                  type="text"
+                  id="jx"
+                  value={inputValues.jx}
+                  onClick={() => handleInputClick('jx')}
+                  readOnly
+                />
+              </div>
+              <div className={`input-field ${activeInput === 'jy' ? 'selected-input' : ''}`}>
+                <span className="input-label">JY</span>
+                <input
+                  type="text"
+                  id="jy"
+                  value={inputValues.jy}
+                  onClick={() => handleInputClick('jy')}
+                  readOnly
+                />
+              </div>
+              <div className={`input-field ${activeInput === 'jz' ? 'selected-input' : ''}`}>
+                <span className="input-label">JZ</span>
+                <input
+                  type="text"
+                  id="jz"
+                  value={inputValues.jz}
+                  onClick={() => handleInputClick('jz')}
+                  readOnly
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {activeInput !== null && (
+        <NumericKeypad
+          onKeyPress={handleNumericKeyPress}
+          onClose={handleCloseKeypad}
+          activeInput={activeInput}
+          inputValues={inputValues}
+          setInputValues={setInputValues}
+        />
       )}
-      <div className="selected-tool-info">
-        <h5 className='Tool-info'>Selected Base Information</h5>
-        <div className="tool-data">
-          <div className='tool-container'>
-            <div className='selected-tool-name'>
-              Base Name: {selectedBaseIndex !== null ? baseNames[selectedBaseIndex].name : ''}
-            </div>
-            <div className='load-data'>
-              Workpiece Load: 
-              <input id='load' 
-              type="text" 
-              autoComplete='off' 
-              value={selectedBaseInfo ? selectedBaseInfo.load : ''} 
-              onChange={(e) => handleInputChange(e, 'load')} 
-              placeholder='kg' />
-            </div>
-          </div>
-          <div className='tool-input-data'>
-            <div className='tool-column'>
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  X:
-                </span>
-                <input id='x' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.x : ''} onChange={(e) => handleInputChange(e, 'x')} placeholder='mm' />
-              </div >
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  Y:
-                </span>
-                <input id='y' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.y : ''} onChange={(e) => handleInputChange(e, 'y')} placeholder='mm' />
-              </div>
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  Z:
-                </span>
-                <input id='z' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.z : ''} onChange={(e) => handleInputChange(e, 'z')} placeholder='mm' />
-              </div>
-            </div >
-            <div className='tool-column'>
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  A:
-                </span>
-                <input id='a' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.a : ''} onChange={(e) => handleInputChange(e, 'a')} placeholder='°' />
-              </div>
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  B:
-                </span>
-                <input id='b' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.b : ''} onChange={(e) => handleInputChange(e, 'b')} placeholder='°' />
-              </div>
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  C:
-                </span>
-                <input id='c' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.c : ''} onChange={(e) => handleInputChange(e, 'c')} placeholder='°' />
-              </div>
-            </div>
-            <div className='tool-column'>
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  JX:
-                </span>
-                <input id='jx' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.jx : ''} onChange={(e) => handleInputChange(e, 'jx')} placeholder='kgm²' />
-              </div>
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  JY:
-                </span>
-                <input id='jy' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.jy : ''} onChange={(e) => handleInputChange(e, 'jy')} placeholder='kgm²' />
-              </div>
-              <div className='tool-data-container'>
-                <span className='tool-data-name'>
-                  JZ:
-                </span>
-                <input id='jz' type="text" autoComplete='off' value={selectedBaseInfo ? selectedBaseInfo.jz : ''} onChange={(e) => handleInputChange(e, 'jz')} placeholder='kgm²' />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      {isVirtualKeypadOpen && (
+        <Keypad
+          enteredText={virtualKeypadText}
+          setEnteredText={setVirtualKeypadText}
+          handleKeypadInput={handleVirtualKeypadInput}
+          handleKeypadEnter={handleVirtualKeypadEnter}
+          isCapsLockPressed={false}
+          toggleCapsLock={() => { }}
+        />
+      )}
     </div>
   );
 }
