@@ -7,34 +7,36 @@ import { HiPencil } from 'react-icons/hi';
 
 function ToolSelection() {
   const initialToolList = useMemo(() => [
-    { id: 1, name: 'Tool 1', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 2, name: 'Tool 2', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 3, name: 'Tool 3', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 4, name: 'Tool 4', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 5, name: 'Tool 5', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 6, name: 'Tool 6', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 7, name: 'Tool 7', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 8, name: 'Tool 8', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 9, name: 'Tool 9', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 10, name: 'Tool 10', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 11, name: 'Tool 11', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 12, name: 'Tool 12', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 13, name: 'Tool 13', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 14, name: 'Tool 14', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 15, name: 'Tool 15', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 16, name: 'Tool 16', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 1,  name: 'Tool 1',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 2,  name: 'Tool 2',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 3,  name: 'Tool 3',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 4,  name: 'Tool 4',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 5,  name: 'Tool 5',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 6,  name: 'Tool 6',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 7,  name: 'Tool 7',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 8,  name: 'Tool 8',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 9,  name: 'Tool 9',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 10, name: 'Tool 10', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 11, name: 'Tool 11', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 12, name: 'Tool 12', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 13, name: 'Tool 13', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 14, name: 'Tool 14', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 15, name: 'Tool 15', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
+    { id: 16, name: 'Tool 16', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
 
   ], []);
 
 
   const [toolList, setToolList] = useState(initialToolList);
   const [renamingTool, setRenamingTool] = useState(false);
-  const [activeInput, setActiveInput] = useState(null);
   const [selectedTool, setSelectedTool] = useState(null);
-  const [inputValues, setInputValues] = useState(null);
   const [toolName, setToolName] = useState("");
   const [virtualKeypadText, setVirtualKeypadText] = useState("");
   const [isVirtualKeypadOpen, setIsVirtualKeypadOpen] = useState(false);
+  const [inputValues, setInputValues] = useState(null);
+  const [activeInput, setActiveInput] = useState(null);
+  const [saveButtonClicked, setSaveButtonClicked] = useState(false);
+
 
   const handleVirtualKeypadInput = (value) => {
     if (virtualKeypadText.length < 25) {
@@ -62,7 +64,7 @@ function ToolSelection() {
     }
   };
 
-  
+
   const handleInputClick = (fieldName) => {
     setActiveInput(fieldName);
     const inputElement = document.getElementById(fieldName);
@@ -130,26 +132,29 @@ function ToolSelection() {
     <div className="Tool-container">
       <div className='tool-info-text'>Tool Information</div>
       <div className="tool-list">
-        {toolList.map((tool) => (
-          <div
-            key={tool.id}
-            className={`tool-item ${selectedTool === tool.id ? 'selected-tool' : ''}`}
-            onClick={() => handleToolClick(tool.id)}
-          >
-            {tool.name}
+        {toolList.map((tool, index) => (
+          <div key={tool.id}>
+            <div
+              key={tool.id}
+              className={`tool-item ${selectedTool === tool.id ? 'selected-tool' : ''}`}
+              onClick={() => handleToolClick(tool.id)}
+            >
+              {tool.name}
+            </div>
+            {index < toolList.length - 1 && <hr className="divider-line" />}
           </div>
         ))}
       </div>
       <div className='tool-info'>
         {renamingTool ? (
-            <input
-              id='rename'
-              className='rename-input'
-              type="text"
-              value={toolName}
-              onChange={(e) => setToolName(e.target.value)}
-              autoFocus
-            />
+          <input
+            id='rename'
+            className='rename-input'
+            type="text"
+            value={toolName}
+            onChange={(e) => setToolName(e.target.value)}
+            autoFocus
+          />
         ) : (
           <>
             <div className='tool-name'>
@@ -160,103 +165,125 @@ function ToolSelection() {
         )}
 
         {selectedTool !== null && (
-          <div className="input-container">
-            <div className="column">
-              <div className={`input-field ${activeInput === 'x' ? 'selected-input' : ''}`}>
-                <span className="input-label">X</span>
-                <input
-                  type="text"
-                  id="x"
-                  value={inputValues.x}
-                  onClick={() => handleInputClick('x')}
-                  readOnly
-                />
+          <>
+            <div className={`load-input-field ${activeInput === 'load' ? 'selected-input' : ''}`}>
+              <span className="load-input-label">Tool load</span>
+              <input
+                type="text"
+                id="load"
+                value={inputValues.load}
+                onClick={() => handleInputClick('load')}
+                readOnly
+              />
+              <button
+              type='button'
+                className={`save-button ${saveButtonClicked ? 'clicked' : ''}`}
+                onClick={() => {
+                  setSaveButtonClicked(true);
+                }}
+              >
+                Save
+              </button>
+            </div>
+
+            <div className="input-container">
+              <div className="column">
+                <div className={`input-field ${activeInput === 'x' ? 'selected-input' : ''}`}>
+                  <span className="input-label">X</span>
+                  <input
+                    type="text"
+                    id="x"
+                    value={inputValues.x}
+                    onClick={() => handleInputClick('x')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'y' ? 'selected-input' : ''}`}>
+                  <span className="input-label">Y</span>
+                  <input
+                    type="text"
+                    id="y"
+                    value={inputValues.y}
+                    onClick={() => handleInputClick('y')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'z' ? 'selected-input' : ''}`}>
+                  <span className="input-label">Z</span>
+                  <input
+                    type="text"
+                    id="z"
+                    value={inputValues.z}
+                    onClick={() => handleInputClick('z')}
+                    readOnly
+                  />
+                </div>
               </div>
-              <div className={`input-field ${activeInput === 'y' ? 'selected-input' : ''}`}>
-                <span className="input-label">Y</span>
-                <input
-                  type="text"
-                  id="y"
-                  value={inputValues.y}
-                  onClick={() => handleInputClick('y')}
-                  readOnly
-                />
+              <div className="column">
+                <div className={`input-field ${activeInput === 'a' ? 'selected-input' : ''}`}>
+                  <span className="input-label">A</span>
+                  <input
+                    type="text"
+                    id="a"
+                    value={inputValues.a}
+                    onClick={() => handleInputClick('a')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'b' ? 'selected-input' : ''}`}>
+                  <span className="input-label">B</span>
+                  <input
+                    type="text"
+                    id="b"
+                    value={inputValues.b}
+                    onClick={() => handleInputClick('b')}
+                    readOnly
+                  />
+                </div><div className={`input-field ${activeInput === 'c' ? 'selected-input' : ''}`}>
+                  <span className="input-label">C</span>
+                  <input
+                    type="text"
+                    id="c"
+                    value={inputValues.c}
+                    onClick={() => handleInputClick('c')}
+                    readOnly
+                  />
+                </div>
               </div>
-              <div className={`input-field ${activeInput === 'z' ? 'selected-input' : ''}`}>
-                <span className="input-label">Z</span>
-                <input
-                  type="text"
-                  id="z"
-                  value={inputValues.z}
-                  onClick={() => handleInputClick('z')}
-                  readOnly
-                />
+              <div className="column">
+                <div className={`input-field ${activeInput === 'jx' ? 'selected-input' : ''}`}>
+                  <span className="input-label">JX</span>
+                  <input
+                    type="text"
+                    id="jx"
+                    value={inputValues.jx}
+                    onClick={() => handleInputClick('jx')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'jy' ? 'selected-input' : ''}`}>
+                  <span className="input-label">JY</span>
+                  <input
+                    type="text"
+                    id="jy"
+                    value={inputValues.jy}
+                    onClick={() => handleInputClick('jy')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'jz' ? 'selected-input' : ''}`}>
+                  <span className="input-label">JZ</span>
+                  <input
+                    type="text"
+                    id="jz"
+                    value={inputValues.jz}
+                    onClick={() => handleInputClick('jz')}
+                    readOnly
+                  />
+                </div>
               </div>
             </div>
-            <div className="column">
-              <div className={`input-field ${activeInput === 'a' ? 'selected-input' : ''}`}>
-                <span className="input-label">A</span>
-                <input
-                  type="text"
-                  id="a"
-                  value={inputValues.a}
-                  onClick={() => handleInputClick('a')}
-                  readOnly
-                />
-              </div>
-              <div className={`input-field ${activeInput === 'b' ? 'selected-input' : ''}`}>
-                <span className="input-label">B</span>
-                <input
-                  type="text"
-                  id="b"
-                  value={inputValues.b}
-                  onClick={() => handleInputClick('b')}
-                  readOnly
-                />
-              </div><div className={`input-field ${activeInput === 'c' ? 'selected-input' : ''}`}>
-                <span className="input-label">C</span>
-                <input
-                  type="text"
-                  id="c"
-                  value={inputValues.c}
-                  onClick={() => handleInputClick('c')}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className="column">
-              <div className={`input-field ${activeInput === 'jx' ? 'selected-input' : ''}`}>
-                <span className="input-label">JX</span>
-                <input
-                  type="text"
-                  id="jx"
-                  value={inputValues.jx}
-                  onClick={() => handleInputClick('jx')}
-                  readOnly
-                />
-              </div>
-              <div className={`input-field ${activeInput === 'jy' ? 'selected-input' : ''}`}>
-                <span className="input-label">JY</span>
-                <input
-                  type="text"
-                  id="jy"
-                  value={inputValues.jy}
-                  onClick={() => handleInputClick('jy')}
-                  readOnly
-                />
-              </div>
-              <div className={`input-field ${activeInput === 'jz' ? 'selected-input' : ''}`}>
-                <span className="input-label">JZ</span>
-                <input
-                  type="text"
-                  id="jz"
-                  value={inputValues.jz}
-                  onClick={() => handleInputClick('jz')}
-                  readOnly
-                />
-              </div>
-            </div>
-          </div>
+          </>
         )}
       </div>
 

@@ -7,38 +7,38 @@ import { HiPencil } from 'react-icons/hi';
 
 function BaseSelection() {
   const initialBaseList = useMemo(() => [
-    { id: 1, name: 'Base 1', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 2, name: 'Base 2', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 3, name: 'Base 3', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 4, name: 'Base 4', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 5, name: 'Base 5', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 6, name: 'Base 6', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 7, name: 'Base 7', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 8, name: 'Base 8', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 9, name: 'Base 9', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 10, name: 'Base 10', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 11, name: 'Base 11', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 12, name: 'Base 12', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 13, name: 'Base 13', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 14, name: 'Base 14', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 15, name: 'Base 15', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 16, name: 'Base 16', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 17, name: 'Base 17', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 18, name: 'Base 18', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 19, name: 'Base 19', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 20, name: 'Base 20', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 21, name: 'Base 21', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 22, name: 'Base 22', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 23, name: 'Base 23', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 24, name: 'Base 24', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 25, name: 'Base 25', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 26, name: 'Base 26', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 27, name: 'Base 27', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 28, name: 'Base 28', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 29, name: 'Base 29', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 30, name: 'Base 30', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 31, name: 'Base 31', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
-    { id: 32, name: 'Base 32', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '' } },
+    { id: 1, name: 'Base 1', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 2, name: 'Base 2', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 3, name: 'Base 3', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 4, name: 'Base 4', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 5, name: 'Base 5', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 6, name: 'Base 6', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 7, name: 'Base 7', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 8, name: 'Base 8', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 9, name: 'Base 9', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 10, name: 'Base 10', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 11, name: 'Base 11', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 12, name: 'Base 12', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 13, name: 'Base 13', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 14, name: 'Base 14', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 15, name: 'Base 15', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 16, name: 'Base 16', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 17, name: 'Base 17', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 18, name: 'Base 18', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 19, name: 'Base 19', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 20, name: 'Base 20', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 21, name: 'Base 21', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 22, name: 'Base 22', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 23, name: 'Base 23', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 24, name: 'Base 24', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 25, name: 'Base 25', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 26, name: 'Base 26', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 27, name: 'Base 27', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 28, name: 'Base 28', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 29, name: 'Base 29', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 30, name: 'Base 30', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 31, name: 'Base 31', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
+    { id: 32, name: 'Base 32', info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', workload: '' } },
 
   ], []);
 
@@ -51,6 +51,7 @@ function BaseSelection() {
   const [toolName, setToolName] = useState("");
   const [virtualKeypadText, setVirtualKeypadText] = useState("");
   const [isVirtualKeypadOpen, setIsVirtualKeypadOpen] = useState(false);
+  const [saveButtonClicked, setSaveButtonClicked]= useState(false);
 
   const handleVirtualKeypadInput = (value) => {
     if (virtualKeypadText.length < 25) {
@@ -78,7 +79,7 @@ function BaseSelection() {
     }
   };
 
-  
+
   const handleInputClick = (fieldName) => {
     setActiveInput(fieldName);
     const inputElement = document.getElementById(fieldName);
@@ -146,26 +147,29 @@ function BaseSelection() {
     <div className="Tool-container">
       <div className='tool-info-text'>Base Information</div>
       <div className="tool-list">
-        {toolList.map((tool) => (
-          <div
-            key={tool.id}
-            className={`tool-item ${selectedTool === tool.id ? 'selected-tool' : ''}`}
-            onClick={() => handleToolClick(tool.id)}
-          >
-            {tool.name}
+        {toolList.map((tool, index) => (
+          <div key={tool.id}>
+            <div
+              key={tool.id}
+              className={`tool-item ${selectedTool === tool.id ? 'selected-tool' : ''}`}
+              onClick={() => handleToolClick(tool.id)}
+            >
+              {tool.name}
+            </div>
+            {index < toolList.length - 1 && <hr className="divider-line" />}
           </div>
         ))}
       </div>
       <div className='tool-info'>
         {renamingTool ? (
-            <input
-              id='rename'
-              className='rename-input'
-              type="text"
-              value={toolName}
-              onChange={(e) => setToolName(e.target.value)}
-              autoFocus
-            />
+          <input
+            id='rename'
+            className='rename-input'
+            type="text"
+            value={toolName}
+            onChange={(e) => setToolName(e.target.value)}
+            autoFocus
+          />
         ) : (
           <>
             <div className='tool-name'>
@@ -176,103 +180,123 @@ function BaseSelection() {
         )}
 
         {selectedTool !== null && (
-          <div className="input-container">
-            <div className="column">
-              <div className={`input-field ${activeInput === 'x' ? 'selected-input' : ''}`}>
-                <span className="input-label">X</span>
-                <input
-                  type="text"
-                  id="x"
-                  value={inputValues.x}
-                  onClick={() => handleInputClick('x')}
-                  readOnly
-                />
+          <>
+            <div className={`load-input-field ${activeInput === 'workload' ? 'selected-input' : ''}`}>
+              <span className="load-input-label">Workpiece load</span>
+              <input
+                type="text"
+                id="workload"
+                value={inputValues.workload}
+                onClick={() => handleInputClick('workload')}
+                readOnly
+              />
+              <button
+                className={`save-button ${saveButtonClicked ? 'clicked' : ''}`}
+                onClick={() => {
+                  setSaveButtonClicked(true);
+                }}
+              >
+                Save
+              </button>
+            </div>
+            <div className="input-container">
+              <div className="column">
+                <div className={`input-field ${activeInput === 'x' ? 'selected-input' : ''}`}>
+                  <span className="input-label">X</span>
+                  <input
+                    type="text"
+                    id="x"
+                    value={inputValues.x}
+                    onClick={() => handleInputClick('x')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'y' ? 'selected-input' : ''}`}>
+                  <span className="input-label">Y</span>
+                  <input
+                    type="text"
+                    id="y"
+                    value={inputValues.y}
+                    onClick={() => handleInputClick('y')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'z' ? 'selected-input' : ''}`}>
+                  <span className="input-label">Z</span>
+                  <input
+                    type="text"
+                    id="z"
+                    value={inputValues.z}
+                    onClick={() => handleInputClick('z')}
+                    readOnly
+                  />
+                </div>
               </div>
-              <div className={`input-field ${activeInput === 'y' ? 'selected-input' : ''}`}>
-                <span className="input-label">Y</span>
-                <input
-                  type="text"
-                  id="y"
-                  value={inputValues.y}
-                  onClick={() => handleInputClick('y')}
-                  readOnly
-                />
+              <div className="column">
+                <div className={`input-field ${activeInput === 'a' ? 'selected-input' : ''}`}>
+                  <span className="input-label">A</span>
+                  <input
+                    type="text"
+                    id="a"
+                    value={inputValues.a}
+                    onClick={() => handleInputClick('a')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'b' ? 'selected-input' : ''}`}>
+                  <span className="input-label">B</span>
+                  <input
+                    type="text"
+                    id="b"
+                    value={inputValues.b}
+                    onClick={() => handleInputClick('b')}
+                    readOnly
+                  />
+                </div><div className={`input-field ${activeInput === 'c' ? 'selected-input' : ''}`}>
+                  <span className="input-label">C</span>
+                  <input
+                    type="text"
+                    id="c"
+                    value={inputValues.c}
+                    onClick={() => handleInputClick('c')}
+                    readOnly
+                  />
+                </div>
               </div>
-              <div className={`input-field ${activeInput === 'z' ? 'selected-input' : ''}`}>
-                <span className="input-label">Z</span>
-                <input
-                  type="text"
-                  id="z"
-                  value={inputValues.z}
-                  onClick={() => handleInputClick('z')}
-                  readOnly
-                />
+              <div className="column">
+                <div className={`input-field ${activeInput === 'jx' ? 'selected-input' : ''}`}>
+                  <span className="input-label">JX</span>
+                  <input
+                    type="text"
+                    id="jx"
+                    value={inputValues.jx}
+                    onClick={() => handleInputClick('jx')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'jy' ? 'selected-input' : ''}`}>
+                  <span className="input-label">JY</span>
+                  <input
+                    type="text"
+                    id="jy"
+                    value={inputValues.jy}
+                    onClick={() => handleInputClick('jy')}
+                    readOnly
+                  />
+                </div>
+                <div className={`input-field ${activeInput === 'jz' ? 'selected-input' : ''}`}>
+                  <span className="input-label">JZ</span>
+                  <input
+                    type="text"
+                    id="jz"
+                    value={inputValues.jz}
+                    onClick={() => handleInputClick('jz')}
+                    readOnly
+                  />
+                </div>
               </div>
             </div>
-            <div className="column">
-              <div className={`input-field ${activeInput === 'a' ? 'selected-input' : ''}`}>
-                <span className="input-label">A</span>
-                <input
-                  type="text"
-                  id="a"
-                  value={inputValues.a}
-                  onClick={() => handleInputClick('a')}
-                  readOnly
-                />
-              </div>
-              <div className={`input-field ${activeInput === 'b' ? 'selected-input' : ''}`}>
-                <span className="input-label">B</span>
-                <input
-                  type="text"
-                  id="b"
-                  value={inputValues.b}
-                  onClick={() => handleInputClick('b')}
-                  readOnly
-                />
-              </div><div className={`input-field ${activeInput === 'c' ? 'selected-input' : ''}`}>
-                <span className="input-label">C</span>
-                <input
-                  type="text"
-                  id="c"
-                  value={inputValues.c}
-                  onClick={() => handleInputClick('c')}
-                  readOnly
-                />
-              </div>
-            </div>
-            <div className="column">
-              <div className={`input-field ${activeInput === 'jx' ? 'selected-input' : ''}`}>
-                <span className="input-label">JX</span>
-                <input
-                  type="text"
-                  id="jx"
-                  value={inputValues.jx}
-                  onClick={() => handleInputClick('jx')}
-                  readOnly
-                />
-              </div>
-              <div className={`input-field ${activeInput === 'jy' ? 'selected-input' : ''}`}>
-                <span className="input-label">JY</span>
-                <input
-                  type="text"
-                  id="jy"
-                  value={inputValues.jy}
-                  onClick={() => handleInputClick('jy')}
-                  readOnly
-                />
-              </div>
-              <div className={`input-field ${activeInput === 'jz' ? 'selected-input' : ''}`}>
-                <span className="input-label">JZ</span>
-                <input
-                  type="text"
-                  id="jz"
-                  value={inputValues.jz}
-                  onClick={() => handleInputClick('jz')}
-                  readOnly
-                />
-              </div>
-            </div>
-          </div>
+          </>
         )}
       </div>
 

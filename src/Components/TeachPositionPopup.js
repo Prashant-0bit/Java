@@ -1,34 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './teachPosition.css';
 
 function TeachPositionPopup({ points, onClose, onSave }) {
   const [selectedPoint, setSelectedPoint] = useState(null);
   const [newName, setNewName] = useState('');
+  const [newPointName, setNewPointName] = useState(selectedPoint ? points[selectedPoint] : '');
+
 
   const handlePointClick = (point) => {
     setSelectedPoint(point);
     setNewName(points[point]);
+    setNewPointName(point);
   };
 
   const handleNameChange = (e) => {
     setNewName(e.target.value);
   };
 
+  const handlePointNameChange = (e) => {
+    setNewPointName(e.target.value); // Update the display name
+  };
+
+
   const handleSave = () => {
     if (selectedPoint) {
-      onSave(selectedPoint, newName);
+      onSave(selectedPoint, newPointName);
+      setSelectedPoint(null);
     }
-    setSelectedPoint(null);
   };
 
   const handleDelete = () => {
     if (selectedPoint) {
       const updatedPoints = { ...points };
       delete updatedPoints[selectedPoint];
-      onSave(selectedPoint, newName);
+      onSave(selectedPoint, newPointName);
       setSelectedPoint(null);
     }
   };
+
+  useEffect(() => {
+    if (selectedPoint) {
+      setNewPointName(points[selectedPoint]);
+    }
+  }, [selectedPoint, points]);
+
 
   return (
     <div className="teach-position-popup">
@@ -40,19 +55,19 @@ function TeachPositionPopup({ points, onClose, onSave }) {
         <ul>
           {Object.keys(points).map((point) => (
             <li key={point} onClick={() => handlePointClick(point)}>
-              {point}
+              <input
+                id="displayName"
+                className='display-name'
+                type="text"
+                value={point === selectedPoint ? newPointName : points[point]}
+                onChange={handlePointNameChange}
+              />
             </li>
           ))}
         </ul>
       </div>
       {selectedPoint && (
         <div className="teach-position-popup-editor">
-          <input
-            type="text"
-            value={newName}
-            onChange={handleNameChange}
-            placeholder="Enter point name"
-          />
           <div className='point-container'>
             <div className='point'>X:
               <input

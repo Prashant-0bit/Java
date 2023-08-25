@@ -1,15 +1,14 @@
 .teach-position-popup {
     position: fixed;
-    top: 51%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #312d2d;
+    background-color: #000000;
     border: 1px solid #ffffff;
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgb(255, 255, 255);
     z-index: 999;
-    width: 300px;
+    width: 350px;
     color: white;
   }
   
@@ -17,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
   
   .teach-position-popup-header h2 {
@@ -43,32 +42,38 @@
     font-size: 14px;
     color: white;
     font-family: sans-serif;
-
   }
   
   .teach-position-popup-editor {
-    margin-top: 20px;
+    margin-top: 5px;
+  }
+
+  .display-name{
+    background: transparent;
+    border: none;
+    color: #ffffff;
+
   }
   
   .teach-position-popup-editor input {
     width: 100%;
     padding: 5px;
     margin-bottom: 10px;
+    height: 30px;
   }
   
   .teach-position-popup-editor button {
-    margin-right: 10px;
+    margin: 5px;
     background-color: #09711c;
     color: #ffffff;
     border: none;
     padding: 5px 10px;
-    border-radius: 3px;
     cursor: pointer;
     font-family: sans-serif;
   }
   
   .teach-position-popup-editor button:last-child {
-    background-color: #dc3545;
+    background-color: rgb(218, 17, 17);
     font-family: sans-serif;
   }
   
@@ -91,32 +96,12 @@
   .teach-position-popup-list li {
     margin-bottom: 5px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #333333;
   }
   
-  /* Style the scrollbar */
-  .teach-position-popup-list::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  .teach-position-popup-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  .teach-position-popup-list::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  .teach-position-popup-list::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-  
-  /* Additional styles to handle scrollbar in the popup list */
   .teach-position-popup-list {
     max-height: 200px;
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #888 #f1f1f1;
   }
 
 .point-container{
@@ -124,7 +109,6 @@
     justify-content: center;
     align-items: center;
 }
-
   .point{
     display: flex;
     justify-content: center;
@@ -132,16 +116,13 @@
     font-size: 16px;
     font-family: sans-serif;
     margin: 3px;
-
   }
 
   .teach-position-popup-editor .point-input {
-    /* Add your desired styles here */
     padding: 5px;
     margin: 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
     outline: none;
-    /* Add more styles as needed */
+    height: 30px;
   }
   

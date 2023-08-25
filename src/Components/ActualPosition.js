@@ -36,24 +36,25 @@ function ActualPosition() {
 
     const [isTeachPositionPopupOpen, setIsTeachPositionPopupOpen] = useState(false);
     const [teachPositionPoints, setTeachPositionPoints] = useState({
-        p1: 'Point 1',
-        p2: 'Point 2',
-        p3: 'Point 3',
-        p4: 'Point 4',
-        p5: 'Point 5',
-        p6: 'Point 6',
-        p7: 'Point 7',
-        p8: 'Point 8',
-        p9: 'Point 9',
-        p10: 'Point 10'
+        'p1': 'Point 1',
+        'p2': 'Point 2',
+        'p3': 'Point 3',
+        'p4': 'Point 4',
+        'p5': 'Point 5',
+        'p6': 'Point 6',
+        'p7': 'Point 7',
+        'p8': 'Point 8',
+        'p9': 'Point 9',
+        'p10': 'Point 10'
     });
 
-    const handleSaveTeachPosition = (pointName, newName) => {
+    const handleSaveTeachPosition = (pointKey, newName) => {
         setTeachPositionPoints((prevPoints) => ({
-            ...prevPoints,
-            [pointName]: newName,
+          ...prevPoints,
+          [pointKey]: newName,
         }));
-    };
+      };
+      
 
     const handleOpenNumericKeypad = () => {
         setIsOpenNumericKeypad(true);

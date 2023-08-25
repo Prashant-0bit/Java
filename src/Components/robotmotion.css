@@ -175,7 +175,7 @@
   align-items: center;
   font-size: 16px;
   margin: 2px;
-  padding: 6px 12px;
+  padding: 3px 12px;
   background-color: #efefef;
   border: 1px solid rgb(110, 110, 110);
 }
@@ -192,7 +192,9 @@
   border-radius: 4px;
   text-align: center;
   margin: 0 5px;
-  width: 4rem
+  width: 4rem;
+  padding: 0;
+  height: 30px;
 }
 
 .motion-input:focus {
@@ -227,8 +229,14 @@
   color: white;
 }
 
+.divider-line {
+  border: none;
+  border-top: 1px solid #ccc; /* Set the desired color */
+  margin: 5px 0; /* Adjust the margin as needed */
+}
+
 .tool-item {
-  padding: 5px;
+  padding: 3px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -257,7 +265,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-top: 10px;
 }
 
 .input-label{
@@ -271,11 +278,49 @@
   height: 35px;
 }
 
+.load-input-field{
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px;
+}
+
+.load-input-label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding-right: 10px;
+  font-size: 16px;
+  font-family: sans-serif;
+  height: 35px;
+}
+
+.load-input-field input:focus {
+  border: 2px solid rgba(2, 122, 80, 0.817);
+}
+
+.save-button {
+  background-color: white;
+  color: black;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.save-button:hover {
+  border-color: rgba(2, 122, 80, 0.817);
+  background-color: #1E2023;
+  color: white;
+}
+
 .input-field{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  margin: 3px;
 }
 
 .input-field input:focus {
@@ -300,6 +345,7 @@ input {
 .tool-name{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 14px;
   padding-left: 5px;
 }
