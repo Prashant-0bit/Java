@@ -126,6 +126,7 @@ function BaseSelection() {
     const selectedToolInfo = toolList.find((tool) => tool.id === toolId).info;
     setSelectedTool(toolId);
     setInputValues({ ...selectedToolInfo });
+    setSaveButtonClicked(false);
   };
 
   const handleRenameTool = () => {
@@ -191,7 +192,7 @@ function BaseSelection() {
                 readOnly
               />
               <button
-                className={`save-button ${saveButtonClicked ? 'clicked' : ''}`}
+                className={`save-load-button ${saveButtonClicked ? 'clicked' : ''}`}
                 onClick={() => {
                   setSaveButtonClicked(true);
                 }}

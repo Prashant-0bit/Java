@@ -10,12 +10,8 @@ function NumericKeypad({ onKeyPress, onClose, activeInput, inputValues, setInput
   const [keypadLeft, setKeypadLeft] = useState(200);
   const [keypadTop, setKeypadTop] = useState(1);
 
-  const handleKeyPress = (value) => {
-    onKeyPress(value);
-  };
-
   const handleButtonClick = (value) => {
-    if (value === 'Check') {
+    if (value === 'Check' || value === 'Enter')  {
       onClose();
     } else if (value === 'Backspace') {
       handleBackspaceClick();

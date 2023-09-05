@@ -1,0 +1,94 @@
+.tool-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    border: 2px solid rgba(2, 122, 80, 0.817);
+    padding: 20px;
+    width: 300px;
+    z-index: 20;
+  }
+  
+.tool-popup-header h5{
+    color: #fff;
+    margin: 0;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+  /* Styles for the popup header */
+  .tool-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for the "Close" button */
+  .tool-popup-header button {
+    background-color: transparent; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    padding: 4px 8px;
+    border-radius: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  /* Styles for the list of tool names */
+  .tool-list {
+    list-style: none;
+    padding: 5px;
+    margin: 0px;
+  }
+
+  .tool-list button {
+    margin: 2px;
+    border: 1px solid black;
+    background-color: transparent;
+
+  }
+  
+.tool-list hr{
+    margin: 5px;
+}
+
+  /* Styles for each tool item in the list */
+  .tool-list-item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Add spacing between the tool icon and name */
+  .tool-list-item .tool-icon {
+    margin-right: 10px;
+  }
+  
+  /* Tool icon styles (adjust as needed) */
+  .tool-list-item .tool-icon img {
+    width: 24px; /* Adjust the icon size as needed */
+    height: 24px;
+  }
+  
+  /* Tool name styles */
+  .tool-list-item .tool-name {
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+  
+  /* Tool name hover effect */
+  .tool-list-item:hover .tool-name {
+    text-decoration: underline; /* Underline the tool name on hover */
+    cursor: pointer;
+  }
+  
+  /* Scrollable container for the tool list */
+  .tool-list-container {
+    max-height: 300px; /* Adjust the maximum height to limit the list height */
+    overflow-y: auto;
+    border: 1px solid #ccc; /* Add a border for clarity */
+    border-radius: 5px;
+  }
+  

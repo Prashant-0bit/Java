@@ -3,6 +3,7 @@ import NumericKeypad from './SubComponents/NumericKeyBoard';
 import Keypad from './SubComponents/Keyboard';
 import './robotmotion.css';
 import { HiPencil } from 'react-icons/hi';
+import { useToolName } from './ToolNameContex';
 
 
 function ToolSelection() {
@@ -26,7 +27,7 @@ function ToolSelection() {
 
   ], []);
 
-
+  const { setSelectedToolName } = useToolName();
   const [toolList, setToolList] = useState(initialToolList);
   const [renamingTool, setRenamingTool] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
@@ -36,6 +37,7 @@ function ToolSelection() {
   const [inputValues, setInputValues] = useState(null);
   const [activeInput, setActiveInput] = useState(null);
   const [saveButtonClicked, setSaveButtonClicked] = useState(false);
+  const [selectedToolForRename, setSelectedToolForRename] = useState(null);
 
 
   const handleVirtualKeypadInput = (value) => {
@@ -111,6 +113,11 @@ function ToolSelection() {
     const selectedToolInfo = toolList.find((tool) => tool.id === toolId).info;
     setSelectedTool(toolId);
     setInputValues({ ...selectedToolInfo });
+    setSaveButtonClicked(false);
+    if (selectedTool !== null) {
+      const selectedToolName = toolList.find((tool) => tool.id === selectedTool).name;
+      setSelectedToolName(selectedToolName);
+    }
   };
 
   const handleRenameTool = () => {
@@ -118,8 +125,24 @@ function ToolSelection() {
       setIsVirtualKeypadOpen(true); // Open the virtual keypad
       setRenamingTool(true);
       setToolName(toolList[selectedTool - 1].name);
+      setSelectedToolForRename(selectedTool);
     }
   };
+
+const handleKeypadBackspace = () => {
+  if (virtualKeypadText.length > 0) {
+    const updatedText = virtualKeypadText.slice(0, -1);
+    setVirtualKeypadText(updatedText);
+
+    if (selectedTool !== null) {
+      const updatedToolList = [...toolList];
+      updatedToolList[selectedTool - 1].name = updatedText;
+      setToolList(updatedToolList);
+    }
+  }
+  console.log("virtualKeypadText:", virtualKeypadText); // Add this line for debugging
+};
+
 
   useEffect(() => {
     if (selectedTool !== null) {
@@ -152,6 +175,7 @@ function ToolSelection() {
             className='rename-input'
             type="text"
             value={toolName}
+            autoComplete='off'
             onChange={(e) => setToolName(e.target.value)}
             autoFocus
           />
@@ -176,8 +200,7 @@ function ToolSelection() {
                 readOnly
               />
               <button
-              type='button'
-                className={`save-button ${saveButtonClicked ? 'clicked' : ''}`}
+                className={`save-load-button ${saveButtonClicked ? 'clicked' : ''}`}
                 onClick={() => {
                   setSaveButtonClicked(true);
                 }}
@@ -303,6 +326,7 @@ function ToolSelection() {
           setEnteredText={setVirtualKeypadText}
           handleKeypadInput={handleVirtualKeypadInput}
           handleKeypadEnter={handleVirtualKeypadEnter}
+          handleKeypadBackspace={handleKeypadBackspace}
           isCapsLockPressed={false}
           toggleCapsLock={() => { }}
         />

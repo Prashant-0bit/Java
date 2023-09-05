@@ -88,8 +88,6 @@ export default function DiscreteSliderMarks() {
 
   return (
     <div className={`slider-container ${isOpen ? 'open' : ''}`} ref={sliderRef}>
-      <div className='slider-header'>Velocity</div>
-      <div className='slider-content'>
         <Box sx={{ width: 200, margin: 'auto', paddingTop: '1rem', alignContent: 'center' }}>
           <Slider
             value={value}
@@ -120,6 +118,5 @@ export default function DiscreteSliderMarks() {
           </button>
         </div>
       </div>
-    </div>
   );
 }

@@ -3,24 +3,16 @@ import './teachPosition.css';
 
 function TeachPositionPopup({ points, onClose, onSave }) {
   const [selectedPoint, setSelectedPoint] = useState(null);
-  const [newName, setNewName] = useState('');
   const [newPointName, setNewPointName] = useState(selectedPoint ? points[selectedPoint] : '');
-
 
   const handlePointClick = (point) => {
     setSelectedPoint(point);
-    setNewName(points[point]);
-    setNewPointName(point);
-  };
-
-  const handleNameChange = (e) => {
-    setNewName(e.target.value);
+    setNewPointName(points[point]);
   };
 
   const handlePointNameChange = (e) => {
-    setNewPointName(e.target.value); // Update the display name
+    setNewPointName(e.target.value);
   };
-
 
   const handleSave = () => {
     if (selectedPoint) {
@@ -44,7 +36,6 @@ function TeachPositionPopup({ points, onClose, onSave }) {
     }
   }, [selectedPoint, points]);
 
-
   return (
     <div className="teach-position-popup">
       <div className="teach-position-popup-header">
@@ -57,11 +48,12 @@ function TeachPositionPopup({ points, onClose, onSave }) {
             <li key={point} onClick={() => handlePointClick(point)}>
               <input
                 id="displayName"
-                className='display-name'
                 type="text"
+                autoComplete='off'
                 value={point === selectedPoint ? newPointName : points[point]}
                 onChange={handlePointNameChange}
               />
+              <hr/>
             </li>
           ))}
         </ul>
@@ -124,7 +116,6 @@ function TeachPositionPopup({ points, onClose, onSave }) {
           <button onClick={handleDelete}>Delete</button>
         </div>
       )}
-
     </div>
   );
 }

@@ -6,12 +6,12 @@ const RightComp = () => {
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
-  const [sidebarHeight, setSidebarHeight] = useState(window.innerHeight - 186); // Subtract the height of the navbar
+  const [sidebarHeight, setSidebarHeight] = useState(window.innerHeight - 172); // Subtract the height of the navbar
   const [sidebarLabels, setSidebarLabels] = useState(['X', 'Y', 'Z', 'A', 'B', 'C']);
   const [isAxisSelected, setIsAxisSelected] = useState(false);
 
   const handleResize = () => {
-    setSidebarHeight(window.innerHeight - 186); // Subtract the height of the navbar
+    setSidebarHeight(window.innerHeight - 172); // Subtract the height of the navbar
   };
 
   const handleIconClick = () => {

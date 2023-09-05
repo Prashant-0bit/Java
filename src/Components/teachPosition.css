@@ -1,128 +1,131 @@
+/* teachPosition.css */
+
+/* Styles for the popup container */
 .teach-position-popup {
-    position: fixed;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #000000;
-    border: 1px solid #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 999;
-    width: 350px;
-    color: white;
-  }
-  
-  .teach-position-popup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-  
-  .teach-position-popup-header h2 {
-    margin: 0;
-    font-size: 18px;
-    font-family: sans-serif;
-  }
-  
-  .teach-position-popup-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .teach-position-popup-list li {
-    margin-bottom: 5px;
-  }
-  
-  .teach-position-popup-list button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: white;
-    font-family: sans-serif;
-  }
-  
-  .teach-position-popup-editor {
-    margin-top: 5px;
-  }
-
-  .display-name{
-    background: transparent;
-    border: none;
-    color: #ffffff;
-
-  }
-  
-  .teach-position-popup-editor input {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    height: 30px;
-  }
-  
-  .teach-position-popup-editor button {
-    margin: 5px;
-    background-color: #09711c;
-    color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-family: sans-serif;
-  }
-  
-  .teach-position-popup-editor button:last-child {
-    background-color: rgb(218, 17, 17);
-    font-family: sans-serif;
-  }
-  
-  /* Additional styles to handle scrollbar in the popup list */
-  .teach-position-popup-list {
-    max-height: 200px;
-    overflow-y: auto;
-  }
-  
-  /* Style for the close button */
-  .teach-position-popup-header button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    color: #ffffff;
-    font-family: sans-serif;
-  }
-  
-  .teach-position-popup-list li {
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #333333;
-  }
-  
-  .teach-position-popup-list {
-    max-height: 200px;
-    overflow-y: auto;
-  }
-
-.point-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  border: 2px solid rgba(2, 122, 80, 0.817);
+  padding: 20px;
+  width: 350px;
+  color: white;
+  z-index: 20;
 }
-  .point{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-family: sans-serif;
-    margin: 3px;
-  }
 
-  .teach-position-popup-editor .point-input {
-    padding: 5px;
-    margin: 0;
-    border: 1px solid #ccc;
-    outline: none;
-    height: 30px;
-  }
-  
+/* Styles for the popup header */
+.teach-position-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.teach-position-popup-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: white;
+}
+
+/* Styles for the "Close" button */
+.teach-position-popup-header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  font-family: sans-serif;
+}
+
+/* Styles for the list of points */
+.teach-position-popup-list {
+  max-height: 200px; /* Set a maximum height for the list */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  border: 1px solid white; /* Add a white border to the list container */
+  padding: 10px; 
+}
+
+/* Styles for the editor section */
+.teach-position-popup-editor {
+  max-height: 200px; /* Set a maximum height for the editor */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+}
+
+
+/* Styles for the list of points */
+.teach-position-popup-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.teach-position-popup-list li {
+  padding: 0px;
+  margin: 0;
+}
+
+
+/* Styles for the point input field */
+.teach-position-popup-list input {
+  width: 100%;
+  padding: 5px;
+  margin: 2px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  color: white;
+}
+
+.teach-position-popup-list hr{
+  margin: 5px;
+}
+
+/* Styles for the editor section */
+.teach-position-popup-editor {
+  margin-top: 10px;
+}
+
+/* Styles for the point container */
+.point-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styles for each point */
+.point {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: sans-serif;
+  margin: 3px;
+  color: white;
+}
+
+/* Styles for the point input field in the editor */
+.teach-position-popup-editor .point-input {
+  padding: 5px;
+  margin: 0;
+  border: 1px solid #ccc;
+  outline: none;
+  height: 30px;
+  background: transparent;
+  color: white;
+}
+
+/* Styles for the Save and Delete buttons */
+.teach-position-popup-editor button {
+  margin: 5px;
+  background-color: #04a722;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.teach-position-popup-editor button:last-child {
+  background-color: rgb(218, 17, 17);
+}

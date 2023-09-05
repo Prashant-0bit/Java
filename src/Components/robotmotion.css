@@ -29,8 +29,7 @@
   justify-content: center;
   align-items: center;
   max-width: 50px;
-  border-color: black;
-  border-width: 2px solid rgb(110, 110, 110);
+  border-width: 1px solid rgb(110, 110, 110);
 }
 
 .power-button.on {
@@ -78,7 +77,7 @@
   padding-top: 5px;
   align-items: center;
   background-color: #1E2023;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 154.5px);
 }
 
 .coordinate-labels {
@@ -111,9 +110,12 @@
   margin: 2px;
   padding: 6px 12px;
   border-width: 1px;
+  background-color: #ffffff;
 }
 .actual-position-button.active{
   border-color: rgba(2, 122, 80, 0.817);
+  background-color: transparent;
+  color: #ffffff
 }
 
 .coordinate-label {
@@ -144,7 +146,7 @@
 .actual-position-data {
   min-width: 100px;
   min-height: 35px;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   margin: 10px;
   border: 1px solid rgb(110, 110, 110);
   font-weight: normal;
@@ -176,7 +178,7 @@
   font-size: 16px;
   margin: 2px;
   padding: 3px 12px;
-  background-color: #efefef;
+  background-color: #ffffff;
   border: 1px solid rgb(110, 110, 110);
 }
 
@@ -188,7 +190,7 @@
 
 .motion-input {
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #bbb;
   border-radius: 4px;
   text-align: center;
   margin: 0 5px;
@@ -203,6 +205,30 @@
   box-shadow: 0 0 5px rgba(43, 43, 43, 0.5);
 }
 
+/*******************************************************************************************************
+******************************************--Home-Postion--**********************************************
+********************************************************************************************************/
+
+.home-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.path-program,
+.move-program{
+  display: flex;
+}
+
+.path-button{
+  margin: 5px;
+  border-width: 1px;
+}
+
+
+
+
 /********************************************************************************************************
 ******************************************--Tools-Postion--**********************************************
 ********************************************************************************************************/
@@ -214,7 +240,7 @@
   font-family: sans-serif;
   max-width: 3840px;
   width: calc(100% - 48px);
-  height: calc(100vh - 170px);
+  height: calc(100vh - 154.5px);
   background-color: #1E2023;
   position: relative;
 }
@@ -281,6 +307,7 @@
 .load-input-field{
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   margin: 5px;
 }
 
@@ -299,18 +326,16 @@
   border: 2px solid rgba(2, 122, 80, 0.817);
 }
 
-.save-button {
+.save-load-button {
+  border: 1px solid black;
   background-color: white;
-  color: black;
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 14px;
+  padding: 5px 8px;
+  font-size: 16px;
   font-family: sans-serif;
+  margin-left: auto;
 }
 
-.save-button:hover {
+.save-load-button.clicked {
   border-color: rgba(2, 122, 80, 0.817);
   background-color: #1E2023;
   color: white;
@@ -347,7 +372,7 @@ input {
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  padding-left: 5px;
+  margin: 0px 5px;
 }
 
 .rename-tool,

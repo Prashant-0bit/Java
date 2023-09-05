@@ -4,11 +4,32 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DiscreteSliderMarks from './Slider';
 import TimePicker from './TimePicker';
 import Logo_Mairotec_weiss from './Logo_Mairotec_weiss.png';
+import ToolPopup from './ToolPopup';
 
 export default function HeaderBar() {
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [selectedTool, setSelectedTool] = useState(null);
   const [sliderVisible, setSliderVisible] = useState(false);
   const navigate = useNavigate();
   const sliderRef = useRef(null);
+  const [sButtonActive, setSButtonActive] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  const togglePopup = () => {
+    setPopupVisible((prevVisible) => !prevVisible);
+  };
+
+  const openPopup = () => {
+    setPopupVisible(true);
+  };
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
+
+  const handleSelectTool = (toolName) => {
+    setSelectedTool(toolName);
+  };
 
   const handleSliderToggle = () => {
     setSliderVisible((prevVisible) => !prevVisible);
@@ -28,24 +49,30 @@ export default function HeaderBar() {
     };
   }, []);
 
+  const handleSButton = () => {
+    if (!hasError) {
+      setSButtonActive(true);
+    }
+  }
+
   function CustomLink({ to, children, handleClick }) {
     const location = useLocation();
     const [selectedMode, setSelectedMode] = useState('T1');
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [activeButton, setActiveButton] = useState(null);
-  
     const isActive = location.pathname === to;
-  
+
+
     const handleMenuToggle = () => {
       setDropdownOpen((prevOpen) => !prevOpen);
       setActiveButton(null);
     };
-  
+
     const handleModeSelect = (mode) => {
       setSelectedMode(mode);
       setDropdownOpen(false);
     };
-  
+
     const handleLinkClick = () => {
       if (handleClick) {
         handleClick();
@@ -53,21 +80,21 @@ export default function HeaderBar() {
       setDropdownOpen(false);
       setActiveButton(null);
     };
-  
+
     const handleOutsideClick = (e) => {
       if (!e.target.closest('.mode-dropdown')) {
         setDropdownOpen(false);
       }
     };
-  
+
     useEffect(() => {
       document.addEventListener('mousedown', handleOutsideClick);
-  
+
       return () => {
         document.removeEventListener('mousedown', handleOutsideClick);
       };
     }, [handleClick]);
-  
+
     return (
       <div className={isActive ? 'active' : ''}>
         {to === '/mode' ? (
@@ -81,18 +108,6 @@ export default function HeaderBar() {
                 onClick={() => handleModeSelect('T1')}
               >
                 T1
-              </button>
-              <button
-                className={`mode-item${selectedMode === 'T2' ? ' active' : ''}`}
-                onClick={() => handleModeSelect('T2')}
-              >
-                T2
-              </button>
-              <button
-                className={`mode-item${selectedMode === 'Aut' ? ' active' : ''}`}
-                onClick={() => handleModeSelect('Aut')}
-              >
-                Aut
               </button>
               <button
                 className={`mode-item${selectedMode === 'Ext' ? ' active' : ''}`}
@@ -121,7 +136,7 @@ export default function HeaderBar() {
         )}
       </div>
     );
-  }  
+  }
 
   return (
     <>
@@ -133,6 +148,24 @@ export default function HeaderBar() {
             MAIRobot
           </button>
           <ul className="navbar-nav">
+            <button
+              type="button"
+              className={`header-icon-active ${sButtonActive ? 'active' : ''} ${hasError ? 'error' : ''}`}
+              onClick={handleSButton}
+              disabled={sButtonActive || hasError}
+            >
+              S
+            </button>
+
+            <button type="button" className=" header-icon-active"> O
+            </button>
+            <button type="button" className=" header-icon-active"> R
+            </button>
+            
+            <button className='tool-base-button ' onClick={togglePopup}>TB</button>
+            {popupVisible && (
+        <ToolPopup onClose={closePopup} onSelectTool={handleSelectTool} />
+      )}
             {/* Mode Selection */}
             <CustomLink className="nav-link" to="/mode">
               <button type="button" className="btn btn header-icon">
@@ -164,11 +197,12 @@ export default function HeaderBar() {
 
       {/* Slider Container */}
       {sliderVisible && (
-        <div className="slider-container" ref={sliderRef}>
+        <div ref={sliderRef}>
           <DiscreteSliderMarks onClose={handleSliderToggle} />
         </div>
       )}
+
     </>
-    
+
   );
 }

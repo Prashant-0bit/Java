@@ -3,6 +3,7 @@ import './robotmotion.css';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
 import NumericKeypad from './SubComponents/NumericKeyBoard';
 import TeachPositionPopup from './TeachPositionPopup';
+import Keypad from './SubComponents/Keyboard';
 
 function ActualPosition() {
     const [selectedCoordinate, setSelectedCoordinate] = useState('Axis');
@@ -11,27 +12,28 @@ function ActualPosition() {
     const [isOpenNumericKeypad, setIsOpenNumericKeypad] = useState(false);
     const [isTeachPositionButtonActive, setIsTeachPositionButtonActive] = useState(false);
     const [isHomePositionActive, setIsHomePositionActive] = useState(false);
+    const [isKeypadOpen, setIsKeypadOpen] = useState(false);
+    const [newPointName, setNewPointName] = useState('');
+    const [selectedPoint, setSelectedPoint] = useState(null);
 
     const handleHomePositionClick = () => {
         setIsHomePositionActive(true);
     }
     const handleTeachPositionButtonClick = () => {
         setIsTeachPositionButtonActive(true);
-        setIsTeachPositionPopupOpen(true); 
-      };
-      
+        setIsTeachPositionPopupOpen(true);
+    };
 
     const handleTeachPositionPopupClose = () => {
         setIsTeachPositionButtonActive(false);
         setIsTeachPositionPopupOpen(false);
     };
 
-
     const coordinates = {
-        World: ['X', 'Y', 'Z', 'A', 'B', 'C'],
-        Axis: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
-        Base: ['X', 'Y', 'Z', 'A', 'B', 'C'],
-        Tool: ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        World:  ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Axis:   ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
+        Base:   ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Tool:   ['X', 'Y', 'Z', 'A', 'B', 'C'],
     };
 
     const [isTeachPositionPopupOpen, setIsTeachPositionPopupOpen] = useState(false);
@@ -50,11 +52,16 @@ function ActualPosition() {
 
     const handleSaveTeachPosition = (pointKey, newName) => {
         setTeachPositionPoints((prevPoints) => ({
-          ...prevPoints,
-          [pointKey]: newName,
+            ...prevPoints,
+            [pointKey]: newName,
         }));
-      };
-      
+    };
+
+    const handlePointClick = (point) => {
+        setSelectedPoint(point);
+        setIsKeypadOpen(true);
+        setNewPointName(teachPositionPoints[point]);
+    };
 
     const handleOpenNumericKeypad = () => {
         setIsOpenNumericKeypad(true);
@@ -64,18 +71,17 @@ function ActualPosition() {
         setSelectedCoordinate(coordinate);
     };
 
-      const handleAccelerationChange = (e) => {
+    const handleAccelerationChange = (e) => {
         const newValue = e.target.value;
         setAccelerationValue(newValue);
-      };
-      
-      const handleVelocityChange = (e) => {
+    };
+
+    const handleVelocityChange = (e) => {
         const newValue = e.target.value;
         setVelocityValue(newValue);
-      };
-      
+    };
 
-      const handleNumericKeyPress = (value) => {
+    const handleNumericKeyPress = (value) => {
         const parsedValue = parseInt(value);
         if (!isNaN(parsedValue) && parsedValue >= 0 && parsedValue <= 100) {
             if (selectedCoordinate === 'Acceleration') {
@@ -91,7 +97,7 @@ function ActualPosition() {
             }
         }
     };
-      
+
     return (
         <div className='position-container'>
             <div className="coordinate-labels">
@@ -132,7 +138,7 @@ function ActualPosition() {
                                 id='acceleration'
                                 className='motion-input'
                                 value={accelerationValue}
-                                onClick={() => handleOpenNumericKeypad()} 
+                                onClick={() => handleOpenNumericKeypad()}
                                 onChange={handleAccelerationChange}// Update this line
                             />
                         </div>
@@ -142,7 +148,7 @@ function ActualPosition() {
                         Velocity
                         <div className='motion-input-container'>
                             <input
-                            id='velocity'
+                                id='velocity'
                                 type='text'
                                 className='motion-input'
                                 value={velocityValue}
@@ -153,7 +159,6 @@ function ActualPosition() {
                     </div>
                 </div>
             </div>
-
 
             {coordinates[selectedCoordinate].map((label) => (
                 <div key={label} className="coordinate-label">
@@ -182,6 +187,20 @@ function ActualPosition() {
                     points={teachPositionPoints}
                     onClose={handleTeachPositionPopupClose}
                     onSave={handleSaveTeachPosition}
+                    onPointClick={handlePointClick}
+                />
+            )}
+
+            {isKeypadOpen && (
+                <Keypad
+                    enteredText={newPointName}
+                    setEnteredText={setNewPointName}
+                    handleKeypadInput={(value) => {
+                        setNewPointName((prevName) => prevName + value);
+                    }}
+                    handleKeypadEnter={() => {
+                        setIsKeypadOpen(false);
+                    }}
                 />
             )}
         </div>

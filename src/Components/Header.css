@@ -20,7 +20,7 @@
 .navbar-nav .nav-item {
   display: flex;
   align-items: center;
-  margin: 0; /* Adjust the margin as needed */
+  margin: 0;
 }
 
 .nav-link:hover {
@@ -56,6 +56,34 @@
   color: white;
 }
 
+.header-icon-active {
+  width: 30px; /* Adjust this width as needed */
+  height: 30px; /* Adjust this height as needed */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Remove previous padding settings */
+  margin: 3px;
+  border: none;
+}
+
+.header-icon-active.active {
+  background-color: rgba(2, 122, 80, 0.817);
+  border: 1px solid #7a7a7a;
+}
+
+.tool-base-button{
+  width: 30px; /* Adjust this width as needed */
+  height: 30px; /* Adjust this height as needed */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Remove previous padding settings */
+  margin: 3px;
+  border: none;
+}
+
+
 .logo {
   color: #ffffff;
   border: none;
@@ -71,24 +99,20 @@
 *****************************************************************************************************/
 .slider-container {
   position: absolute;
-  top: 30px;
+  top: 29px;
   right: 0;
-  transform: translateX(-20%);
-  background-color: white;
+  transform: translate(-45%, 10%);
+  background-color: rgb(0, 0, 0);
   width: 19rem;
   height: auto;
-  border-radius: 0.3rem;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(2, 122, 80, 0.817);
   z-index: 1;
+  padding: 10px;
 }
 
 .slider-header {
-  background-color: black;
-  color: white;
-  padding: 0.1rem 14.815rem 0.1rem 0.5rem;
-  width: 100%;
-  border-top-right-radius: 0.2rem;
-  border-top-left-radius: 0.2rem;
+  color: #000000;
+  padding: 5px;
 }
 
 .slider-content {
@@ -100,16 +124,16 @@
 
 .custom-slider .MuiSlider-track {
   background-color: black;
-  height: 14px;
+  height: 16px;
   border-radius: 0;
-  border-color: white;
+  border-color: #fff;
 }
 
 .custom-slider .MuiSlider-rail {
   height: 14px;
   border-radius: 0;
-  border-color: black;
-  background-color: black;
+  border-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
 }
 
 .custom-slider .MuiSlider-thumb {
@@ -118,7 +142,6 @@
   height: 30px;
   border-radius: 5px;
   border-color: white;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
 
@@ -128,18 +151,18 @@
 
 .slider-controls {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  margin-top: 1rem;
+  margin: 10px 0;
 }
 
 .slider-control1,
 .slider-control2 {
   padding: 0.5rem 0.6rem;
   font-size: 20px;
-  background-color: black;
+  background-color: #ffffff;
   border-radius: 0.1rem;
-  color: white;
+  color: #000000;
   border-width: 1px;
   border-color: #363434;
   display: flex;
@@ -176,13 +199,13 @@
 
 .mode-menu {
   position: absolute;
-  top: 100%;
+  top: 124%;
   left: 0;
   display: none;
   min-width: 100%;
-  padding: 8px 0;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  background-color: #000000;
+  border: 2px solid rgba(2, 122, 80, 0.817);
   z-index: 1;
 }
 
@@ -196,20 +219,20 @@
   padding: 8px 16px;
   border: none;
   background-color: transparent;
-  color: black;
+  color: #ffffff;
   font-size: 16px;
   text-align: left;
   cursor: pointer;
 }
 
 .mode-item:hover {
-  background-color: black;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .mode-item.active {
-  background-color: black;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 /*****************************************************************************************************
