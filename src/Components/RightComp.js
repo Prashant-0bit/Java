@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './RightComp.css';
 import robotArmImage from './RobotCoordinate.svg';
+import {LuAxis3D} from 'react-icons/lu';
 
 const RightComp = () => {
   const [selectedIcon, setSelectedIcon] = useState(null);
@@ -68,7 +69,7 @@ const RightComp = () => {
         <button className="coordinate-button" onClick={handleIconClick}>
           {selectedIcon ? (
             selectedIcon === 'axis' ? (
-              <img src={robotArmImage} alt="Robot Arm" className="coordinate-icon clicked" />
+              <LuAxis3D className="coordinate-icon clicked" />
             ) : (
               <i className={`fa-solid ${selectedIcon} coordinate-icon clicked`}></i>
             )
@@ -83,7 +84,7 @@ const RightComp = () => {
               className={`icon-button ${selectedIcon === 'axis' ? 'selected' : ''}`}
               onClick={() => handleIconSelection('axis', 'Axis Coordinate')}
             >
-              <img src={robotArmImage} alt="Robot Arm" className="robot-arm-icon" />
+              <LuAxis3D/>
             </button>
             <p className="coordinate-name">Axis</p>
             {renderIcon('fa-earth-americas', 'World Coordinate')}

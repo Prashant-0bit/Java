@@ -3,7 +3,7 @@
 /* Styles for the popup container */
 .teach-position-popup {
   position: fixed;
-  top: 50%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #000000;
@@ -92,6 +92,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.column-popup-container{
+  display: flex;
+  justify-content: space-evenly;
 }
 
 /* Styles for each point */

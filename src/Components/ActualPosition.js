@@ -139,7 +139,8 @@ function ActualPosition() {
                                 className='motion-input'
                                 value={accelerationValue}
                                 onClick={() => handleOpenNumericKeypad()}
-                                onChange={handleAccelerationChange}// Update this line
+                                onChange={handleAccelerationChange}
+                                autoComplete='off'
                             />
                         </div>
                     </div>
@@ -153,7 +154,8 @@ function ActualPosition() {
                                 className='motion-input'
                                 value={velocityValue}
                                 onClick={() => handleOpenNumericKeypad()}
-                                onChange={handleVelocityChange} // Update this line
+                                onChange={handleVelocityChange}
+                                autoComplete='off'
                             />
                         </div>
                     </div>

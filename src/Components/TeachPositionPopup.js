@@ -58,64 +58,10 @@ function TeachPositionPopup({ points, onClose, onSave }) {
           ))}
         </ul>
       </div>
-      {selectedPoint && (
         <div className="teach-position-popup-editor">
-          <div className='point-container'>
-            <div className='point'>X:
-              <input
-                id='pointX'
-                name='PointX'
-                type='text'
-                className='point-input'
-              />
-            </div>
-            <div className='point'>Y:
-              <input
-                id='pointY'
-                name='PointY'
-                type='text'
-                className='point-input'
-              />
-            </div>
-            <div className='point'>Z:
-              <input
-                id='pointZ'
-                name='PointZ'
-                type='text'
-                className='point-input'
-              />
-            </div>
-          </div>
-          <div className='point-container'>
-            <div className='point'>A:
-              <input
-                id='pointA'
-                name='PointA'
-                type='text'
-                className='point-input'
-              />
-            </div>
-            <div className='point'>B:
-              <input
-                id='pointB'
-                name='PointB'
-                type='text'
-                className='point-input'
-              />
-            </div>
-            <div className='point'>C:
-              <input
-                id='pointC'
-                name='PointC'
-                type='text'
-                className='point-input'
-              />
-            </div>
-          </div>
           <button onClick={handleSave}>Save</button>
           <button onClick={handleDelete}>Delete</button>
         </div>
-      )}
     </div>
   );
 }

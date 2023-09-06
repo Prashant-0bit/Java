@@ -3,10 +3,9 @@ import NumericKeypad from './SubComponents/NumericKeyBoard';
 import Keypad from './SubComponents/Keyboard';
 import './robotmotion.css';
 import { HiPencil } from 'react-icons/hi';
-import { useToolName } from './ToolNameContex';
 
 
-function ToolSelection() {
+function ToolSelection({ children }) {
   const initialToolList = useMemo(() => [
     { id: 1,  name: 'Tool 1',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
     { id: 2,  name: 'Tool 2',  info: { x: '', y: '', z: '', a: '', b: '', c: '', jx: '', jy: '', jz: '', load: '' } },
@@ -27,7 +26,6 @@ function ToolSelection() {
 
   ], []);
 
-  const { setSelectedToolName } = useToolName();
   const [toolList, setToolList] = useState(initialToolList);
   const [renamingTool, setRenamingTool] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
@@ -38,7 +36,7 @@ function ToolSelection() {
   const [activeInput, setActiveInput] = useState(null);
   const [saveButtonClicked, setSaveButtonClicked] = useState(false);
   const [selectedToolForRename, setSelectedToolForRename] = useState(null);
-
+  const [selectedToolName, setSelectedToolName] = useState('');
 
   const handleVirtualKeypadInput = (value) => {
     if (virtualKeypadText.length < 25) {
@@ -65,7 +63,6 @@ function ToolSelection() {
       }
     }
   };
-
 
   const handleInputClick = (fieldName) => {
     setActiveInput(fieldName);

@@ -15,16 +15,22 @@
 }
 
 .icon-button {
-  background-color: transparent;
-  color: white;
-  background-color: black;
-  padding: 0;
-  width: 2rem;
+  color: #000000;
+  background-color: #ffffff;
+  padding: 3px 6px;
+  width:40px;
   font-size: 20px;
   border: none;
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: 15px;
   align-items: center;
+}
+
+.icon-button.selected{
+  border: 1px solid rgba(2, 122, 80, 0.817);
+  background-color: #000000;
+  color: #ffffff;
+
 }
 
 .coordinate-button {
@@ -59,7 +65,7 @@
 
 .coordinate-name {
   font-size: 12px;
-  color: rgb(0, 0, 0);
+  color: #ffffff;
   margin: 0;
   font-family: sans-serif;
 }
@@ -67,35 +73,23 @@
 .icon-menu {
   position: absolute;
   top: 20%;
-  right: 110%;
+  right: 100%;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #000000;
   z-index: 10;
   width: 9rem;
   justify-content: center;
   align-items: center;
-  border-radius: 0.3rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(2, 122, 80, 0.817);
 }
 
 .header-coordinate {
-  background-color: black;
-  color: white;
+  color: #ffffff;
   font-size: 14px;
   font-family: sans-serif;
-  padding: 0.1rem 0.1rem 0.1rem 0.5rem;
+  padding: 5px;
   margin: 0;
-  width: 100%;
-  border-top-right-radius: 0.3rem;
-  border-top-left-radius: 0.3rem;
-}
-
-.robot-arm-icon {
-  font-size: 20px;
-  width: 20px;
-  background-color: black;
-  margin-bottom: 5px;
 }
 
 .sidebar {

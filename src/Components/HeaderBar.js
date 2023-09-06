@@ -99,7 +99,7 @@ export default function HeaderBar() {
       <div className={isActive ? 'active' : ''}>
         {to === '/mode' ? (
           <div className={`mode-dropdown ${dropdownOpen ? 'open' : ''}`}>
-            <button className="btn btn logo" onClick={handleMenuToggle}>
+            <button className="btn btn mode-popup-button" onClick={handleMenuToggle}>
               {selectedMode}
             </button>
             <div className="mode-menu">
