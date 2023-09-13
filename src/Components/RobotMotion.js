@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./robotmotion.css";
+import axios from "axios";
 import { FaPowerOff } from "react-icons/fa";
 import { useNavigate, Outlet} from "react-router-dom";
-import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 function RobotMotion() {
   const [isPowerOn, setIsPowerOn] = useState(false);
   const [activeButton, setActiveButton] = useState(""); // Track the active button
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handlePowerButtonClick = () => {
     axios
@@ -42,28 +44,28 @@ function RobotMotion() {
               className={`actual-position ${activeButton === "actual-position" ? "active" : ""}`}
               onClick={() => handleButtonSelection("actual-position")}
             >
-              Jog Robot
+              {t('Jog Robot')}
             </button>
             <button
               type="button"
               className={`home-position ${activeButton === "home-position" ? "active" : ""}`}
               onClick={() => handleButtonSelection("home-position")}
             >
-              Program
+              {t('Program')}
             </button>
             <button
               type="button"
               className={`base-system ${activeButton === "base-selection" ? "active" : ""}`}
               onClick={() => handleButtonSelection("base-selection")}
             >
-              Base Selection
+              {t('Base Selection')}
             </button>
             <button
               type="button"
               className={`tool-system ${activeButton === "tool-selection" ? "active" : ""}`}
               onClick={() => handleButtonSelection("tool-selection")}
             >
-              Tool Selection
+              {t('Tool Selection')}
             </button>
           </div>
         </div>

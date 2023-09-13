@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { LuAxis3D } from 'react-icons/lu';
+import { useTranslation } from 'react-i18next';
 import './RightComp.css';
-import robotArmImage from './RobotCoordinate.svg';
-import {LuAxis3D} from 'react-icons/lu';
 
 const RightComp = () => {
   const [selectedIcon, setSelectedIcon] = useState(null);
@@ -10,6 +10,7 @@ const RightComp = () => {
   const [sidebarHeight, setSidebarHeight] = useState(window.innerHeight - 172); // Subtract the height of the navbar
   const [sidebarLabels, setSidebarLabels] = useState(['X', 'Y', 'Z', 'A', 'B', 'C']);
   const [isAxisSelected, setIsAxisSelected] = useState(false);
+  const { t } = useTranslation();
 
   const handleResize = () => {
     setSidebarHeight(window.innerHeight - 172); // Subtract the height of the navbar
@@ -79,20 +80,20 @@ const RightComp = () => {
         </button>
         {showMenu && (
           <div className="icon-menu">
-            <span className="header-coordinate">Coordinates system</span>
+            <span className="header-coordinate">{t('Coordinates system')}</span>
             <button
               className={`icon-button ${selectedIcon === 'axis' ? 'selected' : ''}`}
               onClick={() => handleIconSelection('axis', 'Axis Coordinate')}
             >
-              <LuAxis3D/>
+              <LuAxis3D />
             </button>
-            <p className="coordinate-name">Axis</p>
+            <p className="coordinate-name">{t('Axis')}</p>
             {renderIcon('fa-earth-americas', 'World Coordinate')}
-            <p className="coordinate-name">World</p>
+            <p className="coordinate-name">{t('World')}</p>
             {renderIcon('fa-wrench', 'Tool Coordinate')}
-            <p className="coordinate-name">Tools</p>
+            <p className="coordinate-name">{t('Tools')}</p>
             {renderIcon('fa-layer-group', 'Base Coordinate')}
-            <p className="coordinate-name">Base</p>
+            <p className="coordinate-name">{t('Base')}</p>
           </div>
         )}
         <div className={`sidebar ${isAxisSelected ? 'axis' : ''}`} style={{ height: sidebarHeight }}>

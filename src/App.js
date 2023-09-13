@@ -3,9 +3,7 @@ import ActualPosition from './Components/ActualPosition';
 import BaseSelection from './Components/BaseSelection';
 import HeaderBar from './Components/HeaderBar';
 import HomePosition from './Components/HomePosition';
-import Language from './Components/SubComponents/Language';
 import MainFunc from './Components/MainFunc';
-import Menu from './Components/Menu';
 import Message from './Components/Message';
 import RightComp from './Components/RightComp';
 import RobotMotion from './Components/RobotMotion';
@@ -26,8 +24,6 @@ function App() {
           <Route path='/' element={<MainFunc/>} />
           <Route path='users' element={<User />} />
           <Route path='/settings' element={<Setting />} />
-          <Route path='/languages' element={<Language />} />
-          <Route path='/menu' element={<Menu />} />
           <Route path='robot-motion' element={<RobotMotion/>}>
             <Route index element={<ActualPosition/>} />
             <Route path='actual-position' element={<ActualPosition />} />

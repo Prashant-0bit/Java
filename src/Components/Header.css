@@ -294,11 +294,11 @@
   align-items: center;
   margin-right: 5px;
   font-size: 13px;
-  border-color: black;
   border-width: 1px;
   padding: 5px 9px;
-  background-color: #1E2023;
-  color: white;
+  background-color: #ffffff;
+  color: #000000;
+  width: 42px;
 }
 
 .acknowledge-confirm {
@@ -306,11 +306,23 @@
   align-items: center;
   margin-right: 5px;
   font-size: 13px;
-  border-color: black;
-  background-color: #1E2023;
-  color: white;
+  background-color: #ffffff;
+  color: #000000;
   border-width: 1px;
   padding: 5px;
+  width: 81px;
+}
+
+.acknowledge-ok:active {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid rgba(2, 122, 80, 0.817); 
+}
+
+.acknowledge-confirm:active {
+  background-color: #000000; 
+  color: #ffffff;
+  border: 2px solid rgba(2, 122, 80, 0.817); 
 }
 
 .Horizontal-divider {

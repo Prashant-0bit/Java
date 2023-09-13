@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './MainFunc.css';
 import Keypad from './SubComponents/Keyboard';
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
+import { useButtonMode } from './ButtonModeContext';
+
 
 export default function User() {
   const [isKeypadOpen, setIsKeypadOpen] = useState(false);

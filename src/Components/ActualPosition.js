@@ -3,7 +3,7 @@ import './robotmotion.css';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
 import NumericKeypad from './SubComponents/NumericKeyBoard';
 import TeachPositionPopup from './TeachPositionPopup';
-import Keypad from './SubComponents/Keyboard';
+import { useTranslation } from 'react-i18next';
 
 function ActualPosition() {
     const [selectedCoordinate, setSelectedCoordinate] = useState('Axis');
@@ -12,9 +12,8 @@ function ActualPosition() {
     const [isOpenNumericKeypad, setIsOpenNumericKeypad] = useState(false);
     const [isTeachPositionButtonActive, setIsTeachPositionButtonActive] = useState(false);
     const [isHomePositionActive, setIsHomePositionActive] = useState(false);
-    const [isKeypadOpen, setIsKeypadOpen] = useState(false);
-    const [newPointName, setNewPointName] = useState('');
     const [selectedPoint, setSelectedPoint] = useState(null);
+    const { t } = useTranslation();
 
     const handleHomePositionClick = () => {
         setIsHomePositionActive(true);
@@ -29,25 +28,32 @@ function ActualPosition() {
         setIsTeachPositionPopupOpen(false);
     };
 
+    const handlePointNameChange = (pointKey, newName) => {
+        setTeachPositionPoints((prevPoints) => ({
+            ...prevPoints,
+            [pointKey]: newName,
+        }));
+    };
+
     const coordinates = {
-        World:  ['X', 'Y', 'Z', 'A', 'B', 'C'],
-        Axis:   ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
-        Base:   ['X', 'Y', 'Z', 'A', 'B', 'C'],
-        Tool:   ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        World: ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Axis: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
+        Base: ['X', 'Y', 'Z', 'A', 'B', 'C'],
+        Tool: ['X', 'Y', 'Z', 'A', 'B', 'C'],
     };
 
     const [isTeachPositionPopupOpen, setIsTeachPositionPopupOpen] = useState(false);
     const [teachPositionPoints, setTeachPositionPoints] = useState({
-        'p1': 'Point 1',
-        'p2': 'Point 2',
-        'p3': 'Point 3',
-        'p4': 'Point 4',
-        'p5': 'Point 5',
-        'p6': 'Point 6',
-        'p7': 'Point 7',
-        'p8': 'Point 8',
-        'p9': 'Point 9',
-        'p10': 'Point 10'
+        'point 1': 'Point 1',
+        'point 2': 'Point 2',
+        'point 3': 'Point 3',
+        'point 4': 'Point 4',
+        'point 5': 'Point 5',
+        'point 6': 'Point 6',
+        'point 7': 'Point 7',
+        'point 8': 'Point 8',
+        'point 9': 'Point 9',
+        'point 10': 'Point 10'
     });
 
     const handleSaveTeachPosition = (pointKey, newName) => {
@@ -57,10 +63,13 @@ function ActualPosition() {
         }));
     };
 
+    const handleRenamePoint = (point) => {
+        setSelectedPoint(point);
+        setIsOpenNumericKeypad(true);
+    };
+
     const handlePointClick = (point) => {
         setSelectedPoint(point);
-        setIsKeypadOpen(true);
-        setNewPointName(teachPositionPoints[point]);
     };
 
     const handleOpenNumericKeypad = () => {
@@ -109,7 +118,7 @@ function ActualPosition() {
                             className={`actual-position-button ${selectedCoordinate === coordinate ? 'active' : ''}`}
                             onClick={() => handleCoordinateSelection(coordinate)}
                         >
-                            {coordinate}
+                            {t(coordinate)}
                         </button>
                     ))}
                 </div>
@@ -119,19 +128,19 @@ function ActualPosition() {
                         type='button'
                         className={`actual-position-button ${isHomePositionActive ? 'active' : ''}`}
                         onClick={handleHomePositionClick}>
-                        Move Home
+                        {t('Move Home')}
                     </button>
                     <button
                         type='button'
                         className={`actual-position-button ${isTeachPositionButtonActive ? 'active' : ''}`}
                         onClick={handleTeachPositionButtonClick}>
-                        Teach Position
+                        {t('Teach Position')}
                     </button>
                 </div>
 
                 <div className='motion-value-container'>
                     <div className='motion-speed-value'>
-                        Acceleration
+                        {t('Acceleration')}
                         <div className='motion-input-container'>
                             <input
                                 type='text'
@@ -146,7 +155,7 @@ function ActualPosition() {
                     </div>
 
                     <div className='motion-speed-value'>
-                        Velocity
+                        {t('Velocity')}
                         <div className='motion-input-container'>
                             <input
                                 id='velocity'
@@ -190,19 +199,8 @@ function ActualPosition() {
                     onClose={handleTeachPositionPopupClose}
                     onSave={handleSaveTeachPosition}
                     onPointClick={handlePointClick}
-                />
-            )}
-
-            {isKeypadOpen && (
-                <Keypad
-                    enteredText={newPointName}
-                    setEnteredText={setNewPointName}
-                    handleKeypadInput={(value) => {
-                        setNewPointName((prevName) => prevName + value);
-                    }}
-                    handleKeypadEnter={() => {
-                        setIsKeypadOpen(false);
-                    }}
+                    onPointNameChange={handlePointNameChange}
+                    onRenamePoint={handleRenamePoint}
                 />
             )}
         </div>

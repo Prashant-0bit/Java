@@ -11,7 +11,6 @@ export function ToolNameProvider({ children }) {
     setSelectedToolName(newName);
   };
 
-
   return (
     <ToolNameContext.Provider value={{ selectedToolName, updateToolName}}>
       {children}

@@ -47,6 +47,21 @@
   padding: 10px; 
 }
 
+.teach-position-popup-list button{
+  display: flex;
+  justify-content: flex-start;
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.teach-position-popup-list button.selected-button{
+  border: 2px solid rgba(2, 122, 80, 0.817);
+}
+
 /* Styles for the editor section */
 .teach-position-popup-editor {
   max-height: 200px; /* Set a maximum height for the editor */
@@ -126,11 +141,8 @@
   background-color: #04a722;
   color: white;
   border: none;
+  border-radius: 0;
   padding: 5px 10px;
   cursor: pointer;
   font-family: sans-serif;
-}
-
-.teach-position-popup-editor button:last-child {
-  background-color: rgb(218, 17, 17);
 }

@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "./Header.css";
 
 export default function Message() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
+  const [isOKButtonClicked, setIsOKButtonClicked] = useState(false);
+  const [isConfirmButtonClicked, setIsConfirmButtonClicked] = useState(false);
+  const { t } = useTranslation();
+
 
   const handlePopupOpen = (message) => {
     setIsPopupOpen(true);
@@ -13,6 +18,27 @@ export default function Message() {
   const handlePopupClose = () => {
     setIsPopupOpen(false);
   };
+
+  const handleOKButtonClick = () => {
+    setIsOKButtonClicked(true);
+  };
+
+  const handleConfirmButtonClick = () => {
+    setIsConfirmButtonClicked(true);
+  };
+
+  // Add mouseup event listeners to reset button states
+  useEffect(() => {
+    const resetButtonStates = () => {
+      setIsOKButtonClicked(false);
+      setIsConfirmButtonClicked(false);
+    };
+    document.addEventListener("mouseup", resetButtonStates);
+
+    return () => {
+      document.removeEventListener("mouseup", resetButtonStates);
+    };
+  }, []);
 
 
   return (
@@ -36,14 +62,19 @@ export default function Message() {
           {isPopupOpen ? "Normal Message" : "This is popup"}
         </button>
         <div className="acknowledge-button">
-          <button type="button" className=" acknowledge-ok">
+        <button
+            type="button"
+            className={`acknowledge-ok ${isOKButtonClicked ? "clicked" : ""}`}
+            onClick={handleOKButtonClick}
+          >
             OK
           </button>
           <button
             type="button"
-            className=" acknowledge-confirm"
+            className={`acknowledge-confirm ${isConfirmButtonClicked ? "clicked" : ""}`}
+            onClick={handleConfirmButtonClick}
           >
-            Confirm All
+            {t('Confirm All')}
           </button>
         </div>
       </div>
@@ -54,7 +85,6 @@ export default function Message() {
           <div className="message-popup">
             <div className="popup-content">
               <p className="message-display">{popupMessage}</p>
-              <div className="message-divider" />
             </div>
           </div>
         </>

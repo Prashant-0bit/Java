@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import NumericKeypad from './SubComponents/NumericKeyBoard';
-import Keypad from './SubComponents/Keyboard';
-import './robotmotion.css';
 import { HiPencil } from 'react-icons/hi';
+import Keypad from './SubComponents/Keyboard';
+import NumericKeypad from './SubComponents/NumericKeyBoard';
+import { useTranslation } from 'react-i18next';
+import './robotmotion.css';
 
 
 function BaseSelection() {
@@ -52,6 +53,7 @@ function BaseSelection() {
   const [virtualKeypadText, setVirtualKeypadText] = useState("");
   const [isVirtualKeypadOpen, setIsVirtualKeypadOpen] = useState(false);
   const [saveButtonClicked, setSaveButtonClicked]= useState(false);
+  const { t } = useTranslation();
 
   const handleVirtualKeypadInput = (value) => {
     if (virtualKeypadText.length < 25) {
@@ -146,7 +148,7 @@ function BaseSelection() {
 
   return (
     <div className="Tool-container">
-      <div className='tool-info-text'>Base Information</div>
+      <div className='tool-info-text'>{t('Base Information')}</div>
       <div className="tool-list">
         {toolList.map((tool, index) => (
           <div key={tool.id}>
@@ -155,7 +157,7 @@ function BaseSelection() {
               className={`tool-item ${selectedTool === tool.id ? 'selected-tool' : ''}`}
               onClick={() => handleToolClick(tool.id)}
             >
-              {tool.name}
+              {t(tool.name)}
             </div>
             {index < toolList.length - 1 && <hr className="divider-line" />}
           </div>
@@ -167,14 +169,14 @@ function BaseSelection() {
             id='rename'
             className='rename-input'
             type="text"
-            value={toolName}
+            value={t(toolName)}
             onChange={(e) => setToolName(e.target.value)}
             autoFocus
           />
         ) : (
           <>
             <div className='tool-name'>
-              Base Name: {selectedTool !== null ? toolList.find((tool) => tool.id === selectedTool).name : ''}
+              {t('Base Name')}: {selectedTool !== null ? t(toolList.find((tool) => tool.id === selectedTool).name) : ''}
               <button className='rename-tool' onClick={handleRenameTool}><HiPencil /></button>
             </div>
           </>
@@ -183,21 +185,13 @@ function BaseSelection() {
         {selectedTool !== null && (
           <>
             <div className={`load-input-field ${activeInput === 'workload' ? 'selected-input' : ''}`}>
-              <span className="load-input-label">Workpiece load</span>
-              <input
-                type="text"
-                id="workload"
-                value={inputValues.workload}
-                onClick={() => handleInputClick('workload')}
-                readOnly
-              />
               <button
                 className={`save-load-button ${saveButtonClicked ? 'clicked' : ''}`}
                 onClick={() => {
                   setSaveButtonClicked(true);
                 }}
               >
-                Save
+                {t('Save')}
               </button>
             </div>
             <div className="input-container">

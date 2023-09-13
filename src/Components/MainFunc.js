@@ -6,10 +6,12 @@ import { MdDelete, MdClose } from 'react-icons/md'; // Import MdDelete and MdClo
 import { FcCheckmark } from 'react-icons/fc';
 import Keypad from './SubComponents/Keyboard';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { DeleteConfirmationPopup, RenameConfirmationPopup } from './popout';
 
 export default function MainFunc() {
-  const [projects, setProjects] = useState(['Default Project']);
+  const { t } = useTranslation();
+  const [projects, setProjects] = useState([t('Default Project')]);
   const [newProjectName, setNewProjectName] = useState('');
   const [showNewProjectInput, setShowNewProjectInput] = useState(false);
   const [isKeypadOpen, setIsKeypadOpen] = useState(false);
@@ -136,14 +138,14 @@ export default function MainFunc() {
     }
   };
 
-  const handleKeypadEnter = () => {
+  const handleKeypadEnter = useCallback(() => {
     if (isRenameMode) {
       setIsRenameConfirmationModalOpen(true);
     } else {
       handleAddProject();
     }
-  };
-
+  }, [isRenameMode, handleAddProject, setIsRenameConfirmationModalOpen]);
+  
   useEffect(() => {
     document.addEventListener('keydown', handleKeypadEnter);
     return () => {
@@ -195,7 +197,7 @@ export default function MainFunc() {
             onClick={handleToggleNewProjectInput}
             disabled={isDeleteConfirmationModalOpen || isRenameConfirmationModalOpen}
           >
-            <span className="add-button-name"> Add Project </span>
+            <span className="add-button-name"> {t('Add Project')} </span>
             <CgFolderAdd className="add-icon" />
           </button>
         ) : (

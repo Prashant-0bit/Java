@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import NumericKeypad from './SubComponents/NumericKeyBoard';
-import Keypad from './SubComponents/Keyboard';
-import './robotmotion.css';
 import { HiPencil } from 'react-icons/hi';
+import Keypad from './SubComponents/Keyboard';
+import NumericKeypad from './SubComponents/NumericKeyBoard';
+import { useTranslation } from 'react-i18next';
+import './robotmotion.css';
 
 
 function ToolSelection({ children }) {
@@ -37,6 +38,7 @@ function ToolSelection({ children }) {
   const [saveButtonClicked, setSaveButtonClicked] = useState(false);
   const [selectedToolForRename, setSelectedToolForRename] = useState(null);
   const [selectedToolName, setSelectedToolName] = useState('');
+  const { t } = useTranslation();
 
   const handleVirtualKeypadInput = (value) => {
     if (virtualKeypadText.length < 25) {
@@ -119,7 +121,7 @@ function ToolSelection({ children }) {
 
   const handleRenameTool = () => {
     if (selectedTool !== null) {
-      setIsVirtualKeypadOpen(true); // Open the virtual keypad
+      setIsVirtualKeypadOpen(true);
       setRenamingTool(true);
       setToolName(toolList[selectedTool - 1].name);
       setSelectedToolForRename(selectedTool);
@@ -137,7 +139,7 @@ const handleKeypadBackspace = () => {
       setToolList(updatedToolList);
     }
   }
-  console.log("virtualKeypadText:", virtualKeypadText); // Add this line for debugging
+  console.log("virtualKeypadText:", virtualKeypadText);
 };
 
 
@@ -150,7 +152,7 @@ const handleKeypadBackspace = () => {
 
   return (
     <div className="Tool-container">
-      <div className='tool-info-text'>Tool Information</div>
+      <div className='tool-info-text'>{t('Tool Information')}</div>
       <div className="tool-list">
         {toolList.map((tool, index) => (
           <div key={tool.id}>
@@ -159,7 +161,7 @@ const handleKeypadBackspace = () => {
               className={`tool-item ${selectedTool === tool.id ? 'selected-tool' : ''}`}
               onClick={() => handleToolClick(tool.id)}
             >
-              {tool.name}
+              {t(tool.name)}
             </div>
             {index < toolList.length - 1 && <hr className="divider-line" />}
           </div>
@@ -171,7 +173,7 @@ const handleKeypadBackspace = () => {
             id='rename'
             className='rename-input'
             type="text"
-            value={toolName}
+            value={t(toolName)}
             autoComplete='off'
             onChange={(e) => setToolName(e.target.value)}
             autoFocus
@@ -179,7 +181,7 @@ const handleKeypadBackspace = () => {
         ) : (
           <>
             <div className='tool-name'>
-              Tool Name: {selectedTool !== null ? toolList.find((tool) => tool.id === selectedTool).name : ''}
+              {t('Tool Name')}: {selectedTool !== null ? t(toolList.find((tool) => tool.id === selectedTool).name) : ''}
               <button className='rename-tool' onClick={handleRenameTool}><HiPencil /></button>
             </div>
           </>
@@ -188,7 +190,7 @@ const handleKeypadBackspace = () => {
         {selectedTool !== null && (
           <>
             <div className={`load-input-field ${activeInput === 'load' ? 'selected-input' : ''}`}>
-              <span className="load-input-label">Tool load</span>
+              <span className="load-input-label">{t('Tool load')}</span>
               <input
                 type="text"
                 id="load"
@@ -202,7 +204,7 @@ const handleKeypadBackspace = () => {
                   setSaveButtonClicked(true);
                 }}
               >
-                Save
+                {t('Save')}
               </button>
             </div>
 

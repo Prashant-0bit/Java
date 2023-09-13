@@ -214,3 +214,59 @@
 .popup .modal-actions button:hover {
   background-color: #444;
 }
+
+/**************************************************************************************************
+**********************************************Language*********************************************
+**************************************************************************************************/
+.language-pop-container {
+  position: relative;
+  display: inline-block;
+}
+
+.language-selection {
+  position: absolute;
+  margin: 5px;
+  padding: 5px;
+  top: 100%;
+  left: 0;
+  background-color: rgb(2, 2, 2); 
+  color: #ffffff;
+  border: 1px solid rgba(2, 122, 80, 0.817);
+  display: none;
+  width: calc(100% - 10px);
+}
+
+.language-selection ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+}
+
+.language-selection li {
+  padding: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.language-selection button{
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 0;
+}
+
+.language-selection li:first-child {
+  border-top: none; 
+}
+
+.language-pop-container.open{
+  margin-bottom: 160px;
+}
+
+.language-pop-container.open .language-selection{
+  display: block;
+}
+
+.language-selection hr{
+  margin: 2px;
+}

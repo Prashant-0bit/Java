@@ -1,0 +1,6 @@
+{
+    "confirmationPopups": {
+      "deleteConfirmation": "Do you want to delete {{projectName}} project?",
+      "renameConfirmation": "Do you want to rename the project name from {{oldName}} to {{newName}}?"
+    }
+  }
