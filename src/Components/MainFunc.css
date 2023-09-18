@@ -270,3 +270,48 @@
 .language-selection hr{
   margin: 2px;
 }
+
+/**************************************************************************************************
+**********************************************TimePicker*******************************************
+**************************************************************************************************/
+/* TimePicker container */
+.TimePicker {
+  font-family: Arial, sans-serif;
+  padding: 5px;
+  border: 1px solid rgba(2, 122, 80, 0.817);
+  width: 100%;
+  margin: 5px;
+  background-color: rgb(2, 2, 2); 
+  color: #ffffff;
+  width: calc(100% - 10px);
+}
+
+/* Select inputs */
+.TimePicker select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+  border: 1px solid rgba(2, 122, 80, 0.817);
+}
+
+/* Label */
+.TimePicker label {
+  font-weight: bold;
+}
+
+/* Button */
+.TimePicker button {
+  border: 1px solid rgba(2, 122, 80, 0.817);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Button hover effect */
+.TimePicker button:hover {
+  border: 1px solid rgba(2, 122, 80, 0.817);
+}

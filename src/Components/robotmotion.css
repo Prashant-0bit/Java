@@ -268,8 +268,8 @@
 }
 
 .selected-tool {
-  background-color: #f0f0f0;
-  color: #000000;
+  background: transparent;
+  border: 1px solid rgba(2, 122, 80, 0.817);
 }
 
 .tool-info{

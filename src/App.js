@@ -5,6 +5,7 @@ import HeaderBar from './Components/HeaderBar';
 import HomePosition from './Components/HomePosition';
 import MainFunc from './Components/MainFunc';
 import Message from './Components/Message';
+import moment from 'moment-timezone';
 import RightComp from './Components/RightComp';
 import RobotMotion from './Components/RobotMotion';
 import Setting from './Components/Setting';
@@ -12,6 +13,8 @@ import ToolSelection from './Components/ToolSelection';
 import User from './Components/User';
 import './Global.css';
 import { Route, Routes } from "react-router-dom"
+
+moment.tz.load(require('moment-timezone/data/packed/latest.json'));
 
 function App() {
   return (

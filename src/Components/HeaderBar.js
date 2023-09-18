@@ -2,11 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DiscreteSliderMarks from './Slider';
-import TimePicker from './TimePicker';
 import Logo_Mairotec_weiss from './Logo_Mairotec_weiss.png';
 import ToolPopup from './ToolPopup';
 
-export default function HeaderBar() {
+export default function HeaderBar({ dateTime }) {
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
   const [sliderVisible, setSliderVisible] = useState(false);
@@ -190,7 +189,7 @@ export default function HeaderBar() {
                 <i className="fa-solid fa-gear header-icon"></i>
               </button>
             </li>
-            <TimePicker />
+            <p>{dateTime}</p>
           </ul>
         </div>
       </nav>

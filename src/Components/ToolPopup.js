@@ -7,7 +7,6 @@ function ToolPopup({ onClose, onSelectTool }) {
   const [currentToolName, setCurrentToolName] = useState(selectedToolName);
 
   useEffect(() => {
-    // Update the current tool name when selectedToolName changes
     setCurrentToolName(selectedToolName);
   }, [selectedToolName]);
 

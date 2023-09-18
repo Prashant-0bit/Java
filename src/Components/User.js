@@ -3,6 +3,7 @@ import './MainFunc.css';
 import Keypad from './SubComponents/Keyboard';
 import { VscEyeClosed, VscEye } from 'react-icons/vsc';
 import { useButtonMode } from './ButtonModeContext';
+import { useTranslation } from 'react-i18next';
 
 
 export default function User() {
@@ -14,6 +15,7 @@ export default function User() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [selectedButton, setSelectedButton] = useState(null);
   const passwordInputRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isKeypadOpen) {
@@ -65,11 +67,11 @@ export default function User() {
   };
 
   const keypadButtons = [
-    'Manual',
-    'Testing',
-    'Operator',
-    'Safety Maintenance',
-    'Administrator',
+    t('Manual'),
+    t('Testing'),
+    t('Operator'),
+    t('Safety Maintenance'),
+    t('Administrator'),
   ];
 
   return (
